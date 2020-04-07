@@ -1,1 +1,3 @@
-# ultra96-unified
+# Ultra96 projects
+
+- Checkout branch according to your tool version
