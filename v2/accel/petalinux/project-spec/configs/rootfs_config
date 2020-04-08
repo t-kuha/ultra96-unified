@@ -4222,6 +4222,7 @@ CONFIG_imagefeature-hwcodecs=y
 #
 # CONFIG_gpio-demo is not set
 # CONFIG_peekpoke is not set
+CONFIG_vitis-env=y
 
 #
 # modules 
