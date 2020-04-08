@@ -11,12 +11,19 @@ BRANCH = "master"
 
 S = "${WORKDIR}/git"
 
+SRC_URI += "file://wilc.conf "
+
 # Depends on Wilc driver https://github.com/Avnet/u96v2-wilc-driver
 DEPENDS += "wilc"
 
 do_install() {
     install -d ${D}${base_libdir}/firmware/mchp
     install -m 0755 ${S}/wilc* ${D}${base_libdir}/firmware/mchp
+
+    install -d ${D}${sysconfdir}/modules-load.d
+    cp ${WORKDIR}/wilc.conf ${D}${sysconfdir}/modules-load.d/
 }
 
-FILES_${PN} = "${base_libdir}/firmware/mchp/*"
+FILES_${PN} = "${base_libdir}/firmware/mchp/* \
+    ${sysconfdir}/modules-load.d/wilc.conf \
+    "
