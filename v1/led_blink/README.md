@@ -10,8 +10,8 @@
 # HW - Launch Vivado shell
 $ vivado -mode batch -source create_vivado_project.tcl
 
-# SW - Launch xsct
-xsct% source create_boot_bin.tcl
+# SW - Launch xsct that is part of SDK
+$ xsct create_boot_bin.tcl
 ```
 
 ## Run

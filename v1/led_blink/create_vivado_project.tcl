@@ -16,7 +16,7 @@ add_files -fileset constrs_1 -norecurse ${SRC_DIR}/Ultra96_constraints_180318.xd
 
 
 # Create block design
-source $SRC_DIR/${PRJ_NAME}.tcl
+source $SRC_DIR/bd.tcl
 
 # Set top-level source
 make_wrapper -files [get_files ${PRJ_DIR}/${PRJ_NAME}.srcs/sources_1/bd/${BD_NAME}/${BD_NAME}.bd] -top
@@ -44,15 +44,13 @@ report_clocks
 
 # Export HW for SDK
 file mkdir ${XSDK_DIR}
-# Copy bitstream
+# With bitstream
 file copy -force ${PRJ_DIR}/${PRJ_NAME}.runs/impl_1/${PRJ_NAME}_wrapper.sysdef ${XSDK_DIR}/${PRJ_NAME}_wrapper.hdf
-# Do not copy bitstream
+# or... without bitstream
 # write_hwdef -force -file $XSDK_DIR/${PRJ_NAME}_wrapper.hdf
-# launch_sdk -workspace $XSDK_DIR -hwspec $XSDK_DIR/${PRJ_NAME}_wrapper.hdf
 
 # Finish - close project
 close_project
-
 
 # # Execute
 # # https://fpga.kice.tokyo/fpga/config-cmd
