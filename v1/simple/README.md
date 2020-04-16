@@ -58,20 +58,20 @@ $ ${XILINX_SDX}/bin/xsct create_sdsoc_pfm.tcl
 
 ***
 
-### Confromance Test
+## Run Confromance Test
 
 - Build:
 
 ```shell-session
 $ cp -R ${XILINX_SDX}/samples/platforms/Conformance/ _conformance
 $ cd _conformance/
-$ make OS=LINUX PLATFORM=../platform_final/u96_sdx/export/u96_sdx PLATFORM_TYPE=MPSOC
+$ make OS=LINUX PLATFORM=../_pfm/u96_sdx/export/u96_sdx PLATFORM_TYPE=MPSOC
 ```
 
 - Run:
 
 ```shell-session
-root@ultra96:~# /media/card/ConformanceTest.elf 
+root@u96_sdx:~# /media/card/ConformanceTest.elf 
 Starting allocation tests from 65536 to 67108864 with increment 524288
 done
 Starting datamover tests....
