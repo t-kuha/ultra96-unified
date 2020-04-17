@@ -1,7 +1,7 @@
 # May have to delete existing platform directory
 
 # Platform name
-set PFM_NAME    u96_sdx
+set PFM_NAME    u96v2_sdx
 set SRC_DIR     pfm_files
 set PREBUILT_DATA_DIR   ${SRC_DIR}/prebuilt
 

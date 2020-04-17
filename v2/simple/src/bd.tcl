@@ -203,20 +203,19 @@ proc create_root_design { parentCell } {
    CONFIG.CLKOUT2_USED {true} \
    CONFIG.CLKOUT3_JITTER {102.086} \
    CONFIG.CLKOUT3_PHASE_ERROR {87.180} \
-   CONFIG.CLKOUT3_REQUESTED_OUT_FREQ {200.000} \
+   CONFIG.CLKOUT3_REQUESTED_OUT_FREQ {200.00} \
    CONFIG.CLKOUT3_USED {true} \
    CONFIG.CLKOUT4_JITTER {98.767} \
    CONFIG.CLKOUT4_PHASE_ERROR {87.180} \
    CONFIG.CLKOUT4_REQUESTED_OUT_FREQ {250.000} \
    CONFIG.CLKOUT4_USED {true} \
-   CONFIG.CLKOUT5_JITTER {94.862} \
+   CONFIG.CLKOUT5_JITTER {115.831} \
    CONFIG.CLKOUT5_PHASE_ERROR {87.180} \
-   CONFIG.CLKOUT5_REQUESTED_OUT_FREQ {300.000} \
    CONFIG.CLKOUT5_USED {true} \
    CONFIG.MMCM_CLKOUT1_DIVIDE {8} \
    CONFIG.MMCM_CLKOUT2_DIVIDE {6} \
    CONFIG.MMCM_CLKOUT3_DIVIDE {5} \
-   CONFIG.MMCM_CLKOUT4_DIVIDE {4} \
+   CONFIG.MMCM_CLKOUT4_DIVIDE {12} \
    CONFIG.MMCM_DIVCLK_DIVIDE {1} \
    CONFIG.NUM_OUT_CLKS {5} \
    CONFIG.RESET_PORT {resetn} \
@@ -589,8 +588,8 @@ proc create_root_design { parentCell } {
    CONFIG.PSU__DDRC__DDR4_T_REF_MODE {NA} \
    CONFIG.PSU__DDRC__DDR4_T_REF_RANGE {NA} \
    CONFIG.PSU__DDRC__DEEP_PWR_DOWN_EN {0} \
-   CONFIG.PSU__DDRC__DEVICE_CAPACITY {8192 MBits} \
-   CONFIG.PSU__DDRC__DIMM_ADDR_MIRROR {NA} \
+   CONFIG.PSU__DDRC__DEVICE_CAPACITY {16384 MBits} \
+   CONFIG.PSU__DDRC__DIMM_ADDR_MIRROR {0} \
    CONFIG.PSU__DDRC__DM_DBI {DM_NO_DBI} \
    CONFIG.PSU__DDRC__DQMAP_0_3 {0} \
    CONFIG.PSU__DDRC__DQMAP_12_15 {0} \
@@ -624,8 +623,8 @@ proc create_root_design { parentCell } {
    CONFIG.PSU__DDRC__PARITY_ENABLE {NA} \
    CONFIG.PSU__DDRC__PER_BANK_REFRESH {0} \
    CONFIG.PSU__DDRC__PHY_DBI_MODE {0} \
-   CONFIG.PSU__DDRC__RANK_ADDR_COUNT {1} \
-   CONFIG.PSU__DDRC__ROW_ADDR_COUNT {15} \
+   CONFIG.PSU__DDRC__RANK_ADDR_COUNT {0} \
+   CONFIG.PSU__DDRC__ROW_ADDR_COUNT {16} \
    CONFIG.PSU__DDRC__SB_TARGET {NA} \
    CONFIG.PSU__DDRC__SELF_REF_ABORT {NA} \
    CONFIG.PSU__DDRC__SPEED_BIN {LPDDR4_1066} \
@@ -874,16 +873,16 @@ proc create_root_design { parentCell } {
  ] $xlconcat_1
 
   # Create port connections
-  connect_bd_net -net clk_wiz_0_clk_out1 [get_bd_pins clk_wiz_0/clk_out1] [get_bd_pins ps_rst_1/slowest_sync_clk]
-  connect_bd_net -net clk_wiz_0_clk_out2 [get_bd_pins clk_wiz_0/clk_out2] [get_bd_pins ps_rst_0/slowest_sync_clk]
+  connect_bd_net -net clk_wiz_0_clk_out1 [get_bd_pins clk_wiz_0/clk_out1] [get_bd_pins ps_rst_0/slowest_sync_clk]
+  connect_bd_net -net clk_wiz_0_clk_out2 [get_bd_pins clk_wiz_0/clk_out2] [get_bd_pins ps_rst_1/slowest_sync_clk]
   connect_bd_net -net clk_wiz_0_clk_out3 [get_bd_pins clk_wiz_0/clk_out3] [get_bd_pins ps_rst_2/slowest_sync_clk]
   connect_bd_net -net clk_wiz_0_clk_out4 [get_bd_pins clk_wiz_0/clk_out4] [get_bd_pins ps_rst_3/slowest_sync_clk]
   connect_bd_net -net clk_wiz_0_clk_out5 [get_bd_pins clk_wiz_0/clk_out5] [get_bd_pins ps_rst_4/slowest_sync_clk]
   connect_bd_net -net clk_wiz_0_locked [get_bd_pins clk_wiz_0/locked] [get_bd_pins ps_rst_0/dcm_locked] [get_bd_pins ps_rst_1/dcm_locked] [get_bd_pins ps_rst_2/dcm_locked] [get_bd_pins ps_rst_3/dcm_locked] [get_bd_pins ps_rst_4/dcm_locked]
+  connect_bd_net -net ps_e_pl_clk0 [get_bd_pins clk_wiz_0/clk_in1] [get_bd_pins ps_e/pl_clk0]
+  connect_bd_net -net ps_e_pl_resetn0 [get_bd_pins clk_wiz_0/resetn] [get_bd_pins ps_e/pl_resetn0] [get_bd_pins ps_rst_0/ext_reset_in] [get_bd_pins ps_rst_1/ext_reset_in] [get_bd_pins ps_rst_2/ext_reset_in] [get_bd_pins ps_rst_3/ext_reset_in] [get_bd_pins ps_rst_4/ext_reset_in]
   connect_bd_net -net xlconcat_0_dout [get_bd_pins ps_e/pl_ps_irq0] [get_bd_pins xlconcat_0/dout]
   connect_bd_net -net xlconcat_1_dout [get_bd_pins ps_e/pl_ps_irq1] [get_bd_pins xlconcat_1/dout]
-  connect_bd_net -net zynq_ultra_ps_e_0_pl_clk0 [get_bd_pins clk_wiz_0/clk_in1] [get_bd_pins ps_e/pl_clk0]
-  connect_bd_net -net zynq_ultra_ps_e_0_pl_resetn0 [get_bd_pins clk_wiz_0/resetn] [get_bd_pins ps_e/pl_resetn0] [get_bd_pins ps_rst_0/ext_reset_in] [get_bd_pins ps_rst_1/ext_reset_in] [get_bd_pins ps_rst_2/ext_reset_in] [get_bd_pins ps_rst_3/ext_reset_in] [get_bd_pins ps_rst_4/ext_reset_in]
 
   # Create address segments
 
@@ -892,8 +891,8 @@ proc create_root_design { parentCell } {
   current_bd_instance $oldCurInst
 
   # Create PFM attributes
-  set_property PFM_NAME {em.avnet.com:ultra96_v2:u96v2_sdx:2018.3} [get_files [current_bd_design].bd]
-  set_property PFM.CLOCK {clk_out1 {id "0" is_default "true" proc_sys_reset "/ps_rst_1"} clk_out2 {id "1" is_default "false" proc_sys_reset "/ps_rst_0"} clk_out3 {id "2" is_default "false" proc_sys_reset "/ps_rst_2"} clk_out4 {id "3" is_default "false" proc_sys_reset "/ps_rst_3"} clk_out5 {id "4" is_default "false" proc_sys_reset "/ps_rst_4"}} [get_bd_cells /clk_wiz_0]
+  set_property PFM_NAME {avnet.com:ultra96v2:u96v2_sdx:2018.3} [get_files [current_bd_design].bd]
+  set_property PFM.CLOCK {clk_out1 {id "1" is_default "true" proc_sys_reset "/ps_rst_0"} clk_out2 {id "2" is_default "false" proc_sys_reset "/ps_rst_1"} clk_out3 {id "3" is_default "false" proc_sys_reset "/ps_rst_2"} clk_out4 {id "4" is_default "false" proc_sys_reset "/ps_rst_3"} clk_out5 {id "5" is_default "false" proc_sys_reset "/ps_rst_4"}} [get_bd_cells /clk_wiz_0]
   set_property PFM.AXI_PORT {M_AXI_HPM0_FPD {memport "M_AXI_GP" sptag "" memory ""} M_AXI_HPM1_FPD {memport "M_AXI_GP" sptag "" memory ""} M_AXI_HPM0_LPD {memport "M_AXI_GP" sptag "" memory ""} S_AXI_HPC0_FPD {memport "S_AXI_HPC" sptag "" memory ""} S_AXI_HPC1_FPD {memport "S_AXI_HPC" sptag "" memory ""} S_AXI_HP0_FPD {memport "S_AXI_HP" sptag "" memory ""} S_AXI_HP1_FPD {memport "S_AXI_HP" sptag "" memory ""} S_AXI_HP2_FPD {memport "S_AXI_HP" sptag "" memory ""} S_AXI_HP3_FPD {memport "S_AXI_HP" sptag "" memory ""}} [get_bd_cells /ps_e]
   set_property PFM.IRQ {In0 {} In1 {} In2 {} In3 {} In4 {} In5 {} In6 {} In7 {}} [get_bd_cells /xlconcat_0]
   set_property PFM.IRQ {In0 {} In1 {} In2 {} In3 {} In4 {} In5 {} In6 {} In7 {}} [get_bd_cells /xlconcat_1]
