@@ -4382,6 +4382,12 @@ CONFIG_imagefeature-hwcodecs=y
 # CONFIG_peekpoke is not set
 
 #
+# modules 
+#
+CONFIG_led-brightness=y
+CONFIG_wilc=y
+
+#
 # user packages 
 #
 
