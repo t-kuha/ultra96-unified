@@ -6,7 +6,7 @@
 
 ## How to build
 
-```bash
+```shell-session
 # HW - Launch Vivado shell
 $ vivado -mode batch -source create_vivado_project.tcl
 
