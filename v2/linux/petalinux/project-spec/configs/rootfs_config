@@ -4390,6 +4390,7 @@ CONFIG_wilc=y
 #
 # user packages 
 #
+CONFIG_fuse-exfat=y
 
 #
 # PetaLinux RootFS Settings

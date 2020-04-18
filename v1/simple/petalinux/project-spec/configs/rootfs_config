@@ -4385,6 +4385,7 @@ CONFIG_sdslib=y
 #
 # user packages 
 #
+CONFIG_fuse-exfat=y
 
 #
 # PetaLinux RootFS Settings

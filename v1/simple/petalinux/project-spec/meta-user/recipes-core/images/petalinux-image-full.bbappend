@@ -3,3 +3,4 @@
 IMAGE_INSTALL_append = " peekpoke"
 IMAGE_INSTALL_append = " gpio-demo"
 IMAGE_INSTALL_append = " sdslib"
+IMAGE_INSTALL_append = " fuse-exfat"
