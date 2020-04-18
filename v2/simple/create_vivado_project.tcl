@@ -11,7 +11,7 @@ create_project ${PRJ_NAME} ${PRJ_DIR} -part xczu3eg-sbva484-1-e
 set_property board_part em.avnet.com:ultra96v2:part0:1.0 [current_project]
 
 # Create block design
-source $SRC_DIR/bd.tcl
+source ${SRC_DIR}/bd.tcl
 
 # Set top-level source
 make_wrapper -files [get_files ${PRJ_DIR}/${PRJ_NAME}.srcs/sources_1/bd/${BD_NAME}/${BD_NAME}.bd] -top
