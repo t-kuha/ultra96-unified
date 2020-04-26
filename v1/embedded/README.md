@@ -27,7 +27,7 @@ $ sdcard_gen \
 
 ### Run
 
-- Copy the contents of __\_application/sd\_card__ directory to SD card
+- Copy the contents of ``_application/sd_card`` directory to SD card
 
 ***
 
@@ -59,4 +59,4 @@ $ petalinux-package -p ${PRJ} --boot --format BIN \
 $ xsct create_pfm.tcl
 ```
 
-- Now, the platform is in __\_pfm/u96_emb/export/__
+- Now, the platform is in ``_pfm/u96_emb/export/``

@@ -6,7 +6,7 @@
 
 ## Clock settings
 
-- Default clokc is No.2 (200 MHz)
+- Default clock is No.2 (200 MHz)
 
 | No. | Speed [MHz] |
 |----:|------------:|
@@ -78,7 +78,7 @@ $ cp ${PRJ}/images/linux/image.ub _image/
 $ xsct create_pfm.tcl
 ```
 
-- Now, the platform is in ``pfm/u96v2_accel/export``
+- Now, the platform is in ``_pfm/u96v2_accel/export``
 
 ***
 

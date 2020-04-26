@@ -1,8 +1,10 @@
 # Building Vitis AI platform
 
-- Vitis AI v1.1
+- Vitis AI version: 1.1
 
 ***
+
+## How to build platform for Ultra96 board
 
 - Clone Vitis AI repo:
 
@@ -30,6 +32,6 @@ $ export SDX_PLATFORM=<path to .xpfm>
 
 $ cd DPU-TRD/prj/Vitis/
 $ make KERNEL=DPU DEVICE=u96
-# or...
+# or to build with the SoftMax core...
 $ make KERNEL=DPU_SM DEVICE=u96
 ```
