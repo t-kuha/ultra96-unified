@@ -6,6 +6,9 @@ set SRC_DIR     src
 set NUM_JOBS    4
 
 
+# Remove existing directory
+file delete -force ${PRJ_DIR}
+
 # Create project
 create_project ${PRJ_NAME} ${PRJ_DIR} -part xczu3eg-sbva484-1-e
 set_property board_part em.avnet.com:ultra96v2:part0:1.0 [current_project]
