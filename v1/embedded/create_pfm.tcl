@@ -2,7 +2,12 @@
 # Create embedded platform for Ultra96
 # 
 
-platform create -name u96_emb -hw ultra96.xsa -out _pfm -proc psu_cortexa53 -os linux
+set OUT_DIR     _pfm
+
+# Remove existing directory
+file delete -force ${OUT_DIR}
+
+platform create -name u96_emb -hw ultra96.xsa -out ${OUT_DIR} -proc psu_cortexa53 -os linux
 platform write
 
 # ================================                                                                                 

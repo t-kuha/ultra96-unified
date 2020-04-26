@@ -1,6 +1,13 @@
+#
 # Create acceleration platform
+#
 
-platform create -name {u96v2_accel} -hw {ultra96v2.xsa} -no-boot-bsp -out {_pfm}
+set OUT_DIR     _pfm
+
+# Remove existing directory
+file delete -force ${OUT_DIR}
+
+platform create -name {u96v2_accel} -hw {ultra96v2.xsa} -no-boot-bsp -out ${OUT_DIR}
 platform write
 platform active {u96v2_accel}
 
