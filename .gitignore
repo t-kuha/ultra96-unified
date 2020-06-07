@@ -1,0 +1,15 @@
+*.Xil
+*.
+*.log
+*.jou
+psu_*
+
+sd_card
+
+_*
+
+*.lnk
+
+*.zip
+*.tar.*
+.vscode
