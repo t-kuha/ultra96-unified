@@ -1,0 +1,28 @@
+From 60ab66f576fc0fa1f5c0f5f2c025876eb4a22572 Mon Sep 17 00:00:00 2001
+From: t-kuha <t-kuha@vitis-2020.1-vm>
+Date: Sat, 13 Jun 2020 14:34:18 +0900
+Subject: [PATCH] Fix UART driver
+
+---
+ drivers/tty/serial/xilinx_uartps.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/tty/serial/xilinx_uartps.c b/drivers/tty/serial/xilinx_uartps.c
+index cacca3d3f9dd..21c4eacd17e1 100644
+--- a/drivers/tty/serial/xilinx_uartps.c
++++ b/drivers/tty/serial/xilinx_uartps.c
+@@ -1602,8 +1602,10 @@ static int cdns_uart_probe(struct platform_device *pdev)
+ 	 * If register_console() don't assign value, then console_port pointer
+ 	 * is cleanup.
+ 	 */
+-	if (!console_port)
++	if (!console_port) {
+ 		console_port = port;
++		cdns_uart_uart_driver.cons->index = port->line;
++	}
+ #endif
+ 
+ 	rc = uart_add_one_port(&cdns_uart_uart_driver, port);
+-- 
+2.17.1
+
