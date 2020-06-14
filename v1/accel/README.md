@@ -52,10 +52,6 @@ $ petalinux-build -p ${PRJ}
 
 # Generate SDK
 $ petalinux-build -p ${PRJ} --sdk
-
-# Copy the product for platform generation
-$ mkdir _image
-$ cp ${PRJ}/images/linux/image.ub _image/
 ```
 
 ## Generate platform
