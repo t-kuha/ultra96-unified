@@ -2430,7 +2430,7 @@ CONFIG_udev-extraconf=y
 # gcc-runtime 
 #
 # CONFIG_libstdcPLUSPLUS-dev is not set
-# CONFIG_libstdcPLUSPLUS is not set
+CONFIG_libstdcPLUSPLUS=y
 
 #
 # gcr 
@@ -3668,7 +3668,7 @@ CONFIG_bridge-utils=y
 #
 # wpa-supplicant 
 #
-# CONFIG_wpa-supplicant is not set
+CONFIG_wpa-supplicant=y
 # CONFIG_wpa-supplicant-passphrase is not set
 # CONFIG_wpa-supplicant-dev is not set
 # CONFIG_wpa-supplicant-dbg is not set
@@ -4224,8 +4224,15 @@ CONFIG_imagefeature-hwcodecs=y
 # CONFIG_peekpoke is not set
 
 #
+# modules 
+#
+CONFIG_wilc=y
+
+#
 # user packages 
 #
+CONFIG_fuse-exfat=y
+CONFIG_wilc3000-fw=y
 
 #
 # PetaLinux RootFS Settings
