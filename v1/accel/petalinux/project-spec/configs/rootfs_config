@@ -2222,14 +2222,14 @@ CONFIG_run-postinsts=y
 #
 # xrt
 #
-# CONFIG_xrt is not set
-# CONFIG_xrt-dev is not set
+CONFIG_xrt=y
+CONFIG_xrt-dev=y
 # CONFIG_xrt-dbg is not set
 
 #
 # zocl
 #
-# CONFIG_zocl is not set
+CONFIG_zocl=y
 # CONFIG_zocl-dev is not set
 # CONFIG_zocl-dbg is not set
 
@@ -2438,7 +2438,7 @@ CONFIG_udev-extraconf=y
 # gcc-runtime 
 #
 # CONFIG_libstdcPLUSPLUS-dev is not set
-# CONFIG_libstdcPLUSPLUS is not set
+CONFIG_libstdcPLUSPLUS=y
 
 #
 # gcr 
@@ -4123,7 +4123,7 @@ CONFIG_hellopm=y
 #
 # packagegroup-petalinux-opencv 
 #
-# CONFIG_packagegroup-petalinux-opencv is not set
+CONFIG_packagegroup-petalinux-opencv=y
 # CONFIG_packagegroup-petalinux-opencv-dev is not set
 # CONFIG_packagegroup-petalinux-opencv-dbg is not set
 
@@ -4220,10 +4220,14 @@ CONFIG_imagefeature-debug-tweaks=y
 #
 # CONFIG_gpio-demo is not set
 # CONFIG_peekpoke is not set
+CONFIG_vitis-env=y
 
 #
 # user packages 
 #
+CONFIG_fuse-exfat=y
+CONFIG_opencl-clhpp-dev=y
+CONFIG_opencl-headers-dev=y
 
 #
 # PetaLinux RootFS Settings
