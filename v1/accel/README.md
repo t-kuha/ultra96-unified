@@ -4,6 +4,20 @@
 
 ***
 
+## Clock settings
+
+- Default clock is No.2 (200 MHz)
+
+| No. | Speed [MHz] |
+|----:|------------:|
+|   0 |         100 |
+|   1 |         150 |
+|   2 |         200 |
+|   3 |         250 |
+|   4 |         300 |
+
+***
+
 ## Create hardware
 
 ```shell-session
@@ -12,45 +26,20 @@ $ vivado -mode batch -source create_xsa.tcl
 
 ## Create Linux
 
-- Create PetaLinux project
+- Build PetaLinux project
 
 ```shell-session
 $ export PRJ=petalinux
-$ petalinux-create -t project -n ${PRJ} --template zynqMP
-$ petalinux-config -p ${PRJ} --get-hw-description=.
+
+# Make necessary configuration
 $ petalinux-config -p ${PRJ} -c u-boot
-```
-
-- Add following content to _petalinux/project-spec/meta-user/conf/user-rootfsconfig_
-
-```text
-CONFIG_xrt
-CONFIG_xrt-dev
-CONFIG_zocl
-CONFIG_opencl-clhpp-dev
-CONFIG_opencl-headers-dev
-CONFIG_packagegroup-petalinux-opencv
-```
-
-- Edit device tree (_petalinux/project-spec/meta-user/recipes-bsp/device-tree/files/system-user.dtsi_)
-
-```text
-&amba {
-    zyxclmm_drm {
-        compatible = "xlnx,zocl";
-        status = "okay";
-    };
-};
-```
-
-- Build
-
-```shell-session
 $ petalinux-config -p ${PRJ} -c kernel
 $ petalinux-config -p ${PRJ} -c rootfs
+
+# Start build
 $ petalinux-build -p ${PRJ}
 
-# Generate SDK
+# Generate SDK (optional)
 $ petalinux-build -p ${PRJ} --sdk
 ```
 

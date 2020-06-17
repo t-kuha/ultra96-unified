@@ -7,11 +7,11 @@
 │   ├── how-to-tutorial.md
 │   └── xf_resize             - Vitis Vision Library example
 ├── v1                        - Projects for v1 board
-│   ├── accel                 - Acceleration platform
-│   ├── embedded              - Embedded platform
-│   └── vitis-ai              - Platform for Vitis AI
-└── v2                        - Projects for v1 board
-    ├── accel                 - Acceleration platform
-    ├── embedded              - Embedded platform
-    └── vitis-ai              - Platform for Vitis AI
+│   ├── accel
+│   ├── embedded
+│   └── vitis-ai
+└── v2                        - Projects for v2 board
+    ├── accel
+    ├── embedded
+    └── vitis-ai
 </pre>

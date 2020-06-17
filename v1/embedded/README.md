@@ -37,11 +37,13 @@ $ sdcard_gen \
 
 ```shell-session
 $ export PRJ=petalinux
-$ petalinux-create -t project -n ${PRJ} --template zynqMP
-$ petalinux-config -p ${PRJ} --get-hw-description=.
+
+# Make additional configuration (optional)
 $ petalinux-config -p ${PRJ} -c kernel
 $ petalinux-config -p ${PRJ} -c u-boot
 $ petalinux-config -p ${PRJ} -c rootfs
+
+# Start build
 $ petalinux-build -p ${PRJ}
 
 # Generate BOOT.bin
@@ -49,7 +51,7 @@ $ petalinux-package -p ${PRJ} --boot --format BIN \
 --fsbl ${PRJ}/images/linux/zynqmp_fsbl.elf \
 --u-boot ${PRJ}/images/linux/u-boot.elf \
 --pmufw ${PRJ}/images/linux/pmufw.elf \
---fpga ${PRJ}/project-spec/hw-description/ultra96.bit \
+--fpga ${PRJ}/project-spec/hw-description/ultra96v2.bit \
 --atf ${PRJ}/images/linux/bl31.elf
 ```
 
