@@ -1,6 +1,6 @@
 [clock]
-id=1:dpu_xrt_top_1.aclk
-id=4:dpu_xrt_top_1.ap_clk_2
+id=0:dpu_xrt_top_1.aclk
+id=1:dpu_xrt_top_1.ap_clk_2
 
 [connectivity]
 sp=dpu_xrt_top_1.M_AXI_GP0:HPC
