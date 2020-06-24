@@ -12,3 +12,5 @@ CONFIG_zocl
 CONFIG_opencl-clhpp-dev
 CONFIG_opencl-headers-dev
 CONFIG_packagegroup-petalinux-opencv
+
+CONFIG_vitis-env
