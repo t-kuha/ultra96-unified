@@ -33,5 +33,5 @@ exec cp ${SRC_DIR}/helloworld.c ${WORKSPACE}/${PRJ_NAME}/src/helloworld.c
 app config -name ${PRJ_NAME} -set build-config release
 app build -name "${PRJ_NAME}"
 
-# Breate SD card data
+# Create SD card data
 sysproj build -name "${PRJ_NAME}_system"
