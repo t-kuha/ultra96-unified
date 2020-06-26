@@ -83,15 +83,15 @@ int main()
     XGpioPs_SetOutputEnablePin(&gpio, MIO_LED2, 1);
     XGpioPs_SetOutputEnablePin(&gpio, MIO_LED3, 1);
 
-    int cnt = 0;
+    volatile int cnt = 0;
     while(1){
-		XGpioPs_WritePin(&gpio, MIO_LED0, ( (cnt >> 0) & 0x01));
-		XGpioPs_WritePin(&gpio, MIO_LED1, ( (cnt >> 1) & 0x01));
-		XGpioPs_WritePin(&gpio, MIO_LED2, ( (cnt >> 2) & 0x01));
-		XGpioPs_WritePin(&gpio, MIO_LED3, ( (cnt >> 3) & 0x01));
-		usleep(200000);
+      XGpioPs_WritePin(&gpio, MIO_LED0, ( (cnt >> 0) & 0x01));
+      XGpioPs_WritePin(&gpio, MIO_LED1, ( (cnt >> 1) & 0x01));
+      XGpioPs_WritePin(&gpio, MIO_LED2, ( (cnt >> 2) & 0x01));
+      XGpioPs_WritePin(&gpio, MIO_LED3, ( (cnt >> 3) & 0x01));
+      usleep(200000);
 
-		cnt++;
+      cnt++;
     }
 
     cleanup_platform();
