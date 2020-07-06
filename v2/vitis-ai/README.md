@@ -53,7 +53,14 @@ $ cp prj_config  DPU-TRD/prj/Vitis/config_file/
 $ cp dpu_conf.vh DPU-TRD/prj/Vitis/
 ```
 
-- Edit _DPU-TRD/prj/Vitis/Makefile_: Add ``--jobs $(shell nproc)`` to ``XOCC_OPTS = ...`` to speedup synthesis.
+- Edit _DPU-TRD/prj/Vitis/Makefile_: 
+  - Add ``--jobs $(shell nproc)`` to ``XOCC_OPTS = ...`` to speedup synthesis.
+  - Edit ``binary_container_1/dpu.xclbin:`` as follows:
+  ```Makefile
+  v++ $(XOCC_OPTS) -l --temp_dir binary_container_1 --log_dir binary_container_1/logs --remote_ip_cache binary_container_1/ip_cache -o "$@" $(+)
+  v++ --package --package.no_image $@ --platform ${SDX_PLATFORM}
+  cp ./binary_*/link/vivado/vpl/prj/prj.srcs/sources_1/bd/*/hw_handoff/*.hwh ./sd_card
+  ```
 
 - Build
 
