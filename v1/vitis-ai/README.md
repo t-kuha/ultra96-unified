@@ -80,7 +80,7 @@ $ cp dpu_conf.vh DPU-TRD/prj/Vitis/
 - Build
 
 ```shell-session
-$ export SDX_PLATFORM=$(pwd)/_pfm/u96v2_vai/export/u96v2_vai/u96v2_vai.xpfm
+$ export SDX_PLATFORM=$(pwd)/_pfm/u96_vai/export/u96_vai/u96_vai.xpfm
 
 $ cd DPU-TRD/prj/Vitis/
 $ make KERNEL=DPU DEVICE=u96
