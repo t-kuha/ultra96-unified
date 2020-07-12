@@ -2599,7 +2599,7 @@ CONFIG_libstdcPLUSPLUS=y
 #
 # json-c 
 #
-# CONFIG_json-c is not set
+CONFIG_json-c=y
 # CONFIG_json-c-dev is not set
 # CONFIG_json-c-dbg is not set
 
