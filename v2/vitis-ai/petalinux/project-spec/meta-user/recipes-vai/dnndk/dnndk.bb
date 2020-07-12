@@ -20,6 +20,8 @@ SRC_URI = "\
 
 S = "${WORKDIR}/git/"
 
+LIC_FILES_CHKSUM = "file://${S}/LICENSE;md5=2bd6d6972f22c076f8437ad8d46cc002"
+
 SRC_DNNDK = 'vitis_ai_dnndk_src'
 
 # Dependencies
@@ -40,8 +42,14 @@ do_compile () {
     oe_runmake
 }
 
-# do_install () {
-#     rm -rf ${D}
-#     mkdir -p ${D}
-#     cp -R ${S}/distribute/* ${D}
-# }
+do_install () {
+    cd ${WORKDIR}/${SRC_DNNDK}
+    oe_runmake install DESTDIR=${D} 
+}
+
+
+FILES_${PN} += " \
+    ${bindir}/* \
+    ${includedir}/* \
+    ${libdir}/* \
+"
