@@ -4230,8 +4230,11 @@ CONFIG_wilc=y
 #
 # user packages 
 #
+CONFIG_libunwind=y
 CONFIG_dnndk=y
 CONFIG_fuse-exfat=y
+CONFIG_gflags=y
+CONFIG_glog=y
 CONFIG_opencl-clhpp-dev=y
 CONFIG_opencl-headers-dev=y
 CONFIG_wilc3000-fw=y
