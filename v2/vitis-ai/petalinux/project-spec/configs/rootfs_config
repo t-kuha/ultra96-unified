@@ -4230,6 +4230,7 @@ CONFIG_wilc=y
 #
 # user packages 
 #
+CONFIG_dnndk=y
 CONFIG_fuse-exfat=y
 CONFIG_opencl-clhpp-dev=y
 CONFIG_opencl-headers-dev=y
