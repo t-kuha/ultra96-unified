@@ -14,4 +14,11 @@ CONFIG_opencl-headers-dev
 CONFIG_packagegroup-petalinux-opencv
 
 CONFIG_vitis-env
+
+# DNNDK
 CONFIG_dnndk
+
+# For Vitis AI runtime
+CONFIG_glog
+CONFIG_libunwind
+CONFIG_gflags
