@@ -32,7 +32,9 @@ do_unpack_append(){
     # Move vitis_ai_dnndk_src to top
     import os
     import shutil
-    shutil.rmtree(os.path.join(d.getVar('WORKDIR'), d.getVar('SRC_DNNDK')))
+    src_dnndk = os.path.join(d.getVar('WORKDIR'), d.getVar('SRC_DNNDK'))
+    if os.path.exists(src_dnndk):
+        shutil.rmtree()
     shutil.move(os.path.join(d.getVar('S'), 'mpsoc', d.getVar('SRC_DNNDK')), os.path.join(d.getVar('WORKDIR')))
 }
 
