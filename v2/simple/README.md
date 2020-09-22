@@ -15,18 +15,14 @@ $ vivado -mode batch -source create_vivado_project.tcl
 ```shell-session
 $ export PRJ=petalinux
 
-# Create project
-$ petalinux-config -p ${PRJ} --get-hw-description=.
-
 # Build
+$ petalinux-config -p ${PRJ}
 $ petalinux-build -p ${PRJ}
 ```
 
 ### Create initial SDSoC platform (without pre-built HW)
 
 ```shell-session
-$ ./copy_pfm_files.sh
-
 # Make sure to use xsct in SDx (not the one in SDK)
 $ ${XILINX_SDX}/bin/xsct create_sdsoc_pfm.tcl
 ```
@@ -36,18 +32,12 @@ $ ${XILINX_SDX}/bin/xsct create_sdsoc_pfm.tcl
 - Build _hello_world_
 
 ```shell-session
-$ mkdir _prj_0
-$ cd _prj_0
+$ mkdir _prj_0 && cd _prj_0
 $ sdscc ../src/hello_world.c -c -o hello_world.o \
 -sds-pf ../_pfm_0/u96v2_sdx/export/u96v2_sdx -sds-sys-config linux -target-os linux
 $ sdscc hello_world.o -o hello_world.elf \
 -sds-pf ../_pfm_0/u96v2_sdx/export/u96v2_sdx -sds-sys-config linux -target-os linux
-```
-
-- Copy prebuilt data
-
-```shell-session
-$ ./copy_prebuilt_files.sh
+$ cd ..
 ```
 
 ### Create final platform (with pre-built HW)
