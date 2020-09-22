@@ -1,6 +1,6 @@
 # Create BOOT.bin (for standalone)
 # 
-# Usage: xsct source create_boot_bin.tcl
+# Usage: xsct create_boot_bin.tcl
 # 
 # Need to install board files in <SDK Installation Path>/data/boards/board_files
 #
