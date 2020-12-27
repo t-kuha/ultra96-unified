@@ -1,3 +1,1 @@
-# Ultra96 projects
-
-- Checkout branch according to your tool version
+# Vitis 2020.2 projects for Ultra96 board
