@@ -6,4 +6,4 @@ CONFIG_peekpoke
 
 CONFIG_wilc3000-fw
 CONFIG_wilc
-
+CONFIG_fuse-exfat
