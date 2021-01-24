@@ -3,3 +3,7 @@
 
 CONFIG_gpio-demo
 CONFIG_peekpoke
+
+CONFIG_wilc3000-fw
+CONFIG_wilc
+
