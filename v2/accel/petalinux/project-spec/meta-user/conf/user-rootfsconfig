@@ -7,3 +7,10 @@ CONFIG_peekpoke
 CONFIG_wilc3000-fw
 CONFIG_wilc
 CONFIG_fuse-exfat
+CONFIG_xrt
+CONFIG_xrt-dev
+CONFIG_zocl
+CONFIG_opencl-clhpp-dev
+CONFIG_opencl-headers-dev
+CONFIG_packagegroup-petalinux-opencv
+CONFIG_vitis-env
