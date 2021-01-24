@@ -111,7 +111,7 @@ CONFIG_system-zynqmp=y
 #
 # dnf
 #
-# CONFIG_dnf is not set
+CONFIG_dnf=y
 
 #
 # e2fsprogs 
