@@ -4232,7 +4232,9 @@ CONFIG_packagegroup-petalinux-opencv=y
 # CONFIG_imagefeature-ssh-server-dropbear is not set
 CONFIG_imagefeature-ssh-server-openssh=y
 CONFIG_imagefeature-hwcodecs=y
-# CONFIG_imagefeature-package-management is not set
+CONFIG_imagefeature-package-management=y
+CONFIG_package-feed-uris="http://petalinux.xilinx.com/sswreleases/rel-v2020.2/feeds/ultra96-zynqmp/"
+CONFIG_package-feed-archs="aarch64 noarch ultra96_zynqmp zynqmp zynqmpeg"
 CONFIG_imagefeature-debug-tweaks=y
 # CONFIG_auto-login is not set
 
