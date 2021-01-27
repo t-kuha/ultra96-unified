@@ -3,7 +3,7 @@
 *.log
 *.jou
 *.elf
-*.xla
+*.xsa
 
 sd_card
 
