@@ -14,3 +14,10 @@ CONFIG_opencl-clhpp-dev
 CONFIG_opencl-headers-dev
 CONFIG_packagegroup-petalinux-opencv
 CONFIG_vitis-env
+
+CONFIG_dnndk
+CONFIG_target-factory
+CONFIG_unilog
+CONFIG_vart
+CONFIG_vitis-ai-library
+CONFIG_xir
