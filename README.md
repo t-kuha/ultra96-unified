@@ -1,3 +1,9 @@
 # Ultra96 projects
 
-- Checkout branch according to your tool version
+## Prerequisite
+
+- Install board files:
+
+```bash
+$ git clone https://github.com/Avnet/bdf.git ${XILINX_VIVADO}/data/xhub/boards/XilinxBoardStore/bdf
+```
