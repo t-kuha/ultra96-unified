@@ -1,0 +1,17 @@
+*.Xil
+*.
+*.log
+*.jou
+*.elf
+*.xsa
+
+sd_card
+
+_*
+
+*.lnk
+
+*.zip
+*.tar.*
+
+*/*/petalinux/project-spec/meta-user/recipes-connectivity
