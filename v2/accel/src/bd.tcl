@@ -1,6 +1,6 @@
 
 ################################################################
-# This is a generated script based on design: ultra96v2
+# This is a generated script based on design: u96v2
 #
 # Though there are limitations about the generated script,
 # the main purpose of this utility is to make learning
@@ -35,7 +35,7 @@ if { [string first $scripts_vivado_version $current_vivado_version] == -1 } {
 ################################################################
 
 # To test this script, run the following commands from Vivado Tcl console:
-# source ultra96v2_script.tcl
+# source u96v2_script.tcl
 
 # If there is no project opened, this script will create a
 # project, but make sure you do not have an existing project
@@ -50,7 +50,7 @@ if { $list_projs eq "" } {
 
 # CHANGE DESIGN NAME HERE
 variable design_name
-set design_name ultra96v2
+set design_name u96v2
 
 # If you do not already have an existing IP Integrator design open,
 # you can create a design using the following command:
@@ -124,9 +124,9 @@ set bCheckIPsPassed 1
 set bCheckIPs 1
 if { $bCheckIPs == 1 } {
    set list_check_ips "\ 
+xilinx.com:ip:axi_intc:4.1\
 xilinx.com:ip:clk_wiz:6.0\
 xilinx.com:ip:proc_sys_reset:5.0\
-xilinx.com:ip:xlconcat:2.1\
 xilinx.com:ip:zynq_ultra_ps_e:3.3\
 "
 
@@ -194,35 +194,29 @@ proc create_root_design { parentCell } {
 
   # Create ports
 
+  # Create instance: axi_intc_0, and set properties
+  set axi_intc_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_intc:4.1 axi_intc_0 ]
+  set_property -dict [ list \
+   CONFIG.C_IRQ_CONNECTION {1} \
+ ] $axi_intc_0
+
   # Create instance: clk_wiz, and set properties
   set clk_wiz [ create_bd_cell -type ip -vlnv xilinx.com:ip:clk_wiz:6.0 clk_wiz ]
   set_property -dict [ list \
-   CONFIG.CLKOUT2_JITTER {107.567} \
+   CONFIG.CLKOUT2_JITTER {102.086} \
    CONFIG.CLKOUT2_PHASE_ERROR {87.180} \
-   CONFIG.CLKOUT2_REQUESTED_OUT_FREQ {150.000} \
+   CONFIG.CLKOUT2_REQUESTED_OUT_FREQ {200.000} \
    CONFIG.CLKOUT2_USED {true} \
-   CONFIG.CLKOUT3_JITTER {102.086} \
+   CONFIG.CLKOUT3_JITTER {94.862} \
    CONFIG.CLKOUT3_PHASE_ERROR {87.180} \
-   CONFIG.CLKOUT3_REQUESTED_OUT_FREQ {200.000} \
+   CONFIG.CLKOUT3_REQUESTED_OUT_FREQ {300.000} \
    CONFIG.CLKOUT3_USED {true} \
-   CONFIG.CLKOUT4_JITTER {98.767} \
-   CONFIG.CLKOUT4_PHASE_ERROR {87.180} \
-   CONFIG.CLKOUT4_REQUESTED_OUT_FREQ {250.000} \
-   CONFIG.CLKOUT4_USED {true} \
-   CONFIG.CLKOUT5_JITTER {94.862} \
-   CONFIG.CLKOUT5_PHASE_ERROR {87.180} \
-   CONFIG.CLKOUT5_REQUESTED_OUT_FREQ {300.000} \
-   CONFIG.CLKOUT5_USED {true} \
-   CONFIG.CLK_OUT1_PORT {clk0} \
-   CONFIG.CLK_OUT2_PORT {clk1} \
-   CONFIG.CLK_OUT3_PORT {clk2} \
-   CONFIG.CLK_OUT4_PORT {clk3} \
-   CONFIG.CLK_OUT5_PORT {clk4} \
-   CONFIG.MMCM_CLKOUT1_DIVIDE {8} \
-   CONFIG.MMCM_CLKOUT2_DIVIDE {6} \
-   CONFIG.MMCM_CLKOUT3_DIVIDE {5} \
-   CONFIG.MMCM_CLKOUT4_DIVIDE {4} \
-   CONFIG.NUM_OUT_CLKS {5} \
+   CONFIG.CLK_OUT1_PORT {clk_out0} \
+   CONFIG.CLK_OUT2_PORT {clk_out1} \
+   CONFIG.CLK_OUT3_PORT {clk_out2} \
+   CONFIG.MMCM_CLKOUT1_DIVIDE {6} \
+   CONFIG.MMCM_CLKOUT2_DIVIDE {4} \
+   CONFIG.NUM_OUT_CLKS {3} \
    CONFIG.RESET_PORT {resetn} \
    CONFIG.RESET_TYPE {ACTIVE_LOW} \
  ] $clk_wiz
@@ -235,18 +229,6 @@ proc create_root_design { parentCell } {
 
   # Create instance: ps_rst_2, and set properties
   set ps_rst_2 [ create_bd_cell -type ip -vlnv xilinx.com:ip:proc_sys_reset:5.0 ps_rst_2 ]
-
-  # Create instance: ps_rst_3, and set properties
-  set ps_rst_3 [ create_bd_cell -type ip -vlnv xilinx.com:ip:proc_sys_reset:5.0 ps_rst_3 ]
-
-  # Create instance: ps_rst_4, and set properties
-  set ps_rst_4 [ create_bd_cell -type ip -vlnv xilinx.com:ip:proc_sys_reset:5.0 ps_rst_4 ]
-
-  # Create instance: xlconcat, and set properties
-  set xlconcat [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconcat:2.1 xlconcat ]
-  set_property -dict [ list \
-   CONFIG.NUM_PORTS {1} \
- ] $xlconcat
 
   # Create instance: zynq_us, and set properties
   set zynq_us [ create_bd_cell -type ip -vlnv xilinx.com:ip:zynq_ultra_ps_e:3.3 zynq_us ]
@@ -966,32 +948,41 @@ Port;FD4A0000;FD4AFFFF;1|FPD;DPDMA;FD4C0000;FD4CFFFF;1|FPD;DDR_XMPU5_CFG;FD05000
    CONFIG.PSU__USE__IRQ0 {1} \
    CONFIG.PSU__USE__M_AXI_GP0 {0} \
    CONFIG.PSU__USE__M_AXI_GP1 {0} \
-   CONFIG.PSU__USE__M_AXI_GP2 {0} \
-   CONFIG.SUBPRESET1 {Custom} \
+   CONFIG.PSU__USE__M_AXI_GP2 {1} \
  ] $zynq_us
 
+  # Create instance: zynq_us_axi_periph, and set properties
+  set zynq_us_axi_periph [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_interconnect:2.1 zynq_us_axi_periph ]
+  set_property -dict [ list \
+   CONFIG.NUM_MI {1} \
+ ] $zynq_us_axi_periph
+
+  # Create interface connections
+  connect_bd_intf_net -intf_net zynq_us_M_AXI_HPM0_LPD [get_bd_intf_pins zynq_us/M_AXI_HPM0_LPD] [get_bd_intf_pins zynq_us_axi_periph/S00_AXI]
+  connect_bd_intf_net -intf_net zynq_us_axi_periph_M00_AXI [get_bd_intf_pins axi_intc_0/s_axi] [get_bd_intf_pins zynq_us_axi_periph/M00_AXI]
+
   # Create port connections
-  connect_bd_net -net clk_wiz_clk0 [get_bd_pins clk_wiz/clk0] [get_bd_pins ps_rst_0/slowest_sync_clk]
-  connect_bd_net -net clk_wiz_clk1 [get_bd_pins clk_wiz/clk1] [get_bd_pins ps_rst_1/slowest_sync_clk]
-  connect_bd_net -net clk_wiz_clk2 [get_bd_pins clk_wiz/clk2] [get_bd_pins ps_rst_2/slowest_sync_clk]
-  connect_bd_net -net clk_wiz_clk3 [get_bd_pins clk_wiz/clk3] [get_bd_pins ps_rst_3/slowest_sync_clk]
-  connect_bd_net -net clk_wiz_clk4 [get_bd_pins clk_wiz/clk4] [get_bd_pins ps_rst_4/slowest_sync_clk]
-  connect_bd_net -net clk_wiz_locked [get_bd_pins clk_wiz/locked] [get_bd_pins ps_rst_0/dcm_locked] [get_bd_pins ps_rst_1/dcm_locked] [get_bd_pins ps_rst_2/dcm_locked] [get_bd_pins ps_rst_3/dcm_locked]
-  connect_bd_net -net xlconcat_0_dout [get_bd_pins xlconcat/dout] [get_bd_pins zynq_us/pl_ps_irq0]
-  connect_bd_net -net zynq_us_pl_clk0 [get_bd_pins clk_wiz/clk_in1] [get_bd_pins zynq_us/pl_clk0]
-  connect_bd_net -net zynq_us_pl_resetn0 [get_bd_pins clk_wiz/resetn] [get_bd_pins ps_rst_0/ext_reset_in] [get_bd_pins ps_rst_1/ext_reset_in] [get_bd_pins ps_rst_2/ext_reset_in] [get_bd_pins ps_rst_3/ext_reset_in] [get_bd_pins ps_rst_4/ext_reset_in] [get_bd_pins zynq_us/pl_resetn0]
+  connect_bd_net -net axi_intc_0_irq [get_bd_pins axi_intc_0/irq] [get_bd_pins zynq_us/pl_ps_irq0]
+  connect_bd_net -net clk_wiz_clk_out0 [get_bd_pins clk_wiz/clk_out0] [get_bd_pins ps_rst_0/slowest_sync_clk]
+  connect_bd_net -net clk_wiz_clk_out1 [get_bd_pins axi_intc_0/s_axi_aclk] [get_bd_pins clk_wiz/clk_out1] [get_bd_pins ps_rst_1/slowest_sync_clk] [get_bd_pins zynq_us/maxihpm0_lpd_aclk] [get_bd_pins zynq_us_axi_periph/ACLK] [get_bd_pins zynq_us_axi_periph/M00_ACLK] [get_bd_pins zynq_us_axi_periph/S00_ACLK]
+  connect_bd_net -net clk_wiz_clk_out2 [get_bd_pins clk_wiz/clk_out2] [get_bd_pins ps_rst_2/slowest_sync_clk]
+  connect_bd_net -net clk_wiz_locked [get_bd_pins clk_wiz/locked] [get_bd_pins ps_rst_0/dcm_locked] [get_bd_pins ps_rst_1/dcm_locked] [get_bd_pins ps_rst_2/dcm_locked]
+  connect_bd_net -net ps_rst_1_peripheral_aresetn [get_bd_pins axi_intc_0/s_axi_aresetn] [get_bd_pins ps_rst_1/peripheral_aresetn] [get_bd_pins zynq_us_axi_periph/ARESETN] [get_bd_pins zynq_us_axi_periph/M00_ARESETN] [get_bd_pins zynq_us_axi_periph/S00_ARESETN]
+  connect_bd_net -net zynq_ultra_ps_e_0_pl_clk0 [get_bd_pins clk_wiz/clk_in1] [get_bd_pins zynq_us/pl_clk0]
+  connect_bd_net -net zynq_ultra_ps_e_0_pl_resetn0 [get_bd_pins clk_wiz/resetn] [get_bd_pins ps_rst_0/ext_reset_in] [get_bd_pins ps_rst_1/ext_reset_in] [get_bd_pins ps_rst_2/ext_reset_in] [get_bd_pins zynq_us/pl_resetn0]
 
   # Create address segments
+  assign_bd_address -offset 0x80000000 -range 0x00010000 -target_address_space [get_bd_addr_spaces zynq_us/Data] [get_bd_addr_segs axi_intc_0/S_AXI/Reg] -force
 
 
   # Restore current instance
   current_bd_instance $oldCurInst
 
   # Create PFM attributes
-  set_property PFM_NAME {avnet:ultra96:ultra96v2:2021.1} [get_files [current_bd_design].bd]
-  set_property PFM.CLOCK {clk0 {id "0" is_default "false" proc_sys_reset "/ps_rst_0" status "fixed"} clk1 {id "1" is_default "false" proc_sys_reset "/ps_rst_1" status "fixed"} clk2 {id "2" is_default "true" proc_sys_reset "/ps_rst_2" status "fixed"} clk3 {id "3" is_default "false" proc_sys_reset "/ps_rst_3" status "fixed"} clk4 {id "4" is_default "false" proc_sys_reset "/ps_rst_4" status "fixed"}} [get_bd_cells /clk_wiz]
-  set_property PFM.IRQ {In0 {} In1 {} In2 {} In3 {} In4 {} In5 {} In6 {} In7 {}} [get_bd_cells /xlconcat]
-  set_property PFM.AXI_PORT {M_AXI_HPM0_FPD {memport "M_AXI_GP" sptag "" memory ""} M_AXI_HPM1_FPD {memport "M_AXI_GP" sptag "" memory ""} M_AXI_HPM0_LPD {memport "M_AXI_GP" sptag "" memory ""} S_AXI_HPC0_FPD {memport "S_AXI_HPC" sptag "" memory ""} S_AXI_HPC1_FPD {memport "S_AXI_HPC" sptag "" memory ""} S_AXI_HP0_FPD {memport "S_AXI_HP" sptag "" memory ""} S_AXI_HP1_FPD {memport "S_AXI_HP" sptag "" memory ""} S_AXI_HP2_FPD {memport "S_AXI_HP" sptag "" memory ""} S_AXI_HP3_FPD {memport "S_AXI_HP" sptag "" memory ""}} [get_bd_cells /zynq_us]
+  set_property PFM_NAME {avnet.com:ultra96v2:u96v2:1.0} [get_files [current_bd_design].bd]
+  set_property PFM.IRQ {intr { id 0 range 32 }} [get_bd_cells /axi_intc_0]
+  set_property PFM.CLOCK {clk_out0 {id "0" is_default "true" proc_sys_reset "/ps_rst_0" status "fixed" freq_hz "100000000"} clk_out1 {id "1" is_default "false" proc_sys_reset "/ps_rst_1" status "fixed" freq_hz "200000000"} clk_out2 {id "2" is_default "false" proc_sys_reset "/ps_rst_2" status "fixed" freq_hz "300000000"}} [get_bd_cells /clk_wiz]
+  set_property PFM.AXI_PORT {M_AXI_HPM0_FPD {memport "M_AXI_GP" sptag "" memory "" is_range "false"} M_AXI_HPM1_FPD {memport "M_AXI_GP" sptag "" memory "" is_range "false"} S_AXI_HPC0_FPD {memport "S_AXI_HPC" sptag "HPC0" memory "" is_range "false"} S_AXI_HPC1_FPD {memport "S_AXI_HPC" sptag "HPC1" memory "" is_range "false"} S_AXI_HP0_FPD {memport "S_AXI_HP" sptag "HP0" memory "" is_range "false"} S_AXI_HP1_FPD {memport "S_AXI_HP" sptag "HP1" memory "" is_range "false"} S_AXI_HP2_FPD {memport "S_AXI_HP" sptag "HP2" memory "" is_range "false"} S_AXI_HP3_FPD {memport "S_AXI_HP" sptag "HP3" memory "" is_range "false"}} [get_bd_cells /zynq_us]
 
 
   validate_bd_design
