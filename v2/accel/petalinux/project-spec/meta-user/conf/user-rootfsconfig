@@ -3,3 +3,10 @@
 
 CONFIG_gpio-demo
 CONFIG_peekpoke
+
+CONFIG_fuse-exfat
+CONFIG_xrt
+CONFIG_xrt-dev
+CONFIG_zocl
+CONFIG_opencl-clhpp-dev
+CONFIG_opencl-headers-dev
