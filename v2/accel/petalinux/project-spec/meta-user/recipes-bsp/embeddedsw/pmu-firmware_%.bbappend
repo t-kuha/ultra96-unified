@@ -1,3 +1,10 @@
+FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
+
+SRC_URI += " \
+    file://0001-update-shutdown-state.patch \
+"
+
+
 # pmu-firmware_%.bbappend content
 ULTRA96_VERSION = "2"
 
