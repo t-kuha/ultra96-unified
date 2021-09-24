@@ -14,6 +14,18 @@
 		reset-gpios = <&gpio 7 1>; // MIO[7] for WILC3000 RESETN, Active low
 		chip_en-gpios = <&gpio 8 1>; 
 	};
+	
+	psgtr_usb_clock: psgtr_usb_clock {
+		compatible = "fixed-clock";
+		#clock-cells = <0>;
+		clock-frequency = <26000000>;
+	};
+
+	psgtr_dp_clock: psgtr_dp_clock {
+		compatible = "fixed-clock";
+		#clock-cells = <0>;
+		clock-frequency = <27000000>;
+	};
 };
 
 /* SD0 only supports 3.3V, no level shifter */

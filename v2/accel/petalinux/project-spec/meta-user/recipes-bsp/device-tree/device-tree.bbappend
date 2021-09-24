@@ -3,7 +3,6 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/files:${SYSCONFIG_PATH}:"
 SRC_URI_append = " \
 	file://config \
 	file://system-user.dtsi \
-	file://0001-kernel-v2021.1-Sync-the-psgtr-node-from-U-boot.patch \
 "
 
 python () {
