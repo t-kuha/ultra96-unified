@@ -63,8 +63,6 @@ $ petalinux-build -p ${PRJ} --sdk
 
 - [How to shut down the Ultra96 V1 or V2 boards directly](https://www.xilinx.com/support/answers/76583.html)
 
-- [Why does the PS DisplayPort not work on Ultra96 boards?](https://www.xilinx.com/support/answers/76568.html)
-
 - [Why do U-boot and the Kernel not show the current build timestamp](https://www.xilinx.com/support/answers/76559.html)
 
 - [PetaLinux does not mount full rootfs when boot INITRD images are built using the template method](https://www.xilinx.com/support/answers/76842.html)
