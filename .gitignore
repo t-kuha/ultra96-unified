@@ -1,0 +1,17 @@
+*.Xil
+*.log
+*.jou
+*.xsa
+
+sd_card
+
+_*
+
+*.lnk
+
+*.zip
+*.tar.*
+.vscode
+
+*/petalinux/project-spec/meta-user/recipes-connectivity/
+*/petalinux/project-spec/meta-user/recipes-ml/
