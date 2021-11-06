@@ -13,5 +13,5 @@ _*
 *.tar.*
 .vscode
 
-*/petalinux/project-spec/meta-user/recipes-connectivity/
-*/petalinux/project-spec/meta-user/recipes-ml/
+*/*/petalinux/project-spec/meta-user/recipes-connectivity/wpa-supplicant
+*/*/petalinux/project-spec/meta-user/recipes-ml/
