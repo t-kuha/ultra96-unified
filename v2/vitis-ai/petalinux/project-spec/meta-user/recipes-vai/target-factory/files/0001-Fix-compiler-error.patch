@@ -1,0 +1,52 @@
+From 4deb914b332abf7479414fd434c37ffaa87061ed Mon Sep 17 00:00:00 2001
+From: t-kuha <imagingtechnerd@gmail.com>
+Date: Sun, 3 Oct 2021 12:40:11 +0000
+Subject: [PATCH] Fix compiler error
+
+---
+ src/create_target_DPUCVDX8G_ISA0.cpp    | 2 +-
+ src/create_target_DPUCVDX8G_ISA1.cpp    | 2 +-
+ src/create_target_v2.cpp                | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/create_target_DPUCVDX8G_ISA0.cpp b/src/create_target_DPUCVDX8G_ISA0.cpp
+index 2ebaae0e..98f9322c 100644
+--- a/src/create_target_DPUCVDX8G_ISA0.cpp
++++ b/src/create_target_DPUCVDX8G_ISA0.cpp
+@@ -59,7 +59,7 @@ const Target create_target_DPUCVDX8G_ISA0(const std::uint64_t fingerprint) {
+ 
+   std::string NAME = "DPUCVDX8G_ISAx_CxBx_x";
+   char finger_hex[17];
+-  sprintf(finger_hex, "%016lX", fingerprint);
++  sprintf(finger_hex, "%016llX", fingerprint);
+   NAME.replace(20, 1, finger_hex);
+   NAME.replace(18, 1, std::to_string(BATCH));
+   NAME.replace(16, 1, std::to_string(OCP));
+diff --git a/src/create_target_DPUCVDX8G_ISA1.cpp b/src/create_target_DPUCVDX8G_ISA1.cpp
+index 18b0850e..0c6d706f 100644
+--- a/src/create_target_DPUCVDX8G_ISA1.cpp
++++ b/src/create_target_DPUCVDX8G_ISA1.cpp
+@@ -58,7 +58,7 @@ const Target create_target_DPUCVDX8G_ISA1(const std::uint64_t fingerprint) {
+ 
+   std::string NAME = "DPUCVDX8G_ISAx_CxBx_x";
+   char finger_hex[17];
+-  sprintf(finger_hex, "%016lX", fingerprint);
++  sprintf(finger_hex, "%016llX", fingerprint);
+   NAME.replace(20, 1, finger_hex);
+   NAME.replace(18, 1, std::to_string(BATCH));
+   NAME.replace(16, 1, std::to_string(OCP));
+diff --git a/src/create_target_v2.cpp b/src/create_target_v2.cpp
+index 521e310f..1c6d62f8 100644
+--- a/src/create_target_v2.cpp
++++ b/src/create_target_v2.cpp
+@@ -54,7 +54,7 @@ const Target create_target_v2(const std::uint64_t fingerprint) {
+ 
+   std::string NAME = "DPUCVDX8G_ISAx_Bx_x";
+   char finger_hex[17];
+-  sprintf(finger_hex, "%016lX", fingerprint);
++  sprintf(finger_hex, "%016llX", fingerprint);
+   NAME.replace(18, 1, finger_hex);
+   NAME.replace(16, 1, std::to_string(PEAK));
+   NAME.replace(13, 1, std::to_string(ISA));
+2.25.1
+

@@ -1,0 +1,25 @@
+From 99b28e33aee43f22efdd3ff030b063ce0cc7f7aa Mon Sep 17 00:00:00 2001
+From: t-kuha <imagingtechnerd@gmail.com>
+Date: Sun, 3 Oct 2021 12:51:45 +0000
+Subject: [PATCH] Fix data type
+
+---
+ xrt-device-handle/test/test_ecmd.cpp              | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/xrt-device-handle/test/test_ecmd.cpp b/xrt-device-handle/test/test_ecmd.cpp
+index 11839617..138537c4 100644
+--- a/xrt-device-handle/test/test_ecmd.cpp
++++ b/xrt-device-handle/test/test_ecmd.cpp
+@@ -197,7 +197,7 @@ string input_data = "./case_new_resnet50/input_aquant.bin";
+ string code = "./case_new_resnet50/code.bin";
+ string reg0 = "./case_new_resnet50/reg0.bin";
+ void upload_data(xclDeviceHandle handle) {
+-  unsigned long addr = 0xc000001000;
++  unsigned long long addr = 0xc000001000;
+   unsigned long size = 150528;
+   auto buf = std::vector<char>(size);
+   auto flags = 0;
+-- 
+2.25.1
+
