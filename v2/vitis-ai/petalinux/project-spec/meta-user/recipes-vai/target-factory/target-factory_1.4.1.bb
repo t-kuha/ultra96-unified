@@ -5,11 +5,6 @@ require recipes-vai/vitis-ai-library/vitisai.inc
 
 S = "${WORKDIR}/git/tools/Vitis-AI-Runtime/VART/target_factory"
 
-FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
-# SRC_URI += " \
-# 	file://0001-Fix-compiler-error.patch \
-# 	"
-
 DEPENDS = "unilog protobuf-native protobuf-c"
 
 PACKAGECONFIG_append = " test"
