@@ -1,3 +1,63 @@
 /include/ "system-conf.dtsi"
 / {
+	wmmcsdio_fixed: fixedregulator-mmcsdio {
+		compatible = "regulator-fixed";
+		regulator-name = "wmmcsdio_fixed";
+		regulator-min-microvolt = <3300000>;
+		regulator-max-microvolt = <3300000>;
+		regulator-always-on;
+		regulator-boot-on;
+	};
+
+	sdio_pwrseq: sdio_pwrseq {
+		compatible = "mmc-pwrseq-simple";
+		reset-gpios = <&gpio 7 1>; // MIO[7] for WILC3000 RESETN, Active low
+		chip_en-gpios = <&gpio 8 1>; 
+	};
+	
+	psgtr_usb_clock: psgtr_usb_clock {
+		compatible = "fixed-clock";
+		#clock-cells = <0>;
+		clock-frequency = <26000000>;
+	};
+
+	psgtr_dp_clock: psgtr_dp_clock {
+		compatible = "fixed-clock";
+		#clock-cells = <0>;
+		clock-frequency = <27000000>;
+	};
+};
+
+/* SD0 only supports 3.3V, no level shifter */
+&sdhci0 {
+	no-1-8-v;
+	disable-wp;
+};
+
+&sdhci1 {
+	bus-width= <0x4>;
+	non-removable;
+	disable-wp;
+	cap-power-off-card;
+	mmc-pwrseq = <&sdio_pwrseq>;
+	vqmmc-supply = <&wmmcsdio_fixed>;
+	max-frequency = <50000000>;
+	status = "okay";
+	#address-cells = <1>;
+	#size-cells = <0>;
+	wilc_sdio@1 {
+		compatible = "microchip,wilc3000", "microchip,wilc3000";
+		reg = <0>;
+		bus-width= <0x4>;
+		status = "okay";
+	};
+};
+
+/* USB */
+&usb0 {
+    status = "okay";
+};
+
+&usb1 {
+    status = "okay";
 };
