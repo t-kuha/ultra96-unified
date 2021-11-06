@@ -1,0 +1,35 @@
+From af8a432c73f0bfff9b613444e6aa9fd95ab8222b Mon Sep 17 00:00:00 2001
+From: imagingtechnerd <imagingtechnerd@vitis2021.1-vm>
+Date: Sun, 19 Sep 2021 16:25:25 +0900
+Subject: [PATCH] update shutdown state
+
+---
+ lib/sw_apps/zynqmp_pmufw/src/xpfw_config.h | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/lib/sw_apps/zynqmp_pmufw/src/xpfw_config.h b/lib/sw_apps/zynqmp_pmufw/src/xpfw_config.h
+index a4c2a383de..660d354399 100644
+--- a/lib/sw_apps/zynqmp_pmufw/src/xpfw_config.h
++++ b/lib/sw_apps/zynqmp_pmufw/src/xpfw_config.h
+@@ -219,15 +219,15 @@ extern "C" {
+ #endif
+ 
+ #ifndef PMU_MIO_INPUT_PIN_VAL
+-#define	PMU_MIO_INPUT_PIN_VAL				(0U)
++#define	PMU_MIO_INPUT_PIN_VAL				(1U)
+ #endif
+ 
+ #ifndef BOARD_SHUTDOWN_PIN_VAL
+-#define	BOARD_SHUTDOWN_PIN_VAL				(0U)
++#define	BOARD_SHUTDOWN_PIN_VAL				(1U)
+ #endif
+ 
+ #ifndef BOARD_SHUTDOWN_PIN_STATE_VAL
+-#define	BOARD_SHUTDOWN_PIN_STATE_VAL		(0U)
++#define	BOARD_SHUTDOWN_PIN_STATE_VAL		(1U)
+ #endif
+ 
+ #ifndef CONNECT_PMU_GPO_2_VAL
+-- 
+2.25.1
+
