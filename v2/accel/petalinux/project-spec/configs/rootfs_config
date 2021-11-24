@@ -4171,11 +4171,15 @@ CONFIG_auto-login=y
 # CONFIG_peekpoke is not set
 
 #
+# modules 
+#
+CONFIG_wilc=y
+
+#
 # user packages 
 #
 CONFIG_fuse-exfat=y
 CONFIG_opencl-headers-dev=y
-# CONFIG_wilc is not set
 CONFIG_wilc3000-fw=y
 
 #

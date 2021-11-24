@@ -1,4 +1,8 @@
 /include/ "system-conf.dtsi"
+
+#include <dt-bindings/interrupt-controller/irq.h>
+#include <dt-bindings/gpio/gpio.h>
+
 / {
 	wmmcsdio_fixed: fixedregulator-mmcsdio {
 		compatible = "regulator-fixed";
@@ -11,7 +15,7 @@
 
 	sdio_pwrseq: sdio_pwrseq {
 		compatible = "mmc-pwrseq-simple";
-		reset-gpios = <&gpio 7 1>; // MIO[7] for WILC3000 RESETN, Active low
+		reset-gpios = <&gpio 7 1>;
 		chip_en-gpios = <&gpio 8 1>; 
 	};
 	
@@ -25,6 +29,12 @@
 		compatible = "fixed-clock";
 		#clock-cells = <0>;
 		clock-frequency = <27000000>;
+	};
+
+	radio_clock: radio_clock {
+		compatible = "fixed-clock";
+		#clock-cells = <0>;
+		clock-frequency = <32768>;
 	};
 };
 
@@ -45,11 +55,22 @@
 	status = "okay";
 	#address-cells = <1>;
 	#size-cells = <0>;
-	wilc_sdio@1 {
-		compatible = "microchip,wilc3000", "microchip,wilc3000";
-		reg = <0>;
-		bus-width= <0x4>;
+	// wilc_sdio@1 {
+	// 	compatible = "microchip,wilc3000";//, "microchip,wilc3000";
+	// 	reg = <0>;
+	// 	bus-width= <0x4>;
+	// 	status = "okay";
+	// };
+	wlcore: wilc_sdio@0 {
 		status = "okay";
+		compatible = "microchip,wilc3000";
+		reg = <0>;
+		interrupt-parent = <&gpio>;
+		interrupts = <76 GPIO_ACTIVE_HIGH>;
+		clocks = <&radio_clock>;
+		clock-names = "rtc";
+		reset-gpios = <&gpio 7 GPIO_ACTIVE_HIGH>;
+		chip_en-gpios = <&gpio 8 GPIO_ACTIVE_HIGH>;
 	};
 };
 
