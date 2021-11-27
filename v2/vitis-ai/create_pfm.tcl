@@ -22,7 +22,6 @@ file copy petalinux/images/linux/zynqmp_fsbl.elf ${BOOT_DIR}
 file mkdir ${IMG_DIR}
 file copy petalinux/images/linux/boot.scr ${IMG_DIR}
 file copy petalinux/images/linux/image.ub ${IMG_DIR}
-file copy petalinux/images/linux/rootfs.cpio.gz.u-boot ${IMG_DIR}
 
 platform create -name {u96v2_vai} -hw {u96v2.xsa} -no-boot-bsp -out ${OUT_DIR}
 platform write
