@@ -16,3 +16,8 @@ CONFIG_unilog
 CONFIG_vart
 CONFIG_vitis-ai-library
 CONFIG_xir
+
+CONFIG_wilc3000-fw
+CONFIG_wilc
+
+CONFIG_caffe
