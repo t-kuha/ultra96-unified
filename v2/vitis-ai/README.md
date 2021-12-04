@@ -46,8 +46,8 @@ $ cp -R Vitis-AI/dsa/DPU-TRD/ .
 - Copy config files
 
 ```shell-session
-$ cp prj_config  DPU-TRD/prj/Vitis/config_file/
-$ cp dpu_conf.vh DPU-TRD/prj/Vitis/
+$ cp src/prj_config  DPU-TRD/prj/Vitis/config_file/
+$ cp src/dpu_conf.vh DPU-TRD/prj/Vitis/
 ```
 
 - Edit ``DPU-TRD/prj/Vitis/Makefile`` as follows:
