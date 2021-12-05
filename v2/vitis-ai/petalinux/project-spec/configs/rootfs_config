@@ -4178,10 +4178,15 @@ CONFIG_wilc=y
 #
 # user packages 
 #
+CONFIG_arm-computelibrary=y
+CONFIG_armnn=y
 CONFIG_caffe=y
 CONFIG_fuse-exfat=y
+CONFIG_onednn=y
 CONFIG_opencl-headers-dev=y
+CONFIG_packagegroup-python3-jupyter=y
 CONFIG_target-factory=y
+CONFIG_tflite=y
 CONFIG_unilog=y
 CONFIG_vart=y
 CONFIG_vitis-ai-library=y
