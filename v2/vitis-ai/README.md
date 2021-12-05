@@ -18,6 +18,9 @@ $ vivado -mode batch -source create_xsa.tcl
 $ export PRJ=petalinux
 $ petalinux-config -p ${PRJ}
 
+# Add JupyterLab environment
+$ git clone https://github.com/Xilinx/meta-jupyter.git ${PRJ}/project-spec/meta-jupyter
+
 # Make additional configuration if necessary
 $ petalinux-config -p ${PRJ} -c u-boot
 $ petalinux-config -p ${PRJ} -c kernel
