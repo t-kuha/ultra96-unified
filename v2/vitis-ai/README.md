@@ -1,6 +1,6 @@
 # Building Vitis AI platform
 
-- Vitis AI version: 1.3
+- Vitis AI version: 2.0
 
 ***
 
@@ -33,6 +33,8 @@ $ petalinux-build -p ${PRJ}
 $ petalinux-build -p ${PRJ} --sdk
 ```
 
+- Untar ``petalinux/images/linux/rootfs.tar.gz`` to the rootfs partition of SD card
+
 ## Generate platform
 
 ```shell-session
@@ -42,7 +44,7 @@ $ xsct create_pfm.tcl
 ## Create Vitis-AI platform
 
 ```shell-session
-$ git clone https://github.com/Xilinx/Vitis-AI.git -b v1.3
+$ git clone https://github.com/Xilinx/Vitis-AI.git -b v2.0
 $ cp -R Vitis-AI/dsa/DPU-TRD/ . 
 ```
 
@@ -81,6 +83,8 @@ $ make KERNEL=DPU DEVICE=u96
 # or to build with the SoftMax core...
 $ make KERNEL=DPU_SM DEVICE=u96
 ```
+
+- Copy the contents of ``sd_card`` to the boot partition of SD card
 
 ***
 
