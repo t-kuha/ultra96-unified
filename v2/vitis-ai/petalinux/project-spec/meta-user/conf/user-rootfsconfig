@@ -25,5 +25,7 @@ CONFIG_arm-computelibrary
 CONFIG_armnn
 CONFIG_tflite
 CONFIG_onednn
+CONFIG_pytorch
+CONFIG_torchvision
 
 CONFIG_packagegroup-python3-jupyter
