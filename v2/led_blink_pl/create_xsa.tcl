@@ -51,4 +51,3 @@ validate_hw_platform ${PRJ_NAME}.xsa
 
 # Finish - close project
 close_project
-exit
