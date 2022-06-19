@@ -1,0 +1,20 @@
+#Note: Mention Each package in individual line
+#These packages will get added into rootfs menu entry
+
+CONFIG_gpio-demo
+CONFIG_peekpoke
+
+CONFIG_fuse-exfat
+CONFIG_xrt
+CONFIG_xrt-dev
+CONFIG_zocl
+CONFIG_opencl-clhpp-dev
+CONFIG_opencl-headers-dev
+CONFIG_wilc3000-fw
+CONFIG_wilc
+
+CONFIG_target-factory
+CONFIG_unilog
+CONFIG_vart
+CONFIG_vitis-ai-library
+CONFIG_xir
