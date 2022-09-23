@@ -32,6 +32,45 @@ $ petalinux-build -p ${PRJ} --sdk
 $ xsct create_pfm.tcl
 ```
 
+## Build reference design
+
+```shell-session
+# download reference design source
+$ wget https://www.xilinx.com/bin/public/openDownload?filename=DPUCZDX8G.tar.gz -O DPUCZDX8G.tar.gz
+$ tar xf DPUCZDX8G.tar.gz
+```
+
+- modify source
+
+  - line 37 (change config file name to "prj_config_1dpu"):
+
+  ```makefile
+  XOCC_OPTS = -t ${TARGET} --platform ${SDX_PLATFORM} --save-temps --config ${DIR_PRJ}/config_file/prj_config_1dpu
+  ```
+
+  - line 113 (use "--package.no_image" option):
+  ```
+  v++ -t ${TARGET} --platform ${SDX_PLATFORM} -p $(BUILD_DIR)/$(BUILD_DIR).xclbin -o $(BUILD_DIR)/dpu.xclbin --package.no_image
+  ```
+
+- start building HW
+
+```shell-session
+$ export SDX_PLATFORM=$(pwd)/_pfm/u96v2_vai/export/u96v2_vai/u96v2_vai.xpfm
+$ cd DPUCZDX8G/prj/Vitis/
+$ make all KERNEL=DPU DEVICE=u96v2
+# copy the contents of "sd_card" into SD card
+```
+
+- build SW app
+
+```shell-session
+$ . <SDK installation path>/environment-setup-cortexa72-cortexa53-xilinx-linux
+$ cd DPUCZDX8G/app/samples/
+$ . ./build.sh
+# copy a.out into SD card
+```
+
 ***
 
 ## How to create PetaLinux project from scratch
