@@ -18,3 +18,9 @@ CONFIG_unilog
 CONFIG_vart
 CONFIG_vitis-ai-library
 CONFIG_xir
+
+CONFIG_pytorch
+CONFIG_torchvision
+CONFIG_pyxir
+CONFIG_tvmrt
+CONFIG_python-tvm
