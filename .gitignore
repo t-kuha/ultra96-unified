@@ -4,6 +4,7 @@
 *.jou
 *.xsa
 sd_card
+BOOT.BIN
 
 # temp.
 _*
