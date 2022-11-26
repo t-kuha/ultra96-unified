@@ -85,10 +85,6 @@ $ petalinux-config -p ${PRJ} -c kernel
 $ petalinux-config -p ${PRJ} -c u-boot
 $ petalinux-config -p ${PRJ} -c rootfs
 
-# Show actual build time of Kernel & u-boot
-$ petalinux-build -p ${PRJ} -c linux-xlnx -x cleansstate
-$ petalinux-build -p ${PRJ} -c u-boot-xlnx -x cleansstate
-
 # Build project
 $ petalinux-build -p ${PRJ}
 
