@@ -1,3 +1,7 @@
+# Copyright (C) 2022 Xilinx, Inc
+
+# SPDX-License-Identifier: BSD-3-Clause
+
 SUMMARY = "Recipe for building an external wilc Linux kernel module"
 SECTION = "PETALINUX/modules"
 LICENSE = "GPLv2"
@@ -5,12 +9,12 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/GPL-2.0-only;md5=801f80980d171d
 
 inherit module
 
-SRC_URI = "git://github.com/linux4sam/linux-at91.git;protocol=https;nobranch=1;subpath=drivers/net/wireless/microchip/wilc1000 \
-           file://0001-ultra96-modifications-15.5.patch \
-           "
+SRC_URI:append = " git://github.com/linux4sam/linux-at91.git;protocol=git;branch=${BRANCH};subpath=drivers/net/wireless/microchip/wilc1000"
+SRC_URI += "file://0001-ultra96-modifications.patch"
 
-# Tag: wilc_linux_15_5
-SRCREV = "f828d684531f354f0ca6fcd2cdf12c8251410cba"
+# Tag: linux4microchip+sam9x7-2022.07
+SRCREV = "1426a1e20ed37afbdf33851941388d1065aafaff"
+BRANCH = "linux-5.15-mchp+sam9x7"
 
 DEPENDS += "virtual/kernel"
 

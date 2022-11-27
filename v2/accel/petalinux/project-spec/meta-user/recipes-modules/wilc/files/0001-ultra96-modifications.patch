@@ -1,37 +1,37 @@
-From 39fd19ef24a6e76c5d7176f0a5beba9b639d23d0 Mon Sep 17 00:00:00 2001
+From 210bf13fb901acbf81085b3b4c655a0829b435ea Mon Sep 17 00:00:00 2001
 From: Thomas Nizan <tnizan@witekio.com>
-Date: Mon, 30 Aug 2021 17:57:54 -0700
-Subject: [PATCH] ultra96 modifications 15.5
+Date: Thu, 21 Jul 2022 15:07:59 +0000
+Subject: [PATCH] Ultra96v2 modifications 15.6
 
-Apply modifications made for ultra96 on 15.3.1 driver to 15.5 driver
+Apply modifications made for Ultra96 v2 on 15.5 driver to 15.6 driver
 
 Signed-off-by: Thomas Nizan <tnizan@witekio.com>
 ---
- Kconfig   |  1 +
- Makefile  | 14 ++++++-
- cfg80211.c    | 19 ++++++++--
- debugfs.h | 16 ++++++++
- netdev.c  |  9 +++++
- netdev.h  |  1 +
- power.c   |  8 ++++
- sdio.c    | 38 +++++++++++++++----
- wlan.c    | 25 +++++++++---
- wlan.h    |  6 ++-
- wlan_cfg.c    |  4 +-
+ Kconfig    |  1 +
+ Makefile   | 14 +++++++++++++-
+ cfg80211.c | 19 +++++++++++++++----
+ debugfs.h  | 16 ++++++++++++++++
+ netdev.c   |  9 +++++++++
+ netdev.h   |  1 +
+ power.c    |  8 ++++++++
+ sdio.c     | 38 +++++++++++++++++++++++++++++++-------
+ wlan.c     | 25 ++++++++++++++++++++-----
+ wlan.h     |  6 ++++--
+ wlan_cfg.c |  4 ++--
  11 files changed, 120 insertions(+), 21 deletions(-)
 
 diff --git a/Kconfig b/Kconfig
-index 4d037766f6d2..cb1a7128df01 100644
+index 9b8e0a6c950e..ce8fb6f7a4a1 100644
 --- a/Kconfig
 +++ b/Kconfig
-@@ -38,6 +38,7 @@ config WILC_SPI
+@@ -36,6 +36,7 @@ config WILC_SPI
  config WILC_HW_OOB_INTR
  	bool "WILC out of band interrupt"
  	depends on WILC_SDIO
 +	depends on WILC1000_SDIO
  	default n
  	help
- 	  This option enables out-of-band interrupt support for the WILC1000
+ 	  This option enables out-of-band interrupt support for the WILC1000 &
 diff --git a/Makefile b/Makefile
 index 64c39aac1344..89132bc87af9 100644
 --- a/Makefile
@@ -60,10 +60,10 @@ index 64c39aac1344..89132bc87af9 100644
 +	rm -f Module.markers Module.symvers modules.order
 +	rm -rf .tmp_versions Modules.symversa
 diff --git a/cfg80211.c b/cfg80211.c
-index f92e4b92c608..bfc71c09f678 100644
+index 86da7d2fd0d7..8d185958f49f 100644
 --- a/cfg80211.c
 +++ b/cfg80211.c
-@@ -1982,6 +1982,8 @@ static struct wireless_dev *add_virtual_intf(struct wiphy *wiphy,
+@@ -1859,6 +1859,8 @@ static struct wireless_dev *add_virtual_intf(struct wiphy *wiphy,
  	struct wireless_dev *wdev;
  	u8 iftype;
  
@@ -72,7 +72,7 @@ index f92e4b92c608..bfc71c09f678 100644
  	/* check if interface type is mointor because AP mode is supported over
  	 * monitor interface. No need to increment interface count check if
  	 * monitor mode is associated with AP interface. The same approach is
-@@ -2020,6 +2022,7 @@ static struct wireless_dev *add_virtual_intf(struct wiphy *wiphy,
+@@ -1897,6 +1899,7 @@ static struct wireless_dev *add_virtual_intf(struct wiphy *wiphy,
  		}
  		wdev = &vif->priv.wdev;
  		srcu_read_unlock(&wl->srcu, srcu_idx);
@@ -80,7 +80,7 @@ index f92e4b92c608..bfc71c09f678 100644
  		return wdev;
  	}
  
-@@ -2032,9 +2035,6 @@ static struct wireless_dev *add_virtual_intf(struct wiphy *wiphy,
+@@ -1909,9 +1912,6 @@ validate_interface:
  	}
  	mutex_unlock(&wl->vif_mutex);
  
@@ -90,7 +90,7 @@ index f92e4b92c608..bfc71c09f678 100644
  	switch (type) {
  	case NL80211_IFTYPE_STATION:
  		iftype = WILC_STATION_MODE;
-@@ -2061,6 +2061,8 @@ static int del_virtual_intf(struct wiphy *wiphy, struct wireless_dev *wdev)
+@@ -1938,6 +1938,8 @@ static int del_virtual_intf(struct wiphy *wiphy, struct wireless_dev *wdev)
  	struct wilc *wl = wiphy_priv(wiphy);
  	struct wilc_vif *vif;
  
@@ -99,11 +99,11 @@ index f92e4b92c608..bfc71c09f678 100644
  	/* delete the monitor mode interface */
  	if (wdev->iftype == NL80211_IFTYPE_MONITOR) {
  		wilc_wfi_deinit_mon_interface(wl, true);
-@@ -2071,9 +2073,17 @@ static int del_virtual_intf(struct wiphy *wiphy, struct wireless_dev *wdev)
+@@ -1948,9 +1950,17 @@ static int del_virtual_intf(struct wiphy *wiphy, struct wireless_dev *wdev)
  	    wdev->iftype == NL80211_IFTYPE_P2P_GO)
  		wilc_wfi_deinit_mon_interface(wl, true);
  	vif = netdev_priv(wdev->netdev);
--	unregister_netdevice(vif->ndev);
+-	cfg80211_unregister_netdevice(vif->ndev);
 +	pr_info("del_virtual_intf name[%s] vnum[%d], idx[%d], wilc-type[%d], nl-type[%d]\n",
 +		vif->ndev->name, wl->vif_num, vif->idx, vif->iftype, wdev->iftype);
  	vif->monitor_flag = 0;
@@ -113,12 +113,12 @@ index f92e4b92c608..bfc71c09f678 100644
 +	// shall be allowed to unregister this interface.
 +	if (vif->primary_if) return 0;
 +
-+	unregister_netdevice(vif->ndev);
++	cfg80211_unregister_netdevice(vif->ndev);
 +
  	/* update the vif list */
  	mutex_lock(&wl->vif_mutex);
  	/* delete the interface from rcu list */
-@@ -2316,6 +2326,7 @@ int wilc_cfg80211_init(struct wilc **wilc, struct device *dev, int io_type,
+@@ -2206,6 +2216,7 @@ int wilc_cfg80211_init(struct wilc **wilc, struct device *dev, int io_type,
  		goto free_wq;
  	}
  
@@ -127,10 +127,10 @@ index f92e4b92c608..bfc71c09f678 100644
  
  	return 0;
 diff --git a/debugfs.h b/debugfs.h
-index 2de82a19489b..4517b11c8a26 100644
+index 13b0e40d568c..1402e146aa8a 100644
 --- a/debugfs.h
 +++ b/debugfs.h
-@@ -28,26 +28,42 @@
+@@ -25,26 +25,42 @@
  
  extern atomic_t WILC_DEBUG_REGION;
  
@@ -174,7 +174,7 @@ index 2de82a19489b..4517b11c8a26 100644
  #ifdef WILC_DEBUGFS
  int wilc_debugfs_init(void);
 diff --git a/netdev.c b/netdev.c
-index 9e558fe2bce0..9f504fedb516 100644
+index a209f873d92c..59f4fd1f23ed 100644
 --- a/netdev.c
 +++ b/netdev.c
 @@ -188,6 +188,9 @@ static int init_irq(struct net_device *dev)
@@ -187,7 +187,7 @@ index 9e558fe2bce0..9f504fedb516 100644
  	if (wl->dev_irq_num <= 0)
  		return 0;
  
-@@ -738,6 +741,7 @@ static int wlan_initialize_threads(struct net_device *dev)
+@@ -730,6 +733,7 @@ static int wlan_initialize_threads(struct net_device *dev)
  	}
  	wait_for_completion(&wilc->txq_thread_started);
  
@@ -195,7 +195,7 @@ index 9e558fe2bce0..9f504fedb516 100644
  	if (!debug_running) {
  		PRINT_INFO(vif->ndev, INIT_DBG,
  			   "Creating kthread for Debugging\n");
-@@ -752,6 +756,7 @@ static int wlan_initialize_threads(struct net_device *dev)
+@@ -744,6 +748,7 @@ static int wlan_initialize_threads(struct net_device *dev)
  		debug_running = true;
  		wait_for_completion(&wilc->debug_thread_started);
  	}
@@ -203,7 +203,7 @@ index 9e558fe2bce0..9f504fedb516 100644
  
  	return 0;
  }
-@@ -1347,6 +1352,8 @@ struct wilc_vif *wilc_netdev_ifc_init(struct wilc *wl, const char *name,
+@@ -1317,6 +1322,8 @@ struct wilc_vif *wilc_netdev_ifc_init(struct wilc *wl, const char *name,
  	vif = netdev_priv(ndev);
  	ndev->ieee80211_ptr = &vif->priv.wdev;
  	strcpy(ndev->name, name);
@@ -212,7 +212,7 @@ index 9e558fe2bce0..9f504fedb516 100644
  	vif->wilc = wl;
  	vif->ndev = ndev;
  	ndev->ml_priv = vif;
-@@ -1386,6 +1393,8 @@ struct wilc_vif *wilc_netdev_ifc_init(struct wilc *wl, const char *name,
+@@ -1353,6 +1360,8 @@ struct wilc_vif *wilc_netdev_ifc_init(struct wilc *wl, const char *name,
  	mutex_unlock(&wl->vif_mutex);
  	synchronize_srcu(&wl->srcu);
  
@@ -222,17 +222,17 @@ index 9e558fe2bce0..9f504fedb516 100644
  }
  
 diff --git a/netdev.h b/netdev.h
-index 5289397d58c2..752d77c8cad0 100644
+index 9516e575b9d7..8814a6c27ca9 100644
 --- a/netdev.h
 +++ b/netdev.h
-@@ -354,6 +354,7 @@ struct wilc_vif {
+@@ -202,6 +202,7 @@ struct wilc_vif {
  	u8 idx;
  	u8 iftype;
  	int monitor_flag;
 +	int primary_if;
  	int mac_opened;
- #if KERNEL_VERSION(5, 8, 0) <= LINUX_VERSION_CODE
  	u32 mgmt_reg_stypes;
+ 	struct net_device_stats netstats;
 diff --git a/power.c b/power.c
 index 6c59e0bd10a0..c2ac5cbb978e 100644
 --- a/power.c
@@ -253,10 +253,10 @@ index 6c59e0bd10a0..c2ac5cbb978e 100644
  	    !gpio_is_valid(wilc->power.gpios.reset)) {
  		/* In case SDIO power sequence driver is used to power this
 diff --git a/sdio.c b/sdio.c
-index fa3fa57b5278..2d023a004d97 100644
+index 492ac0e9116d..7917dd2eb915 100644
 --- a/sdio.c
 +++ b/sdio.c
-@@ -437,13 +437,22 @@ static int wilc_sdio_write_reg(struct wilc *wilc, u32 addr, u32 data)
+@@ -429,13 +429,22 @@ static int wilc_sdio_write_reg(struct wilc *wilc, u32 addr, u32 data)
  				"Failed cmd 52, write reg (%08x) ...\n", addr);
  	} else {
  		struct sdio_cmd53 cmd;
@@ -280,7 +280,7 @@ index fa3fa57b5278..2d023a004d97 100644
  
  		cmd.read_write = 1;
  		cmd.function = 0;
-@@ -451,12 +460,16 @@ static int wilc_sdio_write_reg(struct wilc *wilc, u32 addr, u32 data)
+@@ -443,12 +452,16 @@ static int wilc_sdio_write_reg(struct wilc *wilc, u32 addr, u32 data)
  		cmd.block_mode = 0;
  		cmd.increment = 1;
  		cmd.count = 4;
@@ -299,7 +299,7 @@ index fa3fa57b5278..2d023a004d97 100644
  	}
  
  	return ret;
-@@ -557,10 +570,17 @@ static int wilc_sdio_read_reg(struct wilc *wilc, u32 addr, u32 *data)
+@@ -549,10 +562,17 @@ static int wilc_sdio_read_reg(struct wilc *wilc, u32 addr, u32 *data)
  		*data = cmd.data;
  	} else {
  		struct sdio_cmd53 cmd;
@@ -318,7 +318,7 @@ index fa3fa57b5278..2d023a004d97 100644
  
  		cmd.read_write = 0;
  		cmd.function = 0;
-@@ -568,15 +588,18 @@ static int wilc_sdio_read_reg(struct wilc *wilc, u32 addr, u32 *data)
+@@ -560,15 +580,18 @@ static int wilc_sdio_read_reg(struct wilc *wilc, u32 addr, u32 *data)
  		cmd.block_mode = 0;
  		cmd.increment = 1;
  		cmd.count = 4;
@@ -338,7 +338,7 @@ index fa3fa57b5278..2d023a004d97 100644
  	}
  
  	le32_to_cpus(data);
-@@ -687,11 +710,12 @@ static int wilc_sdio_init(struct wilc *wilc, bool resume)
+@@ -679,11 +702,12 @@ static int wilc_sdio_init(struct wilc *wilc, bool resume)
  		func->card->host->ios.clock);
  
  	/* Patch for sdio interrupt latency issue */
@@ -354,10 +354,10 @@ index fa3fa57b5278..2d023a004d97 100644
  	init_waitqueue_head(&sdio_intr_waitqueue);
  	sdio_priv->irq_gpio = (wilc->io_type == WILC_HIF_SDIO_GPIO_IRQ);
 diff --git a/wlan.c b/wlan.c
-index 5fb11bc240a1..6dbfccdf3289 100644
+index 59adbf224e20..1dd8d1a6e9c7 100644
 --- a/wlan.c
 +++ b/wlan.c
-@@ -819,17 +819,21 @@ static void chip_wakeup_wilc3000(struct wilc *wilc, int source)
+@@ -815,17 +815,21 @@ static void chip_wakeup_wilc3000(struct wilc *wilc, int source)
  	do {
  		hif_func->hif_write_reg(wilc, wakeup_reg, wakeup_reg_val |
  							  wakeup_bit);
@@ -381,7 +381,7 @@ index 5fb11bc240a1..6dbfccdf3289 100644
  			/* Wait for the chip to stabilize*/
  			usleep_range(1000, 1100);
  
-@@ -906,23 +910,32 @@ int wilc_wlan_handle_txq(struct wilc *wilc, u32 *txq_count)
+@@ -902,23 +906,32 @@ int wilc_wlan_handle_txq(struct wilc *wilc, u32 *txq_count)
  	int ret = 0;
  	int counter;
  	int timeout;
@@ -416,7 +416,7 @@ index 5fb11bc240a1..6dbfccdf3289 100644
  
  	mutex_lock(&wilc->txq_add_to_head_cs);
  
-@@ -1231,6 +1244,7 @@ int wilc_wlan_handle_txq(struct wilc *wilc, u32 *txq_count)
+@@ -1227,6 +1240,7 @@ out_unlock:
  
  out_update_cnt:
  	*txq_count = wilc->txq_entries;
@@ -424,7 +424,7 @@ index 5fb11bc240a1..6dbfccdf3289 100644
  	return ret;
  }
  
-@@ -1401,7 +1415,7 @@ int wilc_wlan_firmware_download(struct wilc *wilc, const u8 *buffer,
+@@ -1398,7 +1412,7 @@ int wilc_wlan_firmware_download(struct wilc *wilc, const u8 *buffer,
  	u32 addr, size, size2, blksz;
  	u8 *dma_buffer;
  	int ret = 0;
@@ -433,7 +433,7 @@ index 5fb11bc240a1..6dbfccdf3289 100644
  
  	blksz = BIT(12);
  
-@@ -1417,6 +1431,7 @@ int wilc_wlan_firmware_download(struct wilc *wilc, const u8 *buffer,
+@@ -1414,6 +1428,7 @@ int wilc_wlan_firmware_download(struct wilc *wilc, const u8 *buffer,
  	wilc->hif_func->hif_read_reg(wilc, WILC_GLB_RESET_0, &reg);
  	reg &= ~BIT(10);
  	ret = wilc->hif_func->hif_write_reg(wilc, WILC_GLB_RESET_0, reg);
@@ -442,10 +442,10 @@ index 5fb11bc240a1..6dbfccdf3289 100644
  	if (reg & BIT(10))
  		pr_err("%s: Failed to reset\n", __func__);
 diff --git a/wlan.h b/wlan.h
-index 8446f1293d41..bcd0b3c44d9f 100644
+index 053f747df332..d93b94587c95 100644
 --- a/wlan.h
 +++ b/wlan.h
-@@ -250,8 +250,10 @@ static inline bool is_wilc3000(u32 id)
+@@ -245,8 +245,10 @@ static inline bool is_wilc3000(u32 id)
  #define WILC_TX_BUFF_SIZE	(64 * 1024)
  
  #define MODALIAS		"WILC_SPI"
@@ -459,10 +459,10 @@ index 8446f1293d41..bcd0b3c44d9f 100644
  #define NQUEUES			4
  #define AC_BUFFER_SIZE		1000
 diff --git a/wlan_cfg.c b/wlan_cfg.c
-index 7b7d7dc1002e..b765c027e553 100644
+index 029ae7ae9a00..9d1abe692182 100644
 --- a/wlan_cfg.c
 +++ b/wlan_cfg.c
-@@ -396,7 +396,7 @@ void wilc_wlan_cfg_indicate_rx(struct wilc *wilc, u8 *frame, int size,
+@@ -394,7 +394,7 @@ void wilc_wlan_cfg_indicate_rx(struct wilc *wilc, u8 *frame, int size,
  		rsp->type = WILC_CFG_RSP_STATUS;
  		rsp->seq_no = msg_id;
  		/* call host interface info parse as well */
@@ -471,7 +471,7 @@ index 7b7d7dc1002e..b765c027e553 100644
  		wilc_gnrl_async_info_received(wilc, frame - 4, size + 4);
  		break;
  
-@@ -405,7 +405,7 @@ void wilc_wlan_cfg_indicate_rx(struct wilc *wilc, u8 *frame, int size,
+@@ -403,7 +403,7 @@ void wilc_wlan_cfg_indicate_rx(struct wilc *wilc, u8 *frame, int size,
  		break;
  
  	case WILC_RESP_MSG_TYPE_SCAN_COMPLETE:
@@ -480,6 +480,3 @@ index 7b7d7dc1002e..b765c027e553 100644
  		wilc_scan_complete_received(wilc, frame - 4, size + 4);
  		break;
  
--- 
-2.20.1
-
