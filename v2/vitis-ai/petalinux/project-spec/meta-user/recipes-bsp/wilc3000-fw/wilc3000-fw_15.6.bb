@@ -9,8 +9,8 @@ SRC_URI = " \
     git://github.com/linux4wilc/firmware.git;protocol=git;branch=${BRANCH} \
     file://wilc.conf"
 
-# Tag: wilc_linux_15_5
-SRCREV = "bc1947d989000f56995b1f50cd2790893f363f52"
+# Tag: wilc_linux_15_6
+SRCREV = "1c04e63ded9ca7265e7132dcae8ba3060d8cdd38"
 BRANCH = "master"
 
 S = "${WORKDIR}/git"
