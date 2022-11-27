@@ -11,3 +11,9 @@ CONFIG_xrt-dev
 CONFIG_zocl
 CONFIG_opencl-clhpp-dev
 CONFIG_opencl-headers-dev
+
+CONFIG_target-factory
+CONFIG_unilog
+CONFIG_vart
+CONFIG_vitis-ai-library
+CONFIG_xir
