@@ -4129,8 +4129,13 @@ CONFIG_fuse-exfat=y
 CONFIG_opencl-headers-dev=y
 # CONFIG_peekpoke is not set
 CONFIG_pytorch=y
+CONFIG_target-factory=y
 CONFIG_torchvision=y
+CONFIG_unilog=y
+CONFIG_vart=y
+CONFIG_vitis-ai-library=y
 CONFIG_wilc3000-fw=y
+CONFIG_xir=y
 
 #
 # PetaLinux RootFS Settings
