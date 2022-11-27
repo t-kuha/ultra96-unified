@@ -13,3 +13,6 @@ CONFIG_opencl-clhpp-dev
 CONFIG_opencl-headers-dev
 CONFIG_wilc3000-fw
 CONFIG_wilc
+
+CONFIG_pytorch
+CONFIG_torchvision
