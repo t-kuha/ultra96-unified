@@ -65,3 +65,4 @@ $ petalinux-build -p ${PRJ} --sdk
 
 - [How to shut down the Ultra96 V1 or V2 boards directly](https://www.xilinx.com/support/answers/76583.html)
 
+- [Ultra96-V2 で Linux からパワーオフする方法](https://qiita.com/ikwzm/items/a27f7e85ec4051702c23)
