@@ -27,10 +27,6 @@ add_files -norecurse ${PRJ_DIR}/${PRJ_NAME}.srcs/sources_1/bd/${BD_NAME}/hdl/${B
 set_property top ${BD_NAME}_wrapper [current_fileset]
 update_compile_order -fileset sources_1
 
-regenerate_bd_layout
-validate_bd_design
-save_bd_design
-
 # Generate bitstream
 update_compile_order -fileset sources_1
 
