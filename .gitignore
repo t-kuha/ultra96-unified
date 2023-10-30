@@ -1,0 +1,19 @@
+# Xilinx
+*.Xil
+*.log
+*.jou
+*.xsa
+sd_card
+BOOT.BIN
+
+# temp.
+_*
+
+# data
+*.zip
+*.tar.*
+.vscode
+
+# PetaLinux
+*/*/petalinux/project-spec/meta-user/recipes-connectivity/wpa-supplicant
+# */*/petalinux/project-spec/meta-user/recipes-ml/
