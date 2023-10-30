@@ -7,7 +7,7 @@
     - V1 board:
 
     ```bash
-    $ git clone https://github.com/Xilinx/XilinxBoardStore.git
+    $ git clone https://github.com/Xilinx/XilinxBoardStore.git -b 2023.2
     $ cp -R XilinxBoardStore/boards/Avnet/ $XILINX_VIVADO/data/xhub/boards/XilinxBoardStore/boards
     ```
 
