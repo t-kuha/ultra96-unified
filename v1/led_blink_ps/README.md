@@ -21,3 +21,4 @@ $ xsct create_app.tcl
 ## Run
 
 - Copy the contents of  ``_app/led_blink_ps_system/Release/sd_card/`` into SD card and power up the board
+- Check if LED0 - LED3 will blink
