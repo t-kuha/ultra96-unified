@@ -2253,7 +2253,7 @@ font-util-dbg (font-util-dbg) [N/y/?]
 * gcc-runtime 
 *
 libstdc++-dev (libstdcPLUSPLUS-dev) [N/y/?] 
-libstdc++ (libstdcPLUSPLUS) [N/y/?] 
+libstdc++ (libstdcPLUSPLUS) [Y/n/?] 
 *
 * gcr 
 *
@@ -3301,7 +3301,7 @@ mobile-broadband-provider-info-dev (mobile-broadband-provider-info-dev) [N/y/?]
 *
 * wpa-supplicant 
 *
-wpa-supplicant (wpa-supplicant) [N/y/?] 
+wpa-supplicant (wpa-supplicant) [Y/n/?] 
 wpa-supplicant-passphrase (wpa-supplicant-passphrase) [N/y/?] 
 wpa-supplicant-dev (wpa-supplicant-dev) [N/y/?] 
 wpa-supplicant-dbg (wpa-supplicant-dbg) [N/y/?] 
@@ -3309,7 +3309,7 @@ wpa-supplicant-cli (wpa-supplicant-cli) [N/y/?]
 *
 * ntp
 *
-ntp (ntp) [N/y/?] 
+ntp (ntp) [Y/n/?] 
 ntp-dev (ntp-dev) [N/y/?] 
 ntp-dbg (ntp-dbg) [N/y/?] 
 *
