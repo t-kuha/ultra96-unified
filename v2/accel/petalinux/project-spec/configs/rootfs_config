@@ -2296,7 +2296,7 @@ CONFIG_linux-xlnx-udev-rules=y
 # gcc-runtime 
 #
 # CONFIG_libstdcPLUSPLUS-dev is not set
-# CONFIG_libstdcPLUSPLUS is not set
+CONFIG_libstdcPLUSPLUS=y
 
 #
 # gcr 
@@ -3490,7 +3490,7 @@ CONFIG_bridge-utils=y
 #
 # wpa-supplicant 
 #
-# CONFIG_wpa-supplicant is not set
+CONFIG_wpa-supplicant=y
 # CONFIG_wpa-supplicant-passphrase is not set
 # CONFIG_wpa-supplicant-dev is not set
 # CONFIG_wpa-supplicant-dbg is not set
@@ -3499,7 +3499,7 @@ CONFIG_bridge-utils=y
 #
 # ntp
 #
-# CONFIG_ntp is not set
+CONFIG_ntp=y
 # CONFIG_ntp-dev is not set
 # CONFIG_ntp-dbg is not set
 
@@ -4038,7 +4038,7 @@ CONFIG_u-boot-tools=y
 #
 # packagegroup-petalinux-vitis-acceleration-essential 
 #
-# CONFIG_packagegroup-petalinux-vitis-acceleration-essential is not set
+CONFIG_packagegroup-petalinux-vitis-acceleration-essential=y
 # CONFIG_packagegroup-petalinux-vitis-acceleration-essential-dbg is not set
 # CONFIG_packagegroup-petalinux-vitis-acceleration-essential-dev is not set
 
@@ -4085,7 +4085,7 @@ CONFIG_Init-manager-systemd=y
 #
 # PetaLinux RootFS Settings
 #
-CONFIG_ADD_EXTRA_USERS="root:root;petalinux::passwd-expire;"
+CONFIG_ADD_EXTRA_USERS="root:root;petalinux:zynq"
 CONFIG_CREATE_NEW_GROUPS="aie;"
 CONFIG_ADD_USERS_TO_GROUPS="petalinux:audio,video,aie,input;"
 CONFIG_ADD_USERS_TO_SUDOERS="petalinux"
