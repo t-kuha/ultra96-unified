@@ -39,7 +39,7 @@ $ xsct -nodisp -sdx create_pfm.tcl generate_sw false
 ```shell-session
 $ export PRJ=petalinux
 $ petalinux-create -t project -n ${PRJ} --template zynqMP
-$ petalinux-config -p ${PRJ} --get-hw-description=.
+$ petalinux-config -p ${PRJ} --get-hw-description=hw.xsa
 
 # Do some configuration
 $ petalinux-config -p ${PRJ} -c kernel
