@@ -6,7 +6,7 @@ LIC_FILES_CHKSUM = "file://LICENSE.wilc_fw;md5=89ed0ff0e98ce1c58747e9a39183cc9f"
 FILESEXTRAPATHS:append := "${THISDIR}/files:"
 
 SRC_URI = " \
-    git://github.com/linux4wilc/firmware.git;protocol=git;branch=${BRANCH} \
+    git://github.com/linux4wilc/firmware.git;protocol=https;branch=${BRANCH} \
     file://wilc.conf"
 
 # Tag: wilc_linux_15_6
