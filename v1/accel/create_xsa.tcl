@@ -51,8 +51,10 @@ set_property platform.design_intent.external_host {false} [current_project]
 set_property platform.design_intent.datacenter {false} [current_project]
 set_property platform.default_output_type {sd_card} [current_project]
 set_property platform.uses_pr {false} [current_project]
-write_hw_platform -force -file ${PRJ_NAME}.xsa
-validate_hw_platform ${PRJ_NAME}.xsa
+write_hw_platform -hw -force -file hw.xsa
+write_hw_platform -hw_emu -force -file hw_emu.xsa
+validate_hw_platform hw.xsa
+validate_hw_platform hw_emu.xsa
 
 # Finish - close project
 close_project

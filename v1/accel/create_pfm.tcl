@@ -23,7 +23,7 @@ file mkdir ${IMG_DIR}
 file copy petalinux/images/linux/boot.scr ${IMG_DIR}
 file copy petalinux/images/linux/image.ub ${IMG_DIR}
 
-platform create -name {u96_accel} -hw {ultra96.xsa} -no-boot-bsp -out ${OUT_DIR}
+platform create -name {u96_accel} -hw {hw.xsa} -hw_emu {hw_emu.xsa} -no-boot-bsp -out ${OUT_DIR}
 platform write
 platform active {u96_accel}
 

@@ -29,7 +29,7 @@ $ petalinux-build -p ${PRJ} --sdk
 ## Generate platform
 
 ```shell-session
-$ xsct create_pfm.tcl
+$ xsct -nodisp -sdx create_pfm.tcl generate_sw false
 ```
 
 ***
