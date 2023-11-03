@@ -7,4 +7,12 @@ config peekpoke
 	 bool "peekpoke"
 	 help
 	
+config wilc  
+	 bool "wilc"
+	 help
+	
+config wilc3000-fw  
+	 bool "wilc3000-fw"
+	 help
+	
 endmenu

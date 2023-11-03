@@ -4081,6 +4081,8 @@ CONFIG_Init-manager-systemd=y
 #
 # CONFIG_gpio-demo is not set
 # CONFIG_peekpoke is not set
+CONFIG_wilc=y
+CONFIG_wilc3000-fw=y
 
 #
 # PetaLinux RootFS Settings
