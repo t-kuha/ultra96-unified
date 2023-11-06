@@ -11,11 +11,11 @@
 $ vivado -mode batch -source create_xsa.tcl
 
 # Generate Pplatform
-$ xsct create_pfm.tcl
+$ xsct -nodisp create_pfm.tcl
 
 # Build application
 $ export PLATFORM_REPO_PATHS=$(pwd)/_pfm/u96v2_led/export/
-$ xsct create_app.tcl
+$ xsct -nodisp create_app.tcl
 ```
 
 ## Run
