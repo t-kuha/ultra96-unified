@@ -6,9 +6,7 @@
 	aliases {
 		i2c0 = &i2c1;
 		serial0 = &uart1;
-		/*serial1 = &axi_uart16550_1;*/
 		serial2 = &uart0;
-		/*serial3 = &axi_uart16550_0;*/
 		spi0 = &spi0;
 		spi1 = &spi1;
 	};
@@ -78,7 +76,7 @@
 		watchdog-gpios = <&gpio 35 0>; /* MIO on PAD */
 		kill-gpios = <&gpio 34 1>; /* KILL signal - output */
 	};
-
+	
 	wmmcsdio_fixed: fixedregulator-mmcsdio {
 		compatible = "regulator-fixed";
 		regulator-name = "wmmcsdio_fixed";
@@ -92,7 +90,7 @@
 		compatible = "mmc-pwrseq-simple";
 		reset-gpios = <&gpio 7 1>; /* WIFI_EN */
 	};
-	
+
 	si5335_0: si5335_0 { /* clk0_usb - u23 */
 		compatible = "fixed-clock";
 		#clock-cells = <0>;
@@ -104,13 +102,6 @@
 		#clock-cells = <0>;
 		clock-frequency = <27000000>;
 	};
-};
-
-&amba {
-    zyxclmm_drm {
-        compatible = "xlnx,zocl";
-        status = "okay";
-    };
 };
 
 &gpio {
@@ -257,8 +248,8 @@
 	};
 };
 
-/* SD0 only supports 3.3V, no level shifter */
 &sdhci0 {
+	// SD0 only supports 3.3V, no level shifter
 	no-1-8-v;
 	broken-cd; /* CD has to be enabled by default */
 	disable-wp;
@@ -292,18 +283,4 @@
 	/* usb3, dp */
 	clocks = <&si5335_0>, <&si5335_1>;
 	clock-names = "ref0", "ref1";
-};
-
-&dwc3_0 {
-	dr_mode = "peripheral";
-	phy-names = "usb3-phy";
-	phys = <&psgtr 2 PHY_TYPE_USB3 0 0>;
-	maximum-speed = "super-speed";
-};
-
-&dwc3_1 {
-	dr_mode = "host";
-	phy-names = "usb3-phy";
-	phys = <&psgtr 3 PHY_TYPE_USB3 1 0>;
-	maximum-speed = "super-speed";
 };
