@@ -21,9 +21,6 @@ $ petalinux-config -p ${PRJ} -c rootfs
 
 # Start build
 $ petalinux-build -p ${PRJ}
-
-# Generate SDK (optional)
-$ petalinux-build -p ${PRJ} --sdk
 ```
 
 ## Generate platform
