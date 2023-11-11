@@ -5,7 +5,7 @@
 ## Create hardware
 
 ```shell-session
-$ vivado -mode batch -source create_xsa.tcl
+$ vivado -notrace -nojournal -mode batch -source create_xsa.tcl
 ```
 
 ## Create PetaLinux project
@@ -21,15 +21,12 @@ $ petalinux-config -p ${PRJ} -c rootfs
 
 # Start build
 $ petalinux-build -p ${PRJ}
-
-# Generate SDK (optional)
-$ petalinux-build -p ${PRJ} --sdk
 ```
 
 ## Generate platform
 
 ```shell-session
-$ xsct -nodisp -sdx create_pfm.tcl generate_sw false
+$ vitis -s create_vitis_platform.py
 ```
 
 ***
@@ -52,9 +49,6 @@ $ petalinux-build -p ${PRJ} -c u-boot-xlnx -x cleansstate
 
 # Build project
 $ petalinux-build -p ${PRJ}
-
-# Generate SDK
-$ petalinux-build -p ${PRJ} --sdk
 ```
 
 ***
@@ -62,7 +56,3 @@ $ petalinux-build -p ${PRJ} --sdk
 ## References
 
 - [Avnet Ultra96-PYNQ repo](https://github.com/Avnet/Ultra96-PYNQ)
-
-- [How to shut down the Ultra96 V1 or V2 boards directly](https://www.xilinx.com/support/answers/76583.html)
-
-- [Ultra96-V2 で Linux からパワーオフする方法](https://qiita.com/ikwzm/items/a27f7e85ec4051702c23)
