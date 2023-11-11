@@ -5,7 +5,7 @@
 ## Create hardware
 
 ```shell-session
-$ vivado -mode batch -source create_xsa.tcl
+$ vivado -notrace -nojournal -mode batch -source create_xsa.tcl
 ```
 
 ## Create PetaLinux project
@@ -29,7 +29,7 @@ $ petalinux-build -p ${PRJ} --sdk
 ## Generate platform
 
 ```shell-session
-$ xsct -nodisp -sdx create_pfm.tcl generate_sw false
+$ vitis -s create_vitis_platform.py
 ```
 
 ***
@@ -45,10 +45,6 @@ $ petalinux-config -p ${PRJ} --get-hw-description=hw.xsa
 $ petalinux-config -p ${PRJ} -c kernel
 $ petalinux-config -p ${PRJ} -c u-boot
 $ petalinux-config -p ${PRJ} -c rootfs
-
-# Show actual build time of Kernel & u-boot
-$ petalinux-build -p ${PRJ} -c linux-xlnx -x cleansstate
-$ petalinux-build -p ${PRJ} -c u-boot-xlnx -x cleansstate
 
 # Build project
 $ petalinux-build -p ${PRJ}
