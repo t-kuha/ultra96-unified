@@ -541,7 +541,7 @@ CONFIG_can-utils=y
 #
 # nfs-utils 
 #
-CONFIG_nfs-utils=y
+# CONFIG_nfs-utils is not set
 # CONFIG_nfs-utils-stats is not set
 # CONFIG_nfs-utils-dbg is not set
 # CONFIG_nfs-utils-dev is not set
@@ -4081,8 +4081,8 @@ CONFIG_Init-manager-systemd=y
 #
 # CONFIG_gpio-demo is not set
 # CONFIG_peekpoke is not set
-CONFIG_wilc=y
-CONFIG_wilc3000-fw=y
+# CONFIG_wilc is not set
+# CONFIG_wilc3000-fw is not set
 
 #
 # PetaLinux RootFS Settings
