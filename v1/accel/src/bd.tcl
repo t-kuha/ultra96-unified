@@ -135,6 +135,7 @@ xilinx.com:ip:clk_wiz:6.0\
 xilinx.com:ip:proc_sys_reset:5.0\
 xilinx.com:ip:zynq_ultra_ps_e:3.5\
 xilinx.com:ip:xlslice:1.0\
+xilinx.com:ip:util_vector_logic:2.0\
 "
 
    set list_ips_missing ""
@@ -735,6 +736,14 @@ Port;FD4A0000;FD4AFFFF;1|FPD;DPDMA;FD4C0000;FD4CFFFF;1|FPD;DDR_XMPU5_CFG;FD05000
   ] $xlslice_0
 
 
+  # Create instance: util_vector_logic_0, and set properties
+  set util_vector_logic_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:util_vector_logic:2.0 util_vector_logic_0 ]
+  set_property -dict [list \
+    CONFIG.C_OPERATION {not} \
+    CONFIG.C_SIZE {1} \
+  ] $util_vector_logic_0
+
+
   # Create interface connections
   connect_bd_intf_net -intf_net zu_ps_M_AXI_HPM0_LPD [get_bd_intf_pins zu_ps/M_AXI_HPM0_LPD] [get_bd_intf_pins zu_ps_axi_periph/S00_AXI]
   connect_bd_intf_net -intf_net zu_ps_axi_periph_M00_AXI [get_bd_intf_pins axi_intc_0/s_axi] [get_bd_intf_pins zu_ps_axi_periph/M00_AXI]
@@ -748,7 +757,8 @@ Port;FD4A0000;FD4AFFFF;1|FPD;DPDMA;FD4C0000;FD4CFFFF;1|FPD;DDR_XMPU5_CFG;FD05000
   connect_bd_net -net clk_wiz_0_clk_out5 [get_bd_pins clk_wiz_0/clk_out5] [get_bd_pins ps_rst_4/slowest_sync_clk]
   connect_bd_net -net clk_wiz_0_locked [get_bd_pins clk_wiz_0/locked] [get_bd_pins ps_rst_0/dcm_locked] [get_bd_pins ps_rst_1/dcm_locked] [get_bd_pins ps_rst_2/dcm_locked] [get_bd_pins ps_rst_3/dcm_locked] [get_bd_pins ps_rst_4/dcm_locked]
   connect_bd_net -net ps_rst_0_peripheral_aresetn [get_bd_pins ps_rst_0/peripheral_aresetn] [get_bd_pins axi_intc_0/s_axi_aresetn] [get_bd_pins zu_ps_axi_periph/ARESETN] [get_bd_pins zu_ps_axi_periph/M00_ARESETN] [get_bd_pins zu_ps_axi_periph/S00_ARESETN]
-  connect_bd_net -net xlslice_0_Dout [get_bd_pins xlslice_0/Dout] [get_bd_ports fan_en_b]
+  connect_bd_net -net util_vector_logic_0_Res [get_bd_pins util_vector_logic_0/Res] [get_bd_ports fan_en_b]
+  connect_bd_net -net xlslice_0_Dout [get_bd_pins xlslice_0/Dout] [get_bd_pins util_vector_logic_0/Op1]
   connect_bd_net -net zu_ps_emio_ttc0_wave_o [get_bd_pins zu_ps/emio_ttc0_wave_o] [get_bd_pins xlslice_0/Din]
   connect_bd_net -net zynq_ultra_ps_e_0_pl_clk0 [get_bd_pins zu_ps/pl_clk0] [get_bd_pins clk_wiz_0/clk_in1]
   connect_bd_net -net zynq_ultra_ps_e_0_pl_resetn0 [get_bd_pins zu_ps/pl_resetn0] [get_bd_pins clk_wiz_0/resetn] [get_bd_pins ps_rst_0/ext_reset_in] [get_bd_pins ps_rst_1/ext_reset_in] [get_bd_pins ps_rst_2/ext_reset_in] [get_bd_pins ps_rst_3/ext_reset_in] [get_bd_pins ps_rst_4/ext_reset_in]
