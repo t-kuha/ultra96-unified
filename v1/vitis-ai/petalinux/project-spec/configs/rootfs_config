@@ -541,7 +541,7 @@ CONFIG_can-utils=y
 #
 # nfs-utils 
 #
-CONFIG_nfs-utils=y
+# CONFIG_nfs-utils is not set
 # CONFIG_nfs-utils-stats is not set
 # CONFIG_nfs-utils-dbg is not set
 # CONFIG_nfs-utils-dev is not set
@@ -1181,7 +1181,7 @@ CONFIG_run-postinsts=y
 #
 # bluez5 
 #
-# CONFIG_bluez5 is not set
+CONFIG_bluez5=y
 # CONFIG_bluez5-obex is not set
 # CONFIG_bluez5-dev is not set
 # CONFIG_bluez5-dbg is not set
@@ -2296,7 +2296,7 @@ CONFIG_linux-xlnx-udev-rules=y
 # gcc-runtime 
 #
 # CONFIG_libstdcPLUSPLUS-dev is not set
-# CONFIG_libstdcPLUSPLUS is not set
+CONFIG_libstdcPLUSPLUS=y
 
 #
 # gcr 
@@ -3490,7 +3490,7 @@ CONFIG_bridge-utils=y
 #
 # wpa-supplicant 
 #
-# CONFIG_wpa-supplicant is not set
+CONFIG_wpa-supplicant=y
 # CONFIG_wpa-supplicant-passphrase is not set
 # CONFIG_wpa-supplicant-dev is not set
 # CONFIG_wpa-supplicant-dbg is not set
@@ -3932,7 +3932,7 @@ CONFIG_u-boot-tools=y
 #
 # packagegroup-petalinux-lmsensors 
 #
-# CONFIG_packagegroup-petalinux-lmsensors is not set
+CONFIG_packagegroup-petalinux-lmsensors=y
 # CONFIG_packagegroup-petalinux-lmsensors-dbg is not set
 # CONFIG_packagegroup-petalinux-lmsensors-dev is not set
 
@@ -4038,7 +4038,7 @@ CONFIG_u-boot-tools=y
 #
 # packagegroup-petalinux-vitis-acceleration-essential 
 #
-# CONFIG_packagegroup-petalinux-vitis-acceleration-essential is not set
+CONFIG_packagegroup-petalinux-vitis-acceleration-essential=y
 # CONFIG_packagegroup-petalinux-vitis-acceleration-essential-dbg is not set
 # CONFIG_packagegroup-petalinux-vitis-acceleration-essential-dev is not set
 
@@ -4079,13 +4079,20 @@ CONFIG_Init-manager-systemd=y
 #
 # user packages 
 #
+CONFIG_fuse-exfat=y
 # CONFIG_gpio-demo is not set
+CONFIG_lmsensors=y
 # CONFIG_peekpoke is not set
+CONFIG_target-factory=y
+CONFIG_unilog=y
+CONFIG_vart=y
+CONFIG_vitis-ai-library=y
+CONFIG_xir=y
 
 #
 # PetaLinux RootFS Settings
 #
-CONFIG_ADD_EXTRA_USERS="root:root;petalinux::passwd-expire;"
+CONFIG_ADD_EXTRA_USERS="root:root;petalinux:zynq"
 CONFIG_CREATE_NEW_GROUPS="aie;"
 CONFIG_ADD_USERS_TO_GROUPS="petalinux:audio,video,aie,input;"
 CONFIG_ADD_USERS_TO_SUDOERS="petalinux"

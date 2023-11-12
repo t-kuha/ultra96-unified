@@ -1,10 +1,38 @@
 menu "user packages " 
+config fuse-exfat  
+	 bool "fuse-exfat"
+	 help
+	
 config gpio-demo  
 	 bool "gpio-demo"
 	 help
 	
+config lmsensors  
+	 bool "lmsensors"
+	 help
+	
 config peekpoke  
 	 bool "peekpoke"
+	 help
+	
+config target-factory  
+	 bool "target-factory"
+	 help
+	
+config unilog  
+	 bool "unilog"
+	 help
+	
+config vart  
+	 bool "vart"
+	 help
+	
+config vitis-ai-library  
+	 bool "vitis-ai-library"
+	 help
+	
+config xir  
+	 bool "xir"
 	 help
 	
 endmenu
