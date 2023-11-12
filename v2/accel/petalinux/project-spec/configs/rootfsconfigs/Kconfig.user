@@ -1,4 +1,8 @@
 menu "user packages " 
+config fuse-exfat  
+	 bool "fuse-exfat"
+	 help
+	
 config gpio-demo  
 	 bool "gpio-demo"
 	 help

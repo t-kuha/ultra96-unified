@@ -4,5 +4,7 @@
 CONFIG_gpio-demo
 CONFIG_peekpoke
 
+CONFIG_fuse-exfat
+
 CONFIG_wilc3000-fw
 CONFIG_wilc
