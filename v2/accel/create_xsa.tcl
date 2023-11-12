@@ -15,6 +15,9 @@ create_project ${PRJ_NAME} ${PRJ_DIR} -part xczu3eg-sbva484-1-e
 set_property board_part em.avnet.com:ultra96v2:part0:1.0 [current_project]
 set_property platform.extensible "true" [current_project]
 
+# Add constraint
+add_files -fileset constrs_1 -norecurse ${SRC_DIR}/constraint.xdc
+
 # Create block design
 source ${SRC_DIR}/bd.tcl
 

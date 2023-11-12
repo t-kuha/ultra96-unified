@@ -3932,7 +3932,7 @@ CONFIG_u-boot-tools=y
 #
 # packagegroup-petalinux-lmsensors 
 #
-# CONFIG_packagegroup-petalinux-lmsensors is not set
+CONFIG_packagegroup-petalinux-lmsensors=y
 # CONFIG_packagegroup-petalinux-lmsensors-dbg is not set
 # CONFIG_packagegroup-petalinux-lmsensors-dev is not set
 
@@ -4081,6 +4081,7 @@ CONFIG_Init-manager-systemd=y
 #
 CONFIG_fuse-exfat=y
 # CONFIG_gpio-demo is not set
+CONFIG_lmsensors=y
 # CONFIG_peekpoke is not set
 # CONFIG_wilc is not set
 # CONFIG_wilc3000-fw is not set
