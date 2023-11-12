@@ -4079,6 +4079,7 @@ CONFIG_Init-manager-systemd=y
 #
 # user packages 
 #
+CONFIG_fuse-exfat=y
 # CONFIG_gpio-demo is not set
 CONFIG_lmsensors=y
 # CONFIG_peekpoke is not set
