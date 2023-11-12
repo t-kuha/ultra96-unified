@@ -58,5 +58,7 @@ $ petalinux-build -p ${PRJ} --sdk
 
 - [PetaLinux does not mount full rootfs when boot INITRD images are built using the template method](https://www.xilinx.com/support/answers/76842.html)
 
-- WI-Fi firmware
+- [Debian/Ubuntu でKV260 で冷却ファンを制御する (その２)](https://qiita.com/ikwzm/items/f94748f5353271aab5ee)
+
+- Wi-Fi firmware
   - wl18xx-fw-4.bin: [processor-firmware/ti-linux-firmware](https://git.ti.com/cgit/processor-firmware/ti-linux-firmware/log/ti-connectivity/wl18xx-fw-4.bin?h=ti-linux-firmware)
