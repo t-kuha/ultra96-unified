@@ -102,6 +102,12 @@
 		#clock-cells = <0>;
 		clock-frequency = <27000000>;
 	};
+
+	pwm-fan {
+		compatible = "pwm-fan";
+		status = "okay";
+		pwms = <&ttc0 2 40000 0>;
+	};
 };
 
 &gpio {
@@ -277,6 +283,10 @@
 		compatible = "ti,wl1831-st";
 		enable-gpios = <&gpio 8 0>;
 	};
+};
+
+&ttc0 {
+	#pwm-cells = <3>;
 };
 
 &psgtr {

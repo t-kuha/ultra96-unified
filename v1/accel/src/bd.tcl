@@ -134,6 +134,7 @@ xilinx.com:ip:axi_intc:4.1\
 xilinx.com:ip:clk_wiz:6.0\
 xilinx.com:ip:proc_sys_reset:5.0\
 xilinx.com:ip:zynq_ultra_ps_e:3.5\
+xilinx.com:ip:xlslice:1.0\
 "
 
    set list_ips_missing ""
@@ -199,6 +200,7 @@ proc create_root_design { parentCell } {
   # Create interface ports
 
   # Create ports
+  set fan_en_b [ create_bd_port -dir O -from 0 -to 0 fan_en_b ]
 
   # Create instance: axi_intc_0, and set properties
   set axi_intc_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_intc:4.1 axi_intc_0 ]
@@ -672,7 +674,8 @@ Port;FD4A0000;FD4AFFFF;1|FPD;DPDMA;FD4C0000;FD4CFFFF;1|FPD;DDR_XMPU5_CFG;FD05000
     CONFIG.PSU__SWDT1__RESET__ENABLE {0} \
     CONFIG.PSU__TTC0__CLOCK__ENABLE {0} \
     CONFIG.PSU__TTC0__PERIPHERAL__ENABLE {1} \
-    CONFIG.PSU__TTC0__WAVEOUT__ENABLE {0} \
+    CONFIG.PSU__TTC0__WAVEOUT__ENABLE {1} \
+    CONFIG.PSU__TTC0__WAVEOUT__IO {EMIO} \
     CONFIG.PSU__TTC1__CLOCK__ENABLE {0} \
     CONFIG.PSU__TTC1__PERIPHERAL__ENABLE {1} \
     CONFIG.PSU__TTC1__WAVEOUT__ENABLE {0} \
@@ -723,6 +726,15 @@ Port;FD4A0000;FD4AFFFF;1|FPD;DPDMA;FD4C0000;FD4CFFFF;1|FPD;DDR_XMPU5_CFG;FD05000
   set_property CONFIG.NUM_MI {1} $zu_ps_axi_periph
 
 
+  # Create instance: xlslice_0, and set properties
+  set xlslice_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 xlslice_0 ]
+  set_property -dict [list \
+    CONFIG.DIN_FROM {2} \
+    CONFIG.DIN_TO {2} \
+    CONFIG.DIN_WIDTH {3} \
+  ] $xlslice_0
+
+
   # Create interface connections
   connect_bd_intf_net -intf_net zu_ps_M_AXI_HPM0_LPD [get_bd_intf_pins zu_ps/M_AXI_HPM0_LPD] [get_bd_intf_pins zu_ps_axi_periph/S00_AXI]
   connect_bd_intf_net -intf_net zu_ps_axi_periph_M00_AXI [get_bd_intf_pins axi_intc_0/s_axi] [get_bd_intf_pins zu_ps_axi_periph/M00_AXI]
@@ -736,6 +748,8 @@ Port;FD4A0000;FD4AFFFF;1|FPD;DPDMA;FD4C0000;FD4CFFFF;1|FPD;DDR_XMPU5_CFG;FD05000
   connect_bd_net -net clk_wiz_0_clk_out5 [get_bd_pins clk_wiz_0/clk_out5] [get_bd_pins ps_rst_4/slowest_sync_clk]
   connect_bd_net -net clk_wiz_0_locked [get_bd_pins clk_wiz_0/locked] [get_bd_pins ps_rst_0/dcm_locked] [get_bd_pins ps_rst_1/dcm_locked] [get_bd_pins ps_rst_2/dcm_locked] [get_bd_pins ps_rst_3/dcm_locked] [get_bd_pins ps_rst_4/dcm_locked]
   connect_bd_net -net ps_rst_0_peripheral_aresetn [get_bd_pins ps_rst_0/peripheral_aresetn] [get_bd_pins axi_intc_0/s_axi_aresetn] [get_bd_pins zu_ps_axi_periph/ARESETN] [get_bd_pins zu_ps_axi_periph/M00_ARESETN] [get_bd_pins zu_ps_axi_periph/S00_ARESETN]
+  connect_bd_net -net xlslice_0_Dout [get_bd_pins xlslice_0/Dout] [get_bd_ports fan_en_b]
+  connect_bd_net -net zu_ps_emio_ttc0_wave_o [get_bd_pins zu_ps/emio_ttc0_wave_o] [get_bd_pins xlslice_0/Din]
   connect_bd_net -net zynq_ultra_ps_e_0_pl_clk0 [get_bd_pins zu_ps/pl_clk0] [get_bd_pins clk_wiz_0/clk_in1]
   connect_bd_net -net zynq_ultra_ps_e_0_pl_resetn0 [get_bd_pins zu_ps/pl_resetn0] [get_bd_pins clk_wiz_0/resetn] [get_bd_pins ps_rst_0/ext_reset_in] [get_bd_pins ps_rst_1/ext_reset_in] [get_bd_pins ps_rst_2/ext_reset_in] [get_bd_pins ps_rst_3/ext_reset_in] [get_bd_pins ps_rst_4/ext_reset_in]
 
