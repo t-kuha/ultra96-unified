@@ -202,6 +202,8 @@ proc create_root_design { parentCell } {
 
   # Create ports
   set fan_en_b [ create_bd_port -dir O -from 0 -to 0 fan_en_b ]
+  set BT_HCI_CTS [ create_bd_port -dir O BT_HCI_CTS ]
+  set BT_HCI_RTS [ create_bd_port -dir I BT_HCI_RTS ]
 
   # Create instance: axi_intc_0, and set properties
   set axi_intc_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_intc:4.1 axi_intc_0 ]
@@ -687,7 +689,7 @@ Port;FD4A0000;FD4AFFFF;1|FPD;DPDMA;FD4C0000;FD4CFFFF;1|FPD;DDR_XMPU5_CFG;FD05000
     CONFIG.PSU__TTC3__PERIPHERAL__ENABLE {1} \
     CONFIG.PSU__TTC3__WAVEOUT__ENABLE {0} \
     CONFIG.PSU__UART0__BAUD_RATE {115200} \
-    CONFIG.PSU__UART0__MODEM__ENABLE {0} \
+    CONFIG.PSU__UART0__MODEM__ENABLE {1} \
     CONFIG.PSU__UART0__PERIPHERAL__ENABLE {1} \
     CONFIG.PSU__UART0__PERIPHERAL__IO {MIO 2 .. 3} \
     CONFIG.PSU__UART1__BAUD_RATE {115200} \
@@ -756,10 +758,12 @@ Port;FD4A0000;FD4AFFFF;1|FPD;DPDMA;FD4C0000;FD4CFFFF;1|FPD;DDR_XMPU5_CFG;FD05000
   connect_bd_net -net clk_wiz_0_clk_out4 [get_bd_pins clk_wiz_0/clk_out4] [get_bd_pins ps_rst_3/slowest_sync_clk]
   connect_bd_net -net clk_wiz_0_clk_out5 [get_bd_pins clk_wiz_0/clk_out5] [get_bd_pins ps_rst_4/slowest_sync_clk]
   connect_bd_net -net clk_wiz_0_locked [get_bd_pins clk_wiz_0/locked] [get_bd_pins ps_rst_0/dcm_locked] [get_bd_pins ps_rst_1/dcm_locked] [get_bd_pins ps_rst_2/dcm_locked] [get_bd_pins ps_rst_3/dcm_locked] [get_bd_pins ps_rst_4/dcm_locked]
+  connect_bd_net -net emio_uart0_ctsn_0_1 [get_bd_ports BT_HCI_RTS] [get_bd_pins zu_ps/emio_uart0_ctsn]
   connect_bd_net -net ps_rst_0_peripheral_aresetn [get_bd_pins ps_rst_0/peripheral_aresetn] [get_bd_pins axi_intc_0/s_axi_aresetn] [get_bd_pins zu_ps_axi_periph/ARESETN] [get_bd_pins zu_ps_axi_periph/M00_ARESETN] [get_bd_pins zu_ps_axi_periph/S00_ARESETN]
   connect_bd_net -net util_vector_logic_0_Res [get_bd_pins util_vector_logic_0/Res] [get_bd_ports fan_en_b]
   connect_bd_net -net xlslice_0_Dout [get_bd_pins xlslice_0/Dout] [get_bd_pins util_vector_logic_0/Op1]
   connect_bd_net -net zu_ps_emio_ttc0_wave_o [get_bd_pins zu_ps/emio_ttc0_wave_o] [get_bd_pins xlslice_0/Din]
+  connect_bd_net -net zu_ps_emio_uart0_rtsn [get_bd_pins zu_ps/emio_uart0_rtsn] [get_bd_ports BT_HCI_CTS]
   connect_bd_net -net zynq_ultra_ps_e_0_pl_clk0 [get_bd_pins zu_ps/pl_clk0] [get_bd_pins clk_wiz_0/clk_in1]
   connect_bd_net -net zynq_ultra_ps_e_0_pl_resetn0 [get_bd_pins zu_ps/pl_resetn0] [get_bd_pins clk_wiz_0/resetn] [get_bd_pins ps_rst_0/ext_reset_in] [get_bd_pins ps_rst_1/ext_reset_in] [get_bd_pins ps_rst_2/ext_reset_in] [get_bd_pins ps_rst_3/ext_reset_in] [get_bd_pins ps_rst_4/ext_reset_in]
 
