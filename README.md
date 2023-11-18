@@ -16,3 +16,10 @@
     ```bash
     $ git clone https://github.com/Avnet/bdf.git $XILINX_VIVADO/data/xhub/boards/XilinxBoardStore/boards/bdf
     ```
+
+***
+
+## References
+
+- V1
+  - https://community.element14.com/products/devtools/avnetboardscommunity/w/boards/23080/ultra96-v1
