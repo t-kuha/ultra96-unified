@@ -27,7 +27,6 @@ $ petalinux-build -p ${PRJ}
 
 ```shell-session
 $ vitis -s create_vitis_platform.py
-
 ```
 
 ## Build reference design
