@@ -6,7 +6,6 @@ import vitis
 
 PFM_NAME = 'u96_vai'
 top_dir = os.path.dirname(__file__)
-top_dir = '.'
 pfm_dir = os.path.join(top_dir, '_pfm')
 # boot_dir = os.path.join(top_dir, '_boot')
 sd_dir = os.path.join(top_dir, '_sd_dir')
