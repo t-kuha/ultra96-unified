@@ -11,6 +11,10 @@ config lmsensors
 	 bool "lmsensors"
 	 help
 	
+config packagegroup-petalinux-jupyter  
+	 bool "packagegroup-petalinux-jupyter"
+	 help
+	
 config peekpoke  
 	 bool "peekpoke"
 	 help

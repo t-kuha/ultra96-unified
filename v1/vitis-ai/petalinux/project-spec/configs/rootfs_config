@@ -3995,7 +3995,7 @@ CONFIG_packagegroup-petalinux-lmsensors=y
 #
 # packagegroup-petalinux-python-modules 
 #
-# CONFIG_packagegroup-petalinux-python-modules is not set
+CONFIG_packagegroup-petalinux-python-modules=y
 # CONFIG_packagegroup-petalinux-python-modules-dbg is not set
 # CONFIG_packagegroup-petalinux-python-modules-dev is not set
 
@@ -4084,6 +4084,7 @@ CONFIG_Init-manager-systemd=y
 CONFIG_fuse-exfat=y
 # CONFIG_gpio-demo is not set
 CONFIG_lmsensors=y
+CONFIG_packagegroup-petalinux-jupyter=y
 # CONFIG_peekpoke is not set
 CONFIG_target-factory=y
 CONFIG_unilog=y
