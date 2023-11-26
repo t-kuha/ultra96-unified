@@ -12,3 +12,4 @@ CONFIG_unilog
 CONFIG_vart
 CONFIG_vitis-ai-library
 CONFIG_xir
+
