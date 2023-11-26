@@ -4083,8 +4083,8 @@ CONFIG_fuse-exfat=y
 # CONFIG_gpio-demo is not set
 CONFIG_lmsensors=y
 # CONFIG_peekpoke is not set
-# CONFIG_wilc is not set
-# CONFIG_wilc3000-fw is not set
+CONFIG_wilc=y
+CONFIG_wilc3000-fw=y
 
 #
 # PetaLinux RootFS Settings
