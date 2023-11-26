@@ -77,7 +77,7 @@ $ . ./build.sh
 ```shell-session
 $ export PRJ=petalinux
 $ petalinux-create -t project -n ${PRJ} --template zynqMP
-$ petalinux-config -p ${PRJ} --get-hw-description=.
+$ petalinux-config -p ${PRJ} --get-hw-description=hw.xsa
 
 # Do some configuration
 $ petalinux-config -p ${PRJ} -c kernel
@@ -86,9 +86,6 @@ $ petalinux-config -p ${PRJ} -c rootfs
 
 # Build project
 $ petalinux-build -p ${PRJ}
-
-# Generate SDK
-$ petalinux-build -p ${PRJ} --sdk
 ```
 
 ***
