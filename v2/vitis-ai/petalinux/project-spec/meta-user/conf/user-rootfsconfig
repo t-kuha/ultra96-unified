@@ -7,6 +7,9 @@ CONFIG_peekpoke
 CONFIG_lmsensors
 CONFIG_fuse-exfat
 
+CONFIG_wilc
+CONFIG_wilc3000-fw
+
 CONFIG_target-factory
 CONFIG_unilog
 CONFIG_vart

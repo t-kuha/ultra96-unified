@@ -3490,7 +3490,7 @@ CONFIG_bridge-utils=y
 #
 # wpa-supplicant 
 #
-# CONFIG_wpa-supplicant is not set
+CONFIG_wpa-supplicant=y
 # CONFIG_wpa-supplicant-passphrase is not set
 # CONFIG_wpa-supplicant-dev is not set
 # CONFIG_wpa-supplicant-dbg is not set
@@ -4090,6 +4090,8 @@ CONFIG_target-factory=y
 CONFIG_unilog=y
 CONFIG_vart=y
 CONFIG_vitis-ai-library=y
+CONFIG_wilc=y
+CONFIG_wilc3000-fw=y
 CONFIG_xir=y
 
 #

@@ -12,6 +12,9 @@ config lmsensors
 	 help
 	
 config packagegroup-petalinux-jupyter  
+	 bool "packagegroup-petalinux-jupyter"
+	 help
+	
 config peekpoke  
 	 bool "peekpoke"
 	 help
@@ -30,6 +33,14 @@ config vart
 	
 config vitis-ai-library  
 	 bool "vitis-ai-library"
+	 help
+	
+config wilc  
+	 bool "wilc"
+	 help
+	
+config wilc3000-fw  
+	 bool "wilc3000-fw"
 	 help
 	
 config xir  
