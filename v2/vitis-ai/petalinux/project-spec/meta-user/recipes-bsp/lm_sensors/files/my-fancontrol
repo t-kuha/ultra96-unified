@@ -1,0 +1,12 @@
+# fancontrol configuration file.
+
+INTERVAL=10
+DEVPATH=hwmon4=devices/platform/pwm-fan
+DEVNAME=hwmon4=pwmfan
+FCTEMPS=hwmon4/pwm1=hwmon2/temp1_input
+MINTEMP=hwmon4/pwm1=35
+MAXTEMP=hwmon4/pwm1=55
+MINSTART=hwmon4/pwm1=110
+MINSTOP=hwmon4/pwm1=10
+MINPWM=hwmon4/pwm1=10
+MAXPWM=hwmon4/pwm1=110

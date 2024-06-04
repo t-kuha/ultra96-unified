@@ -2296,7 +2296,7 @@ CONFIG_linux-xlnx-udev-rules=y
 # gcc-runtime 
 #
 # CONFIG_libstdcPLUSPLUS-dev is not set
-# CONFIG_libstdcPLUSPLUS is not set
+CONFIG_libstdcPLUSPLUS=y
 
 #
 # gcr 
@@ -3490,7 +3490,7 @@ CONFIG_bridge-utils=y
 #
 # wpa-supplicant 
 #
-# CONFIG_wpa-supplicant is not set
+CONFIG_wpa-supplicant=y
 # CONFIG_wpa-supplicant-passphrase is not set
 # CONFIG_wpa-supplicant-dev is not set
 # CONFIG_wpa-supplicant-dbg is not set
@@ -3932,7 +3932,7 @@ CONFIG_u-boot-tools=y
 #
 # packagegroup-petalinux-lmsensors 
 #
-# CONFIG_packagegroup-petalinux-lmsensors is not set
+CONFIG_packagegroup-petalinux-lmsensors=y
 # CONFIG_packagegroup-petalinux-lmsensors-dbg is not set
 # CONFIG_packagegroup-petalinux-lmsensors-dev is not set
 
@@ -4038,7 +4038,7 @@ CONFIG_u-boot-tools=y
 #
 # packagegroup-petalinux-vitis-acceleration-essential 
 #
-# CONFIG_packagegroup-petalinux-vitis-acceleration-essential is not set
+CONFIG_packagegroup-petalinux-vitis-acceleration-essential=y
 # CONFIG_packagegroup-petalinux-vitis-acceleration-essential-dbg is not set
 # CONFIG_packagegroup-petalinux-vitis-acceleration-essential-dev is not set
 
@@ -4069,7 +4069,9 @@ CONFIG_u-boot-tools=y
 # CONFIG_imagefeature-ssh-server-dropbear is not set
 CONFIG_imagefeature-ssh-server-openssh=y
 CONFIG_imagefeature-hwcodecs=y
-# CONFIG_imagefeature-package-management is not set
+CONFIG_imagefeature-package-management=y
+CONFIG_package-feed-uris=""
+CONFIG_package-feed-archs=""
 # CONFIG_imagefeature-debug-tweaks is not set
 # CONFIG_imagefeature-empty-root-password is not set
 # CONFIG_imagefeature-serial-autologin-root is not set
@@ -4079,13 +4081,23 @@ CONFIG_Init-manager-systemd=y
 #
 # user packages 
 #
+CONFIG_fuse-exfat=y
 # CONFIG_gpio-demo is not set
+CONFIG_lmsensors=y
+CONFIG_packagegroup-petalinux-jupyter=y
 # CONFIG_peekpoke is not set
+# CONFIG_target-factory is not set
+# CONFIG_unilog is not set
+# CONFIG_vart is not set
+# CONFIG_vitis-ai-library is not set
+CONFIG_wilc=y
+CONFIG_wilc3000-fw=y
+# CONFIG_xir is not set
 
 #
 # PetaLinux RootFS Settings
 #
-CONFIG_ADD_EXTRA_USERS="root:root;petalinux::passwd-expire;"
+CONFIG_ADD_EXTRA_USERS="root:root;petalinux:zynq"
 CONFIG_CREATE_NEW_GROUPS="aie;"
 CONFIG_ADD_USERS_TO_GROUPS="petalinux:audio,video,aie,input;"
 CONFIG_ADD_USERS_TO_SUDOERS="petalinux"
