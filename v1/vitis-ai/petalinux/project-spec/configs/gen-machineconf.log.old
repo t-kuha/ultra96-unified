@@ -1,0 +1,3 @@
+2024-06-09 11:59:30,879 - [DEBUG] Using xsct from : /home/imagingtechnerd/amd/PetaLinux/2024.1/components/xsct/bin/xsct
+2024-06-09 11:59:30,879 - [INFO] Getting Platform info from HW file
+2024-06-09 11:59:30,879 - [DEBUG] Using the soc_family specified by user:zynqmp
