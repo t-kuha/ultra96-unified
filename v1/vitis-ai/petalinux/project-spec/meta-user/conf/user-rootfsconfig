@@ -3,3 +3,14 @@
 
 CONFIG_gpio-demo
 CONFIG_peekpoke
+
+CONFIG_lmsensors
+CONFIG_fuse-exfat
+
+#CONFIG_target-factory
+#CONFIG_unilog
+#CONFIG_vart
+#CONFIG_vitis-ai-library
+#CONFIG_xir
+
+CONFIG_packagegroup-petalinux-jupyter
