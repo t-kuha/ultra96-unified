@@ -5,17 +5,18 @@ Subject: [PATCH] Apply modification for Ultra96v2
 
 ---
  Makefile   | 13 ++++++++++++-
+ cfg80211.c |  2 +-
  cfg80211.c | 10 ++++++++++
  netdev.c   |  1 +
  netdev.h   |  1 +
- power.c    |  6 ++++++
+ power.c    | 10 ++++++++--
  sdio.c     |  6 +-----
  wlan.c     |  7 ++++++-
  wlan.h     |  4 ++--
  8 files changed, 39 insertions(+), 9 deletions(-)
 
 diff --git a/Makefile b/Makefile
-index 64c39aac134..5f8ff86b3c8 100644
+index 64c39aac1344..5f8ff86b3c8d 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -1,5 +1,5 @@
@@ -40,8 +41,21 @@ index 64c39aac134..5f8ff86b3c8 100644
 +	rm -f *.o *~ core .depend .*.cmd *.ko *.mod.c
 +	rm -f Module.markers Module.symvers modules.order
 +	rm -rf .tmp_versions Modules.symversa
+diff --git a/bt.c b/bt.c
+index 12640f75fba6..dd10fc38f909 100644
+--- a/bt.c
++++ b/bt.c
+@@ -135,7 +135,7 @@ static void wilc_bt_create_device(void)
+ 	ret = alloc_chrdev_region(&chc_dev_no, 0, 1, "atmel");
+ 	if (ret < 0)
+ 		return;
+-	chc_dev_class = class_create(THIS_MODULE, "atmel");
++	chc_dev_class = class_create("atmel");
+ 	if (IS_ERR(chc_dev_class)) {
+ 		unregister_chrdev_region(chc_dev_no, 1);
+ 		return;
 diff --git a/cfg80211.c b/cfg80211.c
-index 96719d9c860..7411d371ca1 100644
+index 96719d9c860e..7411d371ca11 100644
 --- a/cfg80211.c
 +++ b/cfg80211.c
 @@ -1954,6 +1954,15 @@ static int del_virtual_intf(struct wiphy *wiphy, struct wireless_dev *wdev)
@@ -69,7 +83,7 @@ index 96719d9c860..7411d371ca1 100644
  
  	return 0;
 diff --git a/netdev.c b/netdev.c
-index 5cc98adf56d..7d32fb91350 100644
+index 5cc98adf56d4..7d32fb913504 100644
 --- a/netdev.c
 +++ b/netdev.c
 @@ -1291,6 +1291,7 @@ struct wilc_vif *wilc_netdev_ifc_init(struct wilc *wl, const char *name,
@@ -81,7 +95,7 @@ index 5cc98adf56d..7d32fb91350 100644
  	vif->ndev = ndev;
  	ndev->ml_priv = vif;
 diff --git a/netdev.h b/netdev.h
-index 443328dca3d..84d6e50a79b 100644
+index 443328dca3d5..84d6e50a79b1 100644
 --- a/netdev.h
 +++ b/netdev.h
 @@ -202,6 +202,7 @@ struct wilc_vif {
@@ -93,10 +107,26 @@ index 443328dca3d..84d6e50a79b 100644
  	u32 mgmt_reg_stypes;
  	struct net_device_stats netstats;
 diff --git a/power.c b/power.c
-index 6c59e0bd10a..2d153c52f66 100644
+index 6c59e0bd10a0..2b9c31f45d2c 100644
 --- a/power.c
 +++ b/power.c
-@@ -57,6 +57,12 @@ int wilc_of_parse_power_pins(struct wilc *wilc)
+@@ -25,13 +25,11 @@ int wilc_of_parse_power_pins(struct wilc *wilc)
+ 	const struct wilc_power_gpios *gpios = &default_gpios[0];
+ 	int ret;
+ 
+-	power->gpios.reset = of_get_named_gpio_flags(of, "reset-gpios", 0,
+-						     NULL);
++	power->gpios.reset = of_get_named_gpio(of, "reset-gpios", 0);
+ 	if (!gpio_is_valid(power->gpios.reset))
+ 		power->gpios.reset = gpios->reset;
+ 
+-	power->gpios.chip_en = of_get_named_gpio_flags(of, "chip_en-gpios", 0,
+-						       NULL);
++	power->gpios.chip_en = of_get_named_gpio(of, "chip_en-gpios", 0);
+ 	if (!gpio_is_valid(power->gpios.chip_en))
+ 		power->gpios.chip_en = gpios->chip_en;
+ 
+@@ -57,6 +55,12 @@ int wilc_of_parse_power_pins(struct wilc *wilc)
   */
  void wilc_wlan_power(struct wilc *wilc, bool on)
  {
@@ -110,7 +140,7 @@ index 6c59e0bd10a..2d153c52f66 100644
  	    !gpio_is_valid(wilc->power.gpios.reset)) {
  		/* In case SDIO power sequence driver is used to power this
 diff --git a/sdio.c b/sdio.c
-index cb340466c45..f71be2eb80a 100644
+index cb340466c457..f71be2eb80a4 100644
 --- a/sdio.c
 +++ b/sdio.c
 @@ -708,11 +708,7 @@ static int wilc_sdio_init(struct wilc *wilc, bool resume)
@@ -127,7 +157,7 @@ index cb340466c45..f71be2eb80a 100644
  	init_waitqueue_head(&sdio_intr_waitqueue);
  	sdio_priv->irq_gpio = (wilc->io_type == WILC_HIF_SDIO_GPIO_IRQ);
 diff --git a/wlan.c b/wlan.c
-index 5d46c5c0b61..357bcfb82f2 100644
+index 5d46c5c0b614..357bcfb82f26 100644
 --- a/wlan.c
 +++ b/wlan.c
 @@ -805,6 +805,10 @@ static void chip_wakeup_wilc3000(struct wilc *wilc, int source)
@@ -159,7 +189,7 @@ index 5d46c5c0b61..357bcfb82f2 100644
  	if (reg & BIT(10))
  		pr_err("%s: Failed to reset\n", __func__);
 diff --git a/wlan.h b/wlan.h
-index e3b67c9677c..847c108fd4b 100644
+index e3b67c9677c8..847c108fd4b1 100644
 --- a/wlan.h
 +++ b/wlan.h
 @@ -244,8 +244,8 @@ static inline bool is_wilc3000(u32 id)
