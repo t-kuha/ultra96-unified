@@ -1,14 +1,14 @@
-2024-06-09 12:05:22,788 - [DEBUG] Using xsct from : /home/imagingtechnerd/amd/PetaLinux/2024.1/components/xsct/bin/xsct
-2024-06-09 12:05:22,788 - [INFO] Getting Platform info from HW file
-2024-06-09 12:05:22,788 - [DEBUG] Using the soc_family specified by user:zynqmp
-2024-06-09 12:05:22,834 - [DEBUG] Hardware Configuration:
-2024-06-09 12:05:22,834 - [DEBUG] MACHINE     = "None"
-2024-06-09 12:05:22,834 - [DEBUG] DEVICE_ID   = "xczu3eg"
-2024-06-09 12:05:22,834 - [DEBUG] SOC_FAMILY  = "zynqmp"
-2024-06-09 12:05:22,834 - [DEBUG] SOC_VARIANT = "eg"
-2024-06-09 12:05:22,866 - [INFO] Silentconfig project
-2024-06-09 12:05:22,866 - [DEBUG] Running CMD: yes "" | env KCONFIG_CONFIG=/home/imagingtechnerd/disk/2024.1/ultra96-unified/v1/vitis-ai/petalinux/project-spec/configs/config conf /home/imagingtechnerd/disk/2024.1/ultra96-unified/v1/vitis-ai/petalinux/project-spec/configs/configs/Kconfig
-2024-06-09 12:05:22,886 - [DEBUG] *
+2024-06-09 12:07:08,018 - [DEBUG] Using xsct from : /home/imagingtechnerd/amd/PetaLinux/2024.1/components/xsct/bin/xsct
+2024-06-09 12:07:08,018 - [INFO] Getting Platform info from HW file
+2024-06-09 12:07:08,018 - [DEBUG] Using the soc_family specified by user:zynqmp
+2024-06-09 12:07:08,065 - [DEBUG] Hardware Configuration:
+2024-06-09 12:07:08,065 - [DEBUG] MACHINE     = "None"
+2024-06-09 12:07:08,065 - [DEBUG] DEVICE_ID   = "xczu3eg"
+2024-06-09 12:07:08,065 - [DEBUG] SOC_FAMILY  = "zynqmp"
+2024-06-09 12:07:08,065 - [DEBUG] SOC_VARIANT = "eg"
+2024-06-09 12:07:08,096 - [INFO] Silentconfig project
+2024-06-09 12:07:08,096 - [DEBUG] Running CMD: yes "" | env KCONFIG_CONFIG=/home/imagingtechnerd/disk/2024.1/ultra96-unified/v1/vitis-ai/petalinux/project-spec/configs/config conf /home/imagingtechnerd/disk/2024.1/ultra96-unified/v1/vitis-ai/petalinux/project-spec/configs/configs/Kconfig
+2024-06-09 12:07:08,104 - [DEBUG] *
 * PetaLinux System Configuration
 *
 ZYNQMP Configuration (SYSTEM_ZYNQMP) [Y/?] y
@@ -280,13 +280,19 @@ user layer 0 (USER_LAYER_0) []
 #
 # configuration written to /home/imagingtechnerd/disk/2024.1/ultra96-unified/v1/vitis-ai/petalinux/project-spec/configs/config
 #
-2024-06-09 12:05:23,053 - [INFO] Menuconfig rootfs
-2024-06-09 12:05:23,053 - [DEBUG] Running CMD: env KCONFIG_CONFIG=/home/imagingtechnerd/disk/2024.1/ultra96-unified/v1/vitis-ai/petalinux/project-spec/configs/rootfs_config mconf -s /home/imagingtechnerd/disk/2024.1/ultra96-unified/v1/vitis-ai/petalinux/project-spec/configs/rootfsconfigs/Kconfig
-2024-06-09 12:06:13,172 - [INFO] Generating configuration files
-2024-06-09 12:06:13,188 - [DEBUG] Skip adding layers as no bitbake-layers or builddir found
-2024-06-09 12:06:13,223 - [INFO] Generating plnxtool conf file
-2024-06-09 12:06:13,284 - [DEBUG] python3 /home/imagingtechnerd/disk/2024.1/ultra96-unified/v1/vitis-ai/petalinux/components/yocto/layers/meta-xilinx/meta-xilinx-core/gen-machine-conf/gen-machine-scripts/rootfsconfigs/rootfs_config.py --update_cfg /home/imagingtechnerd/disk/2024.1/ultra96-unified/v1/vitis-ai/petalinux/project-spec/configs/rootfs_config /home/imagingtechnerd/disk/2024.1/ultra96-unified/v1/vitis-ai/petalinux/build/conf/plnxtool.conf zynqmp
-2024-06-09 12:06:13,363 - [DEBUG] 
+2024-06-09 12:07:08,185 - [INFO] Generating kconfig for rootfs
+2024-06-09 12:07:08,186 - [DEBUG] python3 /home/imagingtechnerd/disk/2024.1/ultra96-unified/v1/vitis-ai/petalinux/components/yocto/layers/meta-xilinx/meta-xilinx-core/gen-machine-conf/gen-machine-scripts/rootfsconfigs/rootfs_config.py --generate_kconfig /home/imagingtechnerd/disk/2024.1/ultra96-unified/v1/vitis-ai/petalinux/project-spec/meta-user/conf/user-rootfsconfig /home/imagingtechnerd/disk/2024.1/ultra96-unified/v1/vitis-ai/petalinux/project-spec/configs/rootfsconfigs
+2024-06-09 12:07:08,229 - [DEBUG] 
+
+
+
+2024-06-09 12:07:08,230 - [INFO] Menuconfig rootfs
+2024-06-09 12:07:08,230 - [DEBUG] Running CMD: env KCONFIG_CONFIG=/home/imagingtechnerd/disk/2024.1/ultra96-unified/v1/vitis-ai/petalinux/project-spec/configs/rootfs_config mconf -s /home/imagingtechnerd/disk/2024.1/ultra96-unified/v1/vitis-ai/petalinux/project-spec/configs/rootfsconfigs/Kconfig
+2024-06-09 12:07:29,250 - [INFO] Generating configuration files
+2024-06-09 12:07:29,267 - [DEBUG] Skip adding layers as no bitbake-layers or builddir found
+2024-06-09 12:07:29,301 - [INFO] Generating plnxtool conf file
+2024-06-09 12:07:29,338 - [DEBUG] python3 /home/imagingtechnerd/disk/2024.1/ultra96-unified/v1/vitis-ai/petalinux/components/yocto/layers/meta-xilinx/meta-xilinx-core/gen-machine-conf/gen-machine-scripts/rootfsconfigs/rootfs_config.py --update_cfg /home/imagingtechnerd/disk/2024.1/ultra96-unified/v1/vitis-ai/petalinux/project-spec/configs/rootfs_config /home/imagingtechnerd/disk/2024.1/ultra96-unified/v1/vitis-ai/petalinux/build/conf/plnxtool.conf zynqmp
+2024-06-09 12:07:29,401 - [DEBUG] 
 
 
 
