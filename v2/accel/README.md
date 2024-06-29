@@ -29,6 +29,14 @@ $ petalinux-build -p ${PRJ}
 $ vitis -s create_vitis_platform.py
 ```
 
+## Build vector addition app
+
+```shell-session
+$ IDE_ZYNQMP_SYSROOT=<path to sysroot> vitis -s create_vadd_app.py
+```
+
+- copy the contents of ``_vitis-ws/vadd/build/hw/package/package/sd_card`` into SD card
+
 ***
 
 ## How to create PetaLinux project from scratch
