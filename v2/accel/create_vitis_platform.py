@@ -6,7 +6,6 @@ import vitis
 PFM_NAME = 'u96v2_accel'
 top_dir = os.path.dirname(os.path.abspath(__file__))
 pfm_dir = os.path.join(top_dir, '_pfm')
-# boot_dir = os.path.join(top_dir, '_boot')
 sd_dir = os.path.join(top_dir, '_sd_dir')
 petalinux_dir = os.path.join(top_dir, 'petalinux', 'images', 'linux')
 hw_xsa_path = os.path.join(top_dir, 'hw.xsa')
