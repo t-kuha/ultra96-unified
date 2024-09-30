@@ -6,7 +6,7 @@ DEVNAME=hwmon1=pwmfan
 FCTEMPS=hwmon1/pwm1=hwmon0/temp1_input
 MINTEMP=hwmon1/pwm1=35
 MAXTEMP=hwmon1/pwm1=55
-MINSTART=hwmon1/pwm1=110
-MINSTOP=hwmon1/pwm1=10
-MINPWM=hwmon1/pwm1=10
-MAXPWM=hwmon1/pwm1=110
+MINSTART=hwmon1/pwm1=255
+MINSTOP=hwmon1/pwm1=0
+MINPWM=hwmon1/pwm1=0
+#MAXPWM=hwmon1/pwm1=255
