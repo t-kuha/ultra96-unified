@@ -505,7 +505,7 @@ CONFIG_can-utils=y
 #
 # curl 
 #
-# CONFIG_curl is not set
+CONFIG_curl=y
 # CONFIG_curl-dbg is not set
 # CONFIG_libcurl is not set
 # CONFIG_curl-dev is not set
@@ -541,7 +541,7 @@ CONFIG_can-utils=y
 #
 # nfs-utils 
 #
-CONFIG_nfs-utils=y
+# CONFIG_nfs-utils is not set
 # CONFIG_nfs-utils-stats is not set
 # CONFIG_nfs-utils-dbg is not set
 # CONFIG_nfs-utils-dev is not set
