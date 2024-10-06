@@ -135,7 +135,6 @@ xilinx.com:ip:clk_wiz:6.0\
 xilinx.com:ip:proc_sys_reset:5.0\
 xilinx.com:ip:zynq_ultra_ps_e:3.5\
 xilinx.com:ip:xlslice:1.0\
-xilinx.com:ip:util_vector_logic:2.0\
 "
 
    set list_ips_missing ""
@@ -738,14 +737,6 @@ Port;FD4A0000;FD4AFFFF;1|FPD;DPDMA;FD4C0000;FD4CFFFF;1|FPD;DDR_XMPU5_CFG;FD05000
   ] $xlslice_0
 
 
-  # Create instance: util_vector_logic_0, and set properties
-  set util_vector_logic_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:util_vector_logic:2.0 util_vector_logic_0 ]
-  set_property -dict [list \
-    CONFIG.C_OPERATION {not} \
-    CONFIG.C_SIZE {1} \
-  ] $util_vector_logic_0
-
-
   # Create interface connections
   connect_bd_intf_net -intf_net zu_ps_M_AXI_HPM0_LPD [get_bd_intf_pins zu_ps/M_AXI_HPM0_LPD] [get_bd_intf_pins zu_ps_axi_periph/S00_AXI]
   connect_bd_intf_net -intf_net zu_ps_axi_periph_M00_AXI [get_bd_intf_pins axi_intc_0/s_axi] [get_bd_intf_pins zu_ps_axi_periph/M00_AXI]
@@ -760,8 +751,7 @@ Port;FD4A0000;FD4AFFFF;1|FPD;DPDMA;FD4C0000;FD4CFFFF;1|FPD;DDR_XMPU5_CFG;FD05000
   connect_bd_net -net clk_wiz_0_locked [get_bd_pins clk_wiz_0/locked] [get_bd_pins ps_rst_0/dcm_locked] [get_bd_pins ps_rst_1/dcm_locked] [get_bd_pins ps_rst_2/dcm_locked] [get_bd_pins ps_rst_3/dcm_locked] [get_bd_pins ps_rst_4/dcm_locked]
   connect_bd_net -net emio_uart0_ctsn_0_1 [get_bd_ports BT_HCI_RTS] [get_bd_pins zu_ps/emio_uart0_ctsn]
   connect_bd_net -net ps_rst_0_peripheral_aresetn [get_bd_pins ps_rst_0/peripheral_aresetn] [get_bd_pins axi_intc_0/s_axi_aresetn] [get_bd_pins zu_ps_axi_periph/ARESETN] [get_bd_pins zu_ps_axi_periph/M00_ARESETN] [get_bd_pins zu_ps_axi_periph/S00_ARESETN]
-  connect_bd_net -net util_vector_logic_0_Res [get_bd_pins util_vector_logic_0/Res] [get_bd_ports fan_en_b]
-  connect_bd_net -net xlslice_0_Dout [get_bd_pins xlslice_0/Dout] [get_bd_pins util_vector_logic_0/Op1]
+  connect_bd_net -net xlslice_0_Dout [get_bd_pins xlslice_0/Dout] [get_bd_ports fan_en_b]
   connect_bd_net -net zu_ps_emio_ttc0_wave_o [get_bd_pins zu_ps/emio_ttc0_wave_o] [get_bd_pins xlslice_0/Din]
   connect_bd_net -net zu_ps_emio_uart0_rtsn [get_bd_pins zu_ps/emio_uart0_rtsn] [get_bd_ports BT_HCI_CTS]
   connect_bd_net -net zynq_ultra_ps_e_0_pl_clk0 [get_bd_pins zu_ps/pl_clk0] [get_bd_pins clk_wiz_0/clk_in1]
@@ -778,7 +768,8 @@ Port;FD4A0000;FD4AFFFF;1|FPD;DPDMA;FD4C0000;FD4CFFFF;1|FPD;DDR_XMPU5_CFG;FD05000
   set_property PFM_NAME {xilinx:ultra96v1:ultra96:2022.1} [get_files [current_bd_design].bd]
   set_property PFM.IRQ {intr { id 0 range 32 }} [get_bd_cells /axi_intc_0]
   set_property PFM.CLOCK {clk_out1 {id "0" is_default "false" proc_sys_reset "/ps_rst_0" status "fixed"} clk_out2 {id "1" is_default "false" proc_sys_reset "/ps_rst_1" status "fixed"} clk_out3 {id "2" is_default "true" proc_sys_reset "/ps_rst_2" status "fixed"} clk_out4 {id "3" is_default "false" proc_sys_reset "/ps_rst_3" status "fixed"} clk_out5 {id "4" is_default "false" proc_sys_reset "/ps_rst_4" status "fixed"}} [get_bd_cells /clk_wiz_0]
-  set_property PFM.AXI_PORT {M_AXI_HPM0_FPD { memport "M_AXI_GP" sptag "" memory "" } M_AXI_HPM1_FPD { memport "M_AXI_GP" sptag "" memory "" } S_AXI_HP0_FPD { memport "S_AXI_HP" sptag "" memory "" } S_AXI_HP1_FPD { memport "S_AXI_HP" sptag "" memory "" } S_AXI_HP2_FPD { memport "S_AXI_HP" sptag "" memory "" } S_AXI_HP3_FPD { memport "S_AXI_HP" sptag "" memory "" } S_AXI_HPC0_FPD { memport "S_AXI_HPC" sptag "" memory "" } S_AXI_HPC1_FPD { memport "S_AXI_HPC" sptag "" memory "" } } [get_bd_cells /zu_ps]
+  set_property PFM.AXI_PORT {M_AXI_HPM0_FPD {memport "M_AXI_GP" sptag "" memory "" is_range "false"} M_AXI_HPM1_FPD {memport "M_AXI_GP" sptag "" memory "" is_range "false"} S_AXI_HPC0_FPD {memport "S_AXI_HP" sptag "HPC0" memory "" is_range "false"} S_AXI_HPC1_FPD {memport "S_AXI_HP" sptag "HPC1" memory "" is_range "false"} S_AXI_HP0_FPD {memport "S_AXI_HP" sptag "HP0" memory "" is_range "false"} S_AXI_HP1_FPD {memport "S_AXI_HP" sptag "HP1" memory "" is_range "false"} S_AXI_HP2_FPD {memport "S_AXI_HP" sptag "HP2" memory "" is_range "false"} S_AXI_HP3_FPD {memport "S_AXI_HP" sptag "HP3" memory "" is_range "false"}} [get_bd_cells /zu_ps]
+  set_property PFM.AXI_PORT {M01_AXI {memport "M_AXI_GP" sptag "" memory "" is_range "false"} M02_AXI {memport "M_AXI_GP" sptag "" memory "" is_range "false"} M03_AXI {memport "M_AXI_GP" sptag "" memory "" is_range "false"} M04_AXI {memport "M_AXI_GP" sptag "" memory "" is_range "false"} M05_AXI {memport "M_AXI_GP" sptag "" memory "" is_range "false"} M06_AXI {memport "M_AXI_GP" sptag "" memory "" is_range "false"} M07_AXI {memport "M_AXI_GP" sptag "" memory "" is_range "false"}} [get_bd_cells /zu_ps_axi_periph]
 
 
   validate_bd_design
