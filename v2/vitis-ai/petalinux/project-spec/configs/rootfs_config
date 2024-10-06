@@ -541,7 +541,7 @@ CONFIG_can-utils=y
 #
 # nfs-utils 
 #
-CONFIG_nfs-utils=y
+# CONFIG_nfs-utils is not set
 # CONFIG_nfs-utils-stats is not set
 # CONFIG_nfs-utils-dbg is not set
 # CONFIG_nfs-utils-dev is not set
@@ -3499,7 +3499,7 @@ CONFIG_wpa-supplicant=y
 #
 # ntp
 #
-# CONFIG_ntp is not set
+CONFIG_ntp=y
 # CONFIG_ntp-dev is not set
 # CONFIG_ntp-dbg is not set
 
@@ -4086,13 +4086,13 @@ CONFIG_fuse-exfat=y
 CONFIG_lmsensors=y
 CONFIG_packagegroup-petalinux-jupyter=y
 # CONFIG_peekpoke is not set
-# CONFIG_target-factory is not set
-# CONFIG_unilog is not set
-# CONFIG_vart is not set
+CONFIG_target-factory=y
+CONFIG_unilog=y
+CONFIG_vart=y
 # CONFIG_vitis-ai-library is not set
 CONFIG_wilc=y
 CONFIG_wilc3000-fw=y
-# CONFIG_xir is not set
+CONFIG_xir=y
 
 #
 # PetaLinux RootFS Settings
