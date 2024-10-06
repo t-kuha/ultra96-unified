@@ -1,14 +1,14 @@
-2024-06-09 12:07:08,018 - [DEBUG] Using xsct from : /home/imagingtechnerd/amd/PetaLinux/2024.1/components/xsct/bin/xsct
-2024-06-09 12:07:08,018 - [INFO] Getting Platform info from HW file
-2024-06-09 12:07:08,018 - [DEBUG] Using the soc_family specified by user:zynqmp
-2024-06-09 12:07:08,065 - [DEBUG] Hardware Configuration:
-2024-06-09 12:07:08,065 - [DEBUG] MACHINE     = "None"
-2024-06-09 12:07:08,065 - [DEBUG] DEVICE_ID   = "xczu3eg"
-2024-06-09 12:07:08,065 - [DEBUG] SOC_FAMILY  = "zynqmp"
-2024-06-09 12:07:08,065 - [DEBUG] SOC_VARIANT = "eg"
-2024-06-09 12:07:08,096 - [INFO] Silentconfig project
-2024-06-09 12:07:08,096 - [DEBUG] Running CMD: yes "" | env KCONFIG_CONFIG=/home/imagingtechnerd/disk/2024.1/ultra96-unified/v1/vitis-ai/petalinux/project-spec/configs/config conf /home/imagingtechnerd/disk/2024.1/ultra96-unified/v1/vitis-ai/petalinux/project-spec/configs/configs/Kconfig
-2024-06-09 12:07:08,104 - [DEBUG] *
+2024-10-06 07:03:04,171 - [DEBUG] Using xsct from : /home/imagingtechnerd/amd/PetaLinux/2024.1/components/xsct/bin/xsct
+2024-10-06 07:03:04,171 - [INFO] Getting Platform info from HW file
+2024-10-06 07:03:04,171 - [DEBUG] Using the soc_family specified by user:zynqmp
+2024-10-06 07:03:04,245 - [DEBUG] Hardware Configuration:
+2024-10-06 07:03:04,245 - [DEBUG] MACHINE     = "None"
+2024-10-06 07:03:04,245 - [DEBUG] DEVICE_ID   = "xczu3eg"
+2024-10-06 07:03:04,245 - [DEBUG] SOC_FAMILY  = "zynqmp"
+2024-10-06 07:03:04,245 - [DEBUG] SOC_VARIANT = "eg"
+2024-10-06 07:03:04,345 - [INFO] Silentconfig project
+2024-10-06 07:03:04,345 - [DEBUG] Running CMD: yes "" | env KCONFIG_CONFIG=/home/imagingtechnerd/work/ultra96-unified/v1/vitis-ai/petalinux/project-spec/configs/config conf /home/imagingtechnerd/work/ultra96-unified/v1/vitis-ai/petalinux/project-spec/configs/configs/Kconfig
+2024-10-06 07:03:04,353 - [DEBUG] *
 * PetaLinux System Configuration
 *
 ZYNQMP Configuration (SYSTEM_ZYNQMP) [Y/?] y
@@ -58,12 +58,12 @@ u-boot text base address (SUBSYSTEM_MEMORY_PSU_DDR_0_BANKLESS_U__BOOT_TEXTBASE_O
 * Serial Settings
 *
 PMUFW Serial stdin/stdout
-  1. psu_uart_1 (SUBSYSTEM_PMUFW_SERIAL_PSU_UART_1_SELECT)
-> 2. psu_uart_0 (SUBSYSTEM_PMUFW_SERIAL_PSU_UART_0_SELECT)
+> 1. psu_uart_1 (SUBSYSTEM_PMUFW_SERIAL_PSU_UART_1_SELECT)
+  2. psu_uart_0 (SUBSYSTEM_PMUFW_SERIAL_PSU_UART_0_SELECT)
   3. manual (SUBSYSTEM_PMUFW_SERIAL_MANUAL_SELECT)
 choice[1-3?]: FSBL Serial stdin/stdout
-  1. psu_uart_1 (SUBSYSTEM_FSBL_SERIAL_PSU_UART_1_SELECT)
-> 2. psu_uart_0 (SUBSYSTEM_FSBL_SERIAL_PSU_UART_0_SELECT)
+> 1. psu_uart_1 (SUBSYSTEM_FSBL_SERIAL_PSU_UART_1_SELECT)
+  2. psu_uart_0 (SUBSYSTEM_FSBL_SERIAL_PSU_UART_0_SELECT)
   3. psu_coresight_0 (SUBSYSTEM_FSBL_SERIAL_PSU_CORESIGHT_0_SELECT)
   4. manual (SUBSYSTEM_FSBL_SERIAL_MANUAL_SELECT)
 choice[1-4?]: TF-A Serial stdin/stdout
@@ -72,8 +72,8 @@ choice[1-4?]: TF-A Serial stdin/stdout
   3. psu_coresight_0 (SUBSYSTEM_TF-A_SERIAL_PSU_CORESIGHT_0_SELECT)
   4. manual (SUBSYSTEM_TF-A_SERIAL_MANUAL_SELECT)
 choice[1-4?]: U-boot/Linux Serial stdin/stdout
-  1. psu_uart_1 (SUBSYSTEM_SERIAL_PSU_UART_1_SELECT)
-> 2. psu_uart_0 (SUBSYSTEM_SERIAL_PSU_UART_0_SELECT)
+> 1. psu_uart_1 (SUBSYSTEM_SERIAL_PSU_UART_1_SELECT)
+  2. psu_uart_0 (SUBSYSTEM_SERIAL_PSU_UART_0_SELECT)
   3. psu_coresight_0 (SUBSYSTEM_SERIAL_PSU_CORESIGHT_0_SELECT)
   4. manual (SUBSYSTEM_SERIAL_MANUAL_SELECT)
 choice[1-4?]: System stdin/stdout baudrate for psu_uart_1
@@ -137,8 +137,8 @@ Extra dts/dtsi files (SUBSYSTEM_EXTRA_DT_FILES) []
 *
 generate boot args automatically (SUBSYSTEM_BOOTARGS_AUTO) [Y/n/?] 
 enable kernel earlyprintk (SUBSYSTEM_BOOTARGS_EARLYPRINTK) [Y/n/?] 
-Auto generated bootargs (NO EDIT!) (SUBSYSTEM_BOOTARGS_GENERATED) [earlycon console=ttyPS0,115200 root=/dev/ram0 rw] 
-Add extra boot args (SUBSYSTEM_EXTRA_BOOTARGS) [] 
+Auto generated bootargs (NO EDIT!) (SUBSYSTEM_BOOTARGS_GENERATED) [earlycon console=ttyPS0,115200 root=/dev/mmcblk0p2 ro rootwait clk_ignore_unused cma=1000M] 
+Add extra boot args (SUBSYSTEM_EXTRA_BOOTARGS) [clk_ignore_unused cma=1000M] 
 Devicetree compiler flags (SUBSYSTEM_DEVICETREE_COMPILER_FLAGS) [-@] 
 Devicetree overlay (SUBSYSTEM_DTB_OVERLAY) [N/y/?] 
 Remove PL from devicetree (SUBSYSTEM_REMOVE_PL_DTB) [N/y/?] 
@@ -219,24 +219,22 @@ linux config target (SUBSYSTEM_LINUX_CONFIG_TARGET) []
 *
 Root filesystem type
   1. INITRAMFS (SUBSYSTEM_ROOTFS_INITRAMFS)
-> 2. INITRD (SUBSYSTEM_ROOTFS_INITRD)
+  2. INITRD (SUBSYSTEM_ROOTFS_INITRD)
   3. JFFS2 (SUBSYSTEM_ROOTFS_JFFS2)
   4. UBI/UBIFS (SUBSYSTEM_ROOTFS_UBIFS)
   5. NFS (SUBSYSTEM_ROOTFS_NFS)
-  6. EXT4 (SD/eMMC/SATA/USB) (SUBSYSTEM_ROOTFS_EXT4)
+> 6. EXT4 (SD/eMMC/SATA/USB) (SUBSYSTEM_ROOTFS_EXT4)
   7. other (SUBSYSTEM_ROOTFS_OTHER)
-choice[1-7]: RAMDISK loadaddr (SUBSYSTEM_INITRD_RAMDISK_LOADADDR) [0x0] 
-INITRAMFS/INITRD Image name (SUBSYSTEM_INITRAMFS_IMAGE_NAME) [petalinux-image-minimal] 
+choice[1-7]: Device node of SD device (SUBSYSTEM_SDROOT_DEV) [/dev/mmcblk0p2] 
 name for bootable kernel image (SUBSYSTEM_UIMAGE_NAME) [image.ub] 
 Root filesystem formats (SUBSYSTEM_RFS_FORMATS) [cpio cpio.gz cpio.gz.u-boot ext4 tar.gz jffs2] 
-Copy final images to tftpboot (SUBSYSTEM_COPY_TO_TFTPBOOT) [Y/n/?] 
-  tftpboot directory (SUBSYSTEM_TFTPBOOT_DIR) [/tftpboot] 
+Copy final images to tftpboot (SUBSYSTEM_COPY_TO_TFTPBOOT) [N/y/?] 
 *
 * Firmware Version Configuration
 *
-Host name (SUBSYSTEM_HOSTNAME) [petalinux] 
-Product name (SUBSYSTEM_PRODUCT) [petalinux] 
-Firmware Version (SUBSYSTEM_FW_VERSION) [1.00] 
+Host name (SUBSYSTEM_HOSTNAME) [u96-vai] 
+Product name (SUBSYSTEM_PRODUCT) [u96-vai] 
+Firmware Version (SUBSYSTEM_FW_VERSION) [2024.1] 
 *
 * Yocto Settings
 *
@@ -278,21 +276,15 @@ Enable Buildtools Extended (YOCTO_BUILDTOOLS_EXTENDED) [N/y/?]
 *
 user layer 0 (USER_LAYER_0) [] 
 #
-# configuration written to /home/imagingtechnerd/disk/2024.1/ultra96-unified/v1/vitis-ai/petalinux/project-spec/configs/config
+# configuration written to /home/imagingtechnerd/work/ultra96-unified/v1/vitis-ai/petalinux/project-spec/configs/config
 #
-2024-06-09 12:07:08,185 - [INFO] Generating kconfig for rootfs
-2024-06-09 12:07:08,186 - [DEBUG] python3 /home/imagingtechnerd/disk/2024.1/ultra96-unified/v1/vitis-ai/petalinux/components/yocto/layers/meta-xilinx/meta-xilinx-core/gen-machine-conf/gen-machine-scripts/rootfsconfigs/rootfs_config.py --generate_kconfig /home/imagingtechnerd/disk/2024.1/ultra96-unified/v1/vitis-ai/petalinux/project-spec/meta-user/conf/user-rootfsconfig /home/imagingtechnerd/disk/2024.1/ultra96-unified/v1/vitis-ai/petalinux/project-spec/configs/rootfsconfigs
-2024-06-09 12:07:08,229 - [DEBUG] 
-
-
-
-2024-06-09 12:07:08,230 - [INFO] Menuconfig rootfs
-2024-06-09 12:07:08,230 - [DEBUG] Running CMD: env KCONFIG_CONFIG=/home/imagingtechnerd/disk/2024.1/ultra96-unified/v1/vitis-ai/petalinux/project-spec/configs/rootfs_config mconf -s /home/imagingtechnerd/disk/2024.1/ultra96-unified/v1/vitis-ai/petalinux/project-spec/configs/rootfsconfigs/Kconfig
-2024-06-09 12:07:29,250 - [INFO] Generating configuration files
-2024-06-09 12:07:29,267 - [DEBUG] Skip adding layers as no bitbake-layers or builddir found
-2024-06-09 12:07:29,301 - [INFO] Generating plnxtool conf file
-2024-06-09 12:07:29,338 - [DEBUG] python3 /home/imagingtechnerd/disk/2024.1/ultra96-unified/v1/vitis-ai/petalinux/components/yocto/layers/meta-xilinx/meta-xilinx-core/gen-machine-conf/gen-machine-scripts/rootfsconfigs/rootfs_config.py --update_cfg /home/imagingtechnerd/disk/2024.1/ultra96-unified/v1/vitis-ai/petalinux/project-spec/configs/rootfs_config /home/imagingtechnerd/disk/2024.1/ultra96-unified/v1/vitis-ai/petalinux/build/conf/plnxtool.conf zynqmp
-2024-06-09 12:07:29,401 - [DEBUG] 
+2024-10-06 07:03:04,446 - [INFO] Menuconfig rootfs
+2024-10-06 07:03:04,446 - [DEBUG] Running CMD: env KCONFIG_CONFIG=/home/imagingtechnerd/work/ultra96-unified/v1/vitis-ai/petalinux/project-spec/configs/rootfs_config mconf -s /home/imagingtechnerd/work/ultra96-unified/v1/vitis-ai/petalinux/project-spec/configs/rootfsconfigs/Kconfig
+2024-10-06 07:03:09,055 - [INFO] Generating configuration files
+2024-10-06 07:03:09,102 - [DEBUG] Skip adding layers as no bitbake-layers or builddir found
+2024-10-06 07:03:09,143 - [INFO] Generating plnxtool conf file
+2024-10-06 07:03:09,182 - [DEBUG] python3 /home/imagingtechnerd/work/ultra96-unified/v1/vitis-ai/petalinux/components/yocto/layers/meta-xilinx/meta-xilinx-core/gen-machine-conf/gen-machine-scripts/rootfsconfigs/rootfs_config.py --update_cfg /home/imagingtechnerd/work/ultra96-unified/v1/vitis-ai/petalinux/project-spec/configs/rootfs_config /home/imagingtechnerd/work/ultra96-unified/v1/vitis-ai/petalinux/build/conf/plnxtool.conf zynqmp
+2024-10-06 07:03:09,254 - [DEBUG] 
 
 
 

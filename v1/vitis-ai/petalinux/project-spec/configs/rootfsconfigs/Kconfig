@@ -9546,7 +9546,7 @@ config Init-manager-sysvinit
 endchoice
 endmenu
 
-source /home/imagingtechnerd/disk/2024.1/ultra96-unified/v1/vitis-ai/petalinux/project-spec/configs/rootfsconfigs/Kconfig.user
+source /home/imagingtechnerd/work/ultra96-unified/v1/vitis-ai/petalinux/project-spec/configs/rootfsconfigs/Kconfig.user
 
 menu "PetaLinux RootFS Settings"
 config ADD_EXTRA_USERS

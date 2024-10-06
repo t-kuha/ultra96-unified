@@ -33,22 +33,22 @@ config SUBSYSTEM_ENDIAN_LITTLE
 
 if SUBSYSTEM_DISTRO_PETALINUX
 
-source /home/imagingtechnerd/disk/2024.1/ultra96-unified/v1/vitis-ai/petalinux/project-spec/configs/configs/Kconfig.linuxcompselection
+source /home/imagingtechnerd/work/ultra96-unified/v1/vitis-ai/petalinux/project-spec/configs/configs/Kconfig.linuxcompselection
 
-source /home/imagingtechnerd/disk/2024.1/ultra96-unified/v1/vitis-ai/petalinux/project-spec/configs/configs/Kconfig.autoconfigsettings
+source /home/imagingtechnerd/work/ultra96-unified/v1/vitis-ai/petalinux/project-spec/configs/configs/Kconfig.autoconfigsettings
 
 endif
 
-source /home/imagingtechnerd/disk/2024.1/ultra96-unified/v1/vitis-ai/petalinux/project-spec/configs/configs/Kconfig.syshw
+source /home/imagingtechnerd/work/ultra96-unified/v1/vitis-ai/petalinux/project-spec/configs/configs/Kconfig.syshw
 
-source /home/imagingtechnerd/disk/2024.1/ultra96-unified/v1/vitis-ai/petalinux/project-spec/configs/configs/Kconfig.dtgsettings
+source /home/imagingtechnerd/work/ultra96-unified/v1/vitis-ai/petalinux/project-spec/configs/configs/Kconfig.dtgsettings
 
-source /home/imagingtechnerd/disk/2024.1/ultra96-unified/v1/vitis-ai/petalinux/project-spec/configs/configs/Kconfig.bootcompconfigurations
+source /home/imagingtechnerd/work/ultra96-unified/v1/vitis-ai/petalinux/project-spec/configs/configs/Kconfig.bootcompconfigurations
 
 if SUBSYSTEM_DISTRO_PETALINUX
 
-source /home/imagingtechnerd/disk/2024.1/ultra96-unified/v1/vitis-ai/petalinux/project-spec/configs/configs/Kconfig.imagepkgconfigurations
+source /home/imagingtechnerd/work/ultra96-unified/v1/vitis-ai/petalinux/project-spec/configs/configs/Kconfig.imagepkgconfigurations
 
 endif
 
-source /home/imagingtechnerd/disk/2024.1/ultra96-unified/v1/vitis-ai/petalinux/project-spec/configs/configs/Kconfig.yoctobuildsettings
+source /home/imagingtechnerd/work/ultra96-unified/v1/vitis-ai/petalinux/project-spec/configs/configs/Kconfig.yoctobuildsettings

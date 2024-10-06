@@ -9,7 +9,7 @@ config SYSTEM_ZYNQMP
         bool "ZYNQMP Configuration"
         help
           ZYNQMP Configuration for petalinux project.
-          All these config options will be in /home/imagingtechnerd/disk/2024.1/ultra96-unified/v1/vitis-ai/petalinux/project-spec/configs/config
+          All these config options will be in /home/imagingtechnerd/work/ultra96-unified/v1/vitis-ai/petalinux/project-spec/configs/config
 
 config SUBSYSTEM_VARIANT_ZYNQMPEG
         bool
@@ -21,4 +21,4 @@ config SUBSYSTEM_DISTRO_PETALINUX
         default y
         help
 
-source /home/imagingtechnerd/disk/2024.1/ultra96-unified/v1/vitis-ai/petalinux/project-spec/configs/configs/Kconfig.main
+source /home/imagingtechnerd/work/ultra96-unified/v1/vitis-ai/petalinux/project-spec/configs/configs/Kconfig.main
