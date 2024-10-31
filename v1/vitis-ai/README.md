@@ -4,15 +4,15 @@
 
 ## Create hardware
 
-```shell-session
+```shell
 $ vivado -notrace -nojournal -mode batch -source create_xsa.tcl
 ```
 
 ## Create PetaLinux project
 
-```shell-session
+```shell
 $ export PRJ=petalinux
-$ petalinux-config -p ${PRJ}
+$ petalinux-config -p ${PRJ} --get-hw-description=hw.xsa
 
 # Make additional configuration if necessary
 $ petalinux-config -p ${PRJ} -c u-boot
@@ -25,28 +25,28 @@ $ petalinux-build -p ${PRJ}
 
 ## Generate platform
 
-```shell-session
+```shell
 $ vitis -s create_vitis_platform.py
 ```
 
 ## Build reference design
 
-```shell-session
+```shell
 # download reference design source
 $ wget https://www.xilinx.com/bin/public/openDownload?filename=DPUCZDX8G.tar.gz -O DPUCZDX8G.tar.gz
 $ tar xf DPUCZDX8G.tar.gz
 ```
 
+- copy DPU config files
+```shell
+$ cp src/dpu_conf.vh DPUCZDX8G/prj/Vitis/dpu_conf.vh
+$ cp src/prj_config DPUCZDX8G/prj/Vitis/config_file/prj_config
+```
+
 - modify ``DPUCZDX8G/prj/Vitis/Makefile``
 
-  - line 37 (change config file name to "prj_config_1dpu"):
-
-  ```makefile
-  XOCC_OPTS = -t ${TARGET} --platform ${SDX_PLATFORM} --save-temps --config ${DIR_PRJ}/config_file/prj_config_1dpu
-  ```
-
   - line 113 (use "--package.no_image" option):
-  ```
+  ```makefile
   v++ -t ${TARGET} --platform ${SDX_PLATFORM} -p $(BUILD_DIR)/$(BUILD_DIR).xclbin -o $(BUILD_DIR)/dpu.xclbin --package.no_image
   cp ./binary_*/link/vivado/vpl/prj/prj*/sources_1/bd/*/hw_handoff/*.hwh ./sd_card
 	cp ./binary_*/link/vivado/vpl/prj/prj.gen/sources_1/bd/*/ip/*_DPUCZDX8G_1_0/arch.json ./sd_card
@@ -54,16 +54,17 @@ $ tar xf DPUCZDX8G.tar.gz
 
 - start building HW
 
-```shell-session
+```shell
 $ export SDX_PLATFORM=$(pwd)/_pfm/u96_vai/export/u96_vai/u96_vai.xpfm
-$ cd DPUCZDX8G/prj/Vitis/
+$ pushd DPUCZDX8G/prj/Vitis/
 $ make all KERNEL=DPU DEVICE=u96
 # copy the contents of "sd_card" into SD card
+$ popd
 ```
 
 - build SW app
 
-```shell-session
+```shell
 $ . <SDK installation path>/environment-setup-cortexa72-cortexa53-xilinx-linux
 $ cd DPUCZDX8G/app/samples/
 $ . ./build.sh
@@ -74,7 +75,7 @@ $ . ./build.sh
 
 ## How to create PetaLinux project from scratch
 
-```shell-session
+```shell
 $ export PRJ=petalinux
 $ petalinux-create -t project -n ${PRJ} --template zynqMP
 $ petalinux-config -p ${PRJ} --get-hw-description=hw.xsa
