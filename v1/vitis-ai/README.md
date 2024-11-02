@@ -62,15 +62,6 @@ $ make all KERNEL=DPU DEVICE=u96
 $ popd
 ```
 
-- build SW app
-
-```shell
-$ . <SDK installation path>/environment-setup-cortexa72-cortexa53-xilinx-linux
-$ cd DPUCZDX8G/app/samples/
-$ . ./build.sh
-# copy a.out into SD card
-```
-
 ***
 
 ## How to create PetaLinux project from scratch
