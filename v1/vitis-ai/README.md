@@ -31,20 +31,27 @@ $ vitis -s create_vitis_platform.py
 
 ## Build reference design
 
+- download reference design source
+
 ```shell
-# download reference design source
 $ wget https://www.xilinx.com/bin/public/openDownload?filename=DPUCZDX8G.tar.gz -O DPUCZDX8G.tar.gz
 $ tar xf DPUCZDX8G.tar.gz
 ```
 
+- Copy DPU donfig files
+
+```shell
+$ cp src/dpu_conf.vh DPUCZDX8G/prj/Vitis/
+$ cp src/prj_config DPUCZDX8G/prj/Vitis/config_file/
+```
+
 - modify ``DPUCZDX8G/prj/Vitis/Makefile``
 
-  - line 113 (use "--package.no_image" option):
-  ```makefile
-  v++ -t ${TARGET} --platform ${SDX_PLATFORM} -p $(BUILD_DIR)/$(BUILD_DIR).xclbin -o $(BUILD_DIR)/dpu.xclbin --package.no_image
-  cp ./binary_*/link/vivado/vpl/prj/prj*/sources_1/bd/*/hw_handoff/*.hwh ./sd_card
-	cp ./binary_*/link/vivado/vpl/prj/prj.gen/sources_1/bd/*/ip/*_DPUCZDX8G_1_0/arch.json ./sd_card
-  ```
+```makefile
+v++ -t ${TARGET} --platform ${SDX_PLATFORM} -p $(BUILD_DIR)/$(BUILD_DIR).xclbin -o $(BUILD_DIR)/dpu.xclbin --package.no_image
+cp ./binary_*/link/vivado/vpl/prj/prj*/sources_1/bd/*/hw_handoff/*.hwh ./sd_card
+cp ./binary_*/link/vivado/vpl/prj/prj.gen/sources_1/bd/*/ip/*_DPUCZDX8G_1_0/arch.json ./sd_card
+```
 
 - start building HW
 
