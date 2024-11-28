@@ -1,10 +1,26 @@
 menu "user packages " 
+config fuse-exfat  
+	 bool "fuse-exfat"
+	 help
+	
 config gpio-demo  
 	 bool "gpio-demo"
 	 help
 	
+config lmsensors  
+	 bool "lmsensors"
+	 help
+	
 config peekpoke  
 	 bool "peekpoke"
+	 help
+	
+config wilc  
+	 bool "wilc"
+	 help
+	
+config wilc3000-fw  
+	 bool "wilc3000-fw"
 	 help
 	
 endmenu
