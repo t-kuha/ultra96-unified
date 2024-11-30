@@ -1,0 +1,7 @@
+//arch = zynqmp; split = false; format = BIN
+the_ROM_image:
+{
+	[bootloader, destination_cpu = a53-0]_pfm/u96_led/export/u96_led/sw/boot/fsbl.elf
+	[destination_device = pl]_vitis/led_blink_ps/_ide/bitstream/ultra96.bit
+	[destination_cpu = a53-0, exception_level = el-3]_vitis/led_blink_ps/build/led_blink_ps.elf
+}
