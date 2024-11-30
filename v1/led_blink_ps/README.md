@@ -18,3 +18,10 @@ $ vitis -s create_app.py
 
 - Copy the contents of  ``BOOT.bin`` into SD card and power up the board
 - Check if LED0 - LED3 will blink
+
+```shell-session
+Zynq MP First Stage Boot Loader 
+Release 2024.2   Nov 30 2024  -  01:51:48
+PMU-FW is not running, certain applications may not be supported.
+..... LED Blink .....
+```
