@@ -112,8 +112,7 @@ $ petalinux-build -p ${PRJ} --sdk
 ## References
 
 - [Why do U-boot and the Kernel not show the current build timestamp](https://www.xilinx.com/support/answers/76559.html)
-
 - [Debian/Ubuntu でKV260 で冷却ファンを制御する (その２)](https://qiita.com/ikwzm/items/f94748f5353271aab5ee)
-
+- [Linux systemd　初心者用　備忘録　まとめ](https://ichiri.biz/tech/linux-systemd-beginner/#toc10)
 - Wi-Fi firmware
   - wl18xx-fw-4.bin: [processor-firmware/ti-linux-firmware](https://git.ti.com/cgit/processor-firmware/ti-linux-firmware/log/ti-connectivity/wl18xx-fw-4.bin?h=ti-linux-firmware)
