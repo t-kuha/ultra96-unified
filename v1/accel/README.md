@@ -12,7 +12,7 @@ $ vivado -notrace -nojournal -mode batch -source create_xsa.tcl
 
 ```shell
 $ export PRJ=petalinux
-$ petalinux-config -p ${PRJ}
+$ petalinux-config -p ${PRJ} --get-hw-description=hw.xsa
 
 # Make additional configuration if necessary
 $ petalinux-config -p ${PRJ} -c u-boot
