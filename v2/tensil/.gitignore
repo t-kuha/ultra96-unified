@@ -1,0 +1,6 @@
+zulu11.60.19-ca-jdk11.0.17-linux_x64
+tensil
+models
+*.tdata
+*.tmodel
+*.tprog
