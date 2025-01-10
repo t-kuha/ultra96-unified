@@ -1,0 +1,284 @@
+2025-01-10 12:49:57,812 - [DEBUG] Using xsct from : /home/imagingtechnerd/amd/PetaLinux/2024.2/components/xsct/bin/xsct
+2025-01-10 12:49:57,812 - [INFO] Getting Platform info from HW file
+2025-01-10 12:49:57,812 - [DEBUG] Using the soc_family specified by user:zynqmp
+2025-01-10 12:49:57,905 - [DEBUG] Hardware Configuration:
+2025-01-10 12:49:57,905 - [DEBUG] MACHINE     = "None"
+2025-01-10 12:49:57,905 - [DEBUG] DEVICE_ID   = "xczu3eg"
+2025-01-10 12:49:57,905 - [DEBUG] SOC_FAMILY  = "zynqmp"
+2025-01-10 12:49:57,905 - [DEBUG] SOC_VARIANT = "eg"
+2025-01-10 12:49:57,905 - [INFO] Silentconfig project
+2025-01-10 12:49:57,905 - [DEBUG] Running CMD: yes "" | env KCONFIG_CONFIG=/home/imagingtechnerd/ultra96-unified/v2/tensil/petalinux/project-spec/configs/config conf /home/imagingtechnerd/ultra96-unified/v2/tensil/petalinux/project-spec/configs/configs/Kconfig
+2025-01-10 12:49:57,928 - [DEBUG] *
+* PetaLinux System Configuration
+*
+ZYNQMP Configuration (SYSTEM_ZYNQMP) [Y/?] y
+Subsystem Architecture (NO EDIT!)
+> 1. aarch64 (SUBSYSTEM_ARCH_AARCH64)
+  2. arm (SUBSYSTEM_ARCH_ARM)
+  3. microblaze (SUBSYSTEM_ARCH_MICROBLAZE)
+choice[1-3?]: *
+* Linux Components Selection
+*
+Image Selector (SUBSYSTEM_COMPONENT_IMG_SEL) [N/y/?] 
+u-boot
+> 1. u-boot-xlnx (SUBSYSTEM_COMPONENT_U__BOOT_NAME_U__BOOT__XLNX)
+  2. remote (SUBSYSTEM_COMPONENT_U__BOOT_NAME_REMOTE)
+  3. ext-local-src (SUBSYSTEM_COMPONENT_U__BOOT_NAME_EXT__LOCAL__SRC)
+choice[1-3]: trusted-firmware-arm
+> 1. trusted-firmware-arm (SUBSYSTEM_COMPONENT_TRUSTED__FIRMWARE__ARM_NAME_TRUSTED__FIRMWARE__ARM)
+  2. remote (SUBSYSTEM_COMPONENT_TRUSTED__FIRMWARE__ARM_NAME_REMOTE)
+  3. ext-local-src (SUBSYSTEM_COMPONENT_TRUSTED__FIRMWARE__ARM_NAME_EXT__LOCAL__SRC)
+choice[1-3]: linux-kernel
+> 1. linux-xlnx (SUBSYSTEM_COMPONENT_LINUX__KERNEL_NAME_LINUX__XLNX)
+  2. remote (SUBSYSTEM_COMPONENT_LINUX__KERNEL_NAME_REMOTE)
+  3. ext-local-src (SUBSYSTEM_COMPONENT_LINUX__KERNEL_NAME_EXT__LOCAL__SRC)
+choice[1-3]: *
+* Auto Config Settings
+*
+Device tree autoconfig (SUBSYSTEM_AUTOCONFIG_DEVICE__TREE) [Y/n/?] 
+Specify a manual device tree include directory (SUBSYSTEM_DEVICE_TREE_MANUAL_INCLUDE) [N/y/?] 
+*
+* Subsystem Hardware Settings
+*
+System Processor
+> 1. psu_cortexa53_0 (SUBSYSTEM_PROCESSOR_psu_cortexa53_0_SELECT)
+choice[1]: 1
+*
+* Memory Settings
+*
+Primary Memory
+> 1. psu_ddr_0 (SUBSYSTEM_MEMORY_PSU_DDR_0_SELECT)
+  2. manual (SUBSYSTEM_MEMORY_MANUAL_SELECT)
+choice[1-2?]: System memory base address (SUBSYSTEM_MEMORY_PSU_DDR_0_BASEADDR) [0x0] 
+System memory size (SUBSYSTEM_MEMORY_PSU_DDR_0_SIZE) [0x80000000] 
+u-boot text base address (SUBSYSTEM_MEMORY_PSU_DDR_0_U__BOOT_TEXTBASE_OFFSET) [0x8000000] 
+*
+* Serial Settings
+*
+PMUFW Serial stdin/stdout
+> 1. psu_uart_1 (SUBSYSTEM_PMUFW_SERIAL_PSU_UART_1_SELECT)
+  2. psu_uart_0 (SUBSYSTEM_PMUFW_SERIAL_PSU_UART_0_SELECT)
+  3. manual (SUBSYSTEM_PMUFW_SERIAL_MANUAL_SELECT)
+choice[1-3?]: FSBL Serial stdin/stdout
+> 1. psu_uart_1 (SUBSYSTEM_FSBL_SERIAL_PSU_UART_1_SELECT)
+  2. psu_uart_0 (SUBSYSTEM_FSBL_SERIAL_PSU_UART_0_SELECT)
+  3. psu_coresight_0 (SUBSYSTEM_FSBL_SERIAL_PSU_CORESIGHT_0_SELECT)
+  4. manual (SUBSYSTEM_FSBL_SERIAL_MANUAL_SELECT)
+choice[1-4?]: TF-A Serial stdin/stdout
+> 1. psu_uart_1 (SUBSYSTEM_TF-A_SERIAL_PSU_UART_1_SELECT)
+  2. psu_uart_0 (SUBSYSTEM_TF-A_SERIAL_PSU_UART_0_SELECT)
+  3. psu_coresight_0 (SUBSYSTEM_TF-A_SERIAL_PSU_CORESIGHT_0_SELECT)
+  4. manual (SUBSYSTEM_TF-A_SERIAL_MANUAL_SELECT)
+choice[1-4?]: U-boot/Linux Serial stdin/stdout
+> 1. psu_uart_1 (SUBSYSTEM_SERIAL_PSU_UART_1_SELECT)
+  2. psu_uart_0 (SUBSYSTEM_SERIAL_PSU_UART_0_SELECT)
+  3. psu_coresight_0 (SUBSYSTEM_SERIAL_PSU_CORESIGHT_0_SELECT)
+  4. manual (SUBSYSTEM_SERIAL_MANUAL_SELECT)
+choice[1-4?]: System stdin/stdout baudrate for psu_uart_1
+  1. 600 (SUBSYSTEM_SERIAL_PSU_UART_1_BAUDRATE_600)
+  2. 9600 (SUBSYSTEM_SERIAL_PSU_UART_1_BAUDRATE_9600)
+  3. 28800 (SUBSYSTEM_SERIAL_PSU_UART_1_BAUDRATE_28800)
+> 4. 115200 (SUBSYSTEM_SERIAL_PSU_UART_1_BAUDRATE_115200)
+  5. 230400 (SUBSYSTEM_SERIAL_PSU_UART_1_BAUDRATE_230400)
+  6. 460800 (SUBSYSTEM_SERIAL_PSU_UART_1_BAUDRATE_460800)
+  7. 921600 (SUBSYSTEM_SERIAL_PSU_UART_1_BAUDRATE_921600)
+choice[1-7?]: System stdin/stdout baudrate for psu_uart_0
+  1. 600 (SUBSYSTEM_SERIAL_PSU_UART_0_BAUDRATE_600)
+  2. 9600 (SUBSYSTEM_SERIAL_PSU_UART_0_BAUDRATE_9600)
+  3. 28800 (SUBSYSTEM_SERIAL_PSU_UART_0_BAUDRATE_28800)
+> 4. 115200 (SUBSYSTEM_SERIAL_PSU_UART_0_BAUDRATE_115200)
+  5. 230400 (SUBSYSTEM_SERIAL_PSU_UART_0_BAUDRATE_230400)
+  6. 460800 (SUBSYSTEM_SERIAL_PSU_UART_0_BAUDRATE_460800)
+  7. 921600 (SUBSYSTEM_SERIAL_PSU_UART_0_BAUDRATE_921600)
+choice[1-7?]: System stdin/stdout baudrate for psu_coresight_0
+  1. 600 (SUBSYSTEM_SERIAL_PSU_CORESIGHT_0_BAUDRATE_600)
+  2. 9600 (SUBSYSTEM_SERIAL_PSU_CORESIGHT_0_BAUDRATE_9600)
+  3. 28800 (SUBSYSTEM_SERIAL_PSU_CORESIGHT_0_BAUDRATE_28800)
+> 4. 115200 (SUBSYSTEM_SERIAL_PSU_CORESIGHT_0_BAUDRATE_115200)
+  5. 230400 (SUBSYSTEM_SERIAL_PSU_CORESIGHT_0_BAUDRATE_230400)
+  6. 460800 (SUBSYSTEM_SERIAL_PSU_CORESIGHT_0_BAUDRATE_460800)
+  7. 921600 (SUBSYSTEM_SERIAL_PSU_CORESIGHT_0_BAUDRATE_921600)
+choice[1-7?]: *
+* Ethernet Settings
+*
+Primary Ethernet
+> 1. manual (SUBSYSTEM_ETHERNET_MANUAL_SELECT)
+choice[1]: 1
+*
+* Flash Settings
+*
+Primary Flash
+> 1. manual (SUBSYSTEM_FLASH_MANUAL_SELECT)
+choice[1]: 1
+*
+* SD/SDIO Settings
+*
+Primary SD/SDIO
+  1. psu_sd_1 (SUBSYSTEM_PRIMARY_SD_PSU_SD_1_SELECT)
+> 2. psu_sd_0 (SUBSYSTEM_PRIMARY_SD_PSU_SD_0_SELECT)
+  3. manual (SUBSYSTEM_PRIMARY_SD_MANUAL_SELECT)
+choice[1-3?]: *
+* DTG Settings
+*
+MACHINE_NAME (SUBSYSTEM_MACHINE_NAME) [template] 
+Device-tree workspace (SUBSYSTEM_DT_XSCT_WORKSPACE) [${PROOT}/components/plnx_workspace/device-tree] 
+DTB padding size (SUBSYSTEM_DTB_PADDING_SIZE) [0x1000] 
+Extra dts/dtsi files (SUBSYSTEM_EXTRA_DT_FILES) [] 
+*
+* Kernel Bootargs
+*
+generate boot args automatically (SUBSYSTEM_BOOTARGS_AUTO) [Y/n/?] 
+enable kernel earlyprintk (SUBSYSTEM_BOOTARGS_EARLYPRINTK) [Y/n/?] 
+Auto generated bootargs (NO EDIT!) (SUBSYSTEM_BOOTARGS_GENERATED) [earlycon console=ttyPS0,115200 root=/dev/mmcblk0p2 ro rootwait cma=256MB] 
+Add extra boot args (SUBSYSTEM_EXTRA_BOOTARGS) [cma=256MB] 
+Devicetree compiler flags (SUBSYSTEM_DEVICETREE_COMPILER_FLAGS) [-@] 
+Devicetree overlay (SUBSYSTEM_DTB_OVERLAY) [N/y/?] 
+Remove PL from devicetree (SUBSYSTEM_REMOVE_PL_DTB) [N/y/?] 
+Enable openamp dtsi (SUBSYSTEM_ENABLE_OPENAMP_DTSI) [N/y/?] 
+Enable xen hardware dtsi (SUBSYSTEM_ENABLE_XEN_HW_DTSI) [N/y/?] 
+Enable xen QEMU dtsi (SUBSYSTEM_ENABLE_XEN_QEMU_DTSI) [N/y/?] 
+Enable board specific aliases (SUBSYSTEM_ENABLE_NO_ALIAS) [N/y/?] 
+Enable aliases generated by DTG (SUBSYSTEM_ENABLE_DTG_ALIAS) [N/y/?] 
+Enable dt verbose (SUBSYSTEM_ENABLE_DT_VERBOSE) [N/y/?] 
+Enable eeprom alias (SUBSYSTEM_ADD_EEPROM_ALIAS) [N/y/?] 
+Enable rtc alias (SUBSYSTEM_ADD_RTC_ALIAS) [N/y/?] 
+*
+* FPGA Manager
+*
+Fpga Manager (SUBSYSTEM_FPGA_MANAGER) [N/y/?] 
+*
+* PMUFW Configuration
+*
+PMUFW BSP extra compiler flags (SUBSYSTEM_PMUFW_BSPCOMPILER_FLAGS) [] 
+PMUFW compiler flags (SUBSYSTEM_PMUFW_COMPILER_EXTRA_FLAGS) [] 
+*
+* FSBL Configuration
+*
+FSBL BSP extra compiler flags (SUBSYSTEM_FSBL_BSPCOMPILER_FLAGS) [] 
+FSBL compiler flags (SUBSYSTEM_FSBL_COMPILER_EXTRA_FLAGS) [] 
+*
+* Trusted Firmware ARM (TF-A) Configuration
+*
+TF-A memory settings (SUBSYSTEM_TF-A_MEMORY_SETTINGS) [N/y/?] 
+TF-A extra compiler flags (SUBSYSTEM_TF-A_EXTRA_COMPILER_FLAGS) [] 
+TF-A debug (SUBSYSTEM_TF-A_DEBUG) [N/y/?] 
+*
+* u-boot Configuration
+*
+u-boot config target (SUBSYSTEM_UBOOT_CONFIG_TARGET) [xilinx_zynqmp_virt_defconfig] 
+*
+* u-boot script configuration
+*
+Append base address to image offsets (SUBSYSTEM_UBOOT_APPEND_BASEADDR) [Y/n/?] 
+Pre bootenv (SUBSYSTEM_UBOOT_PRE_BOOTENV) [] 
+*
+* JTAG/DDR image offsets
+*
+Devicetree offset (SUBSYSTEM_UBOOT_DEVICETREE_OFFSET) [0x100000] 
+Kernel offset (SUBSYSTEM_UBOOT_KERNEL_OFFSET) [0x200000] 
+Ramdisk image offset (SUBSYSTEM_UBOOT_RAMDISK_IMAGE_OFFSET) [0x4000000] 
+Fit image offset (SUBSYSTEM_UBOOT_FIT_IMAGE_OFFSET) [0x10000000] 
+Boot script offset (SUBSYSTEM_UBOOT_BOOTSCR_OFFSET) [0x20000000] 
+*
+* QSPI/OSPI image offsets
+*
+QSPI/OSPI Kernel offset (SUBSYSTEM_UBOOT_QSPI_KERNEL_OFFSET) [0xF00000] 
+QSPI/OSPI Kernel size (SUBSYSTEM_UBOOT_QSPI_KERNEL_SIZE) [0x1D00000] 
+QSPI/OSPI Ramdisk offset (SUBSYSTEM_UBOOT_QSPI_RAMDISK_OFFSET) [0x4000000] 
+QSPI/OSPI Ramdisk size (SUBSYSTEM_UBOOT_QSPI_RAMDISK_SIZE) [0x4000000] 
+QSPI/OSPI fit image offset (SUBSYSTEM_UBOOT_QSPI_FIT_IMAGE_OFFSET) [0xF40000] 
+QSPI/OSPI fit image size (SUBSYSTEM_UBOOT_QSPI_FIT_IMAGE_SIZE) [0x6400000] 
+QSPI/OSPI Boot script offset (SUBSYSTEM_UBOOT_QSPI_BOOTSCR_OFFSET) [AUTO] 
+QSPI/OSPI Boot script size (SUBSYSTEM_UBOOT_QSPI_BOOTSCR_SIZE) [AUTO] 
+*
+* NAND image offsets
+*
+NAND Kernel offset (SUBSYSTEM_UBOOT_NAND_KERNEL_OFFSET) [0x4100000] 
+NAND Kernel size (SUBSYSTEM_UBOOT_NAND_KERNEL_SIZE) [0x3200000] 
+NAND Ramdisk offset (SUBSYSTEM_UBOOT_NAND_RAMDISK_OFFSET) [0x7800000] 
+NAND Ramdisk size (SUBSYSTEM_UBOOT_NAND_RAMDISK_SIZE) [0x3200000] 
+NAND fit image offset (SUBSYSTEM_UBOOT_NAND_FIT_IMAGE_OFFSET) [0x4180000] 
+NAND fit image size (SUBSYSTEM_UBOOT_NAND_FIT_IMAGE_SIZE) [0x6400000] 
+Kernel image name (SUBSYSTEM_UBOOT_KERNEL_IMAGE) [Image] 
+Fit image name (SUBSYSTEM_UBOOT_FIT_IMAGE) [image.ub] 
+u-boot-ext-dtb (SUBSYSTEM_UBOOT_EXT_DTB) [N/y/?] 
+*
+* Linux Configuration
+*
+linux config target (SUBSYSTEM_LINUX_CONFIG_TARGET) [] 
+*
+* Image Packaging Configuration
+*
+Root filesystem type
+  1. INITRAMFS (SUBSYSTEM_ROOTFS_INITRAMFS)
+  2. INITRD (SUBSYSTEM_ROOTFS_INITRD)
+  3. UBI/UBIFS (SUBSYSTEM_ROOTFS_UBIFS)
+  4. NFS (SUBSYSTEM_ROOTFS_NFS)
+> 5. EXT4 (SD/eMMC/SATA/USB) (SUBSYSTEM_ROOTFS_EXT4)
+  6. other (SUBSYSTEM_ROOTFS_OTHER)
+choice[1-6]: Device node of SD device (SUBSYSTEM_SDROOT_DEV) [/dev/mmcblk0p2] 
+name for bootable kernel image (SUBSYSTEM_UIMAGE_NAME) [image.ub] 
+Root filesystem formats (SUBSYSTEM_RFS_FORMATS) [tar.gz] 
+Copy final images to tftpboot (SUBSYSTEM_COPY_TO_TFTPBOOT) [N/y/?] 
+*
+* Firmware Version Configuration
+*
+Host name (SUBSYSTEM_HOSTNAME) [tensil] 
+Product name (SUBSYSTEM_PRODUCT) [tensil] 
+Firmware Version (SUBSYSTEM_FW_VERSION) [2024.2] 
+*
+* Yocto Settings
+*
+Yocto Machine Name (YOCTO_MACHINE_NAME) [zynqmp-generic] 
+Yocto Include Machine name (YOCTO_INCLUDE_MACHINE_NAME) [] 
+Yocto Additional Overrides (YOCTO_ADD_OVERRIDES) [] 
+*
+* TMPDIR Location
+*
+TMPDIR Location (TMP_DIR_LOCATION) [${PROOT}/build/tmp] 
+*
+* Devtool Workspace Location
+*
+Devtool Workspace Location (DEVTOOL_WORKSPACE_LOCATION) [${PROOT}/components/yocto/workspace] 
+PetaLinux Deploy Directory (PLNX_IMAGES_LOCATION) [${PROOT}/images/linux] 
+*
+* Parallel thread execution
+*
+Set number of bb threads (BB_NUMBER_THREADS) (YOCTO_BB_NUMBER_THREADS) [] 
+Set number of bb parse threads (BB_NUMBER_PARSE_THREADS) (YOCTO_BB_NUMBER_PARSE_THREADS) [] 
+Set number of parallel make -j (PARALLEL_MAKE) (YOCTO_PARALLEL_MAKE) [] 
+*
+* Add pre-mirror url 
+*
+pre-mirror url path (PRE_MIRROR_URL) [https://petalinux.xilinx.com/sswreleases/rel-v${PETALINUX_VER}/downloads] 
+*
+* Local sstate feeds settings
+*
+local sstate feeds url (YOCTO_LOCAL_SSTATE_FEEDS_URL) [] 
+Enable Network sstate feeds (YOCTO_NETWORK_SSTATE_FEEDS) [Y/n/?] 
+  *
+  * Network sstate feeds URL
+  *
+  network sstate feeds url (YOCTO_NETWORK_SSTATE_FEEDS_URL) [https://petalinux.xilinx.com/sswreleases/rel-v${PETALINUX_VER}/aarch64/sstate-cache] 
+Enable BB NO NETWORK (YOCTO_BB_NO_NETWORK) [N/y/?] 
+Enable Buildtools Extended (YOCTO_BUILDTOOLS_EXTENDED) [N/y/?] 
+*
+* User Layers
+*
+user layer 0 (USER_LAYER_0) [] 
+#
+# configuration written to /home/imagingtechnerd/ultra96-unified/v2/tensil/petalinux/project-spec/configs/config
+#
+2025-01-10 12:49:58,004 - [INFO] Menuconfig rootfs
+2025-01-10 12:49:58,004 - [DEBUG] Running CMD: env KCONFIG_CONFIG=/home/imagingtechnerd/ultra96-unified/v2/tensil/petalinux/project-spec/configs/rootfs_config mconf -s /home/imagingtechnerd/ultra96-unified/v2/tensil/petalinux/project-spec/configs/rootfsconfigs/Kconfig
+2025-01-10 12:51:40,519 - [INFO] Generating configuration files
+2025-01-10 12:51:40,522 - [DEBUG] No multilibs enabled.
+2025-01-10 12:51:40,522 - [DEBUG] No multilibs enabled.
+2025-01-10 12:51:40,523 - [DEBUG] Skip adding layers as no bitbake-layers or builddir found
+2025-01-10 12:51:40,551 - [INFO] Generating plnxtool conf file
+2025-01-10 12:51:40,580 - [DEBUG] python3 /home/imagingtechnerd/ultra96-unified/v2/tensil/petalinux/components/yocto/layers/meta-xilinx/meta-xilinx-core/gen-machine-conf/gen-machine-scripts/rootfsconfigs/rootfs_config.py --update_cfg /home/imagingtechnerd/ultra96-unified/v2/tensil/petalinux/project-spec/configs/rootfs_config /home/imagingtechnerd/ultra96-unified/v2/tensil/petalinux/build/conf/plnxtool.conf zynqmp
+2025-01-10 12:51:40,663 - [DEBUG] 
+
+
+
+2025-01-10 12:51:40,664 - [DEBUG] Shutting down bitbake
