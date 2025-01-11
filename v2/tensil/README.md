@@ -51,6 +51,10 @@ $ tensil rtl -a tensil/arch/ultra96v2.tarch -s true -d 128
 
 - result:
 
+<details>
+
+<summary>Click to expand</summary>
+
 ```shell-session
 -----------------------------------------------------------------------
 RTL SUMMARY
@@ -76,6 +80,8 @@ Verilog bram_dp_256x20480:  /media/imagingtechnerd/SSD_180GB/ultra96-unified/v2/
 Verilog top_ultra96v2:      /media/imagingtechnerd/SSD_180GB/ultra96-unified/v2/tensil/top_ultra96v2.v
 Driver parameters C header: /media/imagingtechnerd/SSD_180GB/ultra96-unified/v2/tensil/architecture_params.h
 ```
+
+</details>
 
 ```shell
 $ mkdir rtl
