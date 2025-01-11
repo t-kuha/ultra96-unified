@@ -46,7 +46,7 @@ $ export PATH=${PATH}:$(pwd)/tensil/docker/bin
 ## 2. Build HW
 
 ```shell
-$ tensil rtl -a tensil/arch/ultra96v2.tarch -s true -d 128
+$ tensil rtl -a tensil/arch/ultra96v2.tarch -s true -d 128 -t rtl
 ```
 
 - result:
@@ -72,24 +72,17 @@ Operand #1 size (bits):                         24
 Operand #2 size (bits):                         16        
 Instruction size (bytes):                       9         
 -----------------------------------------------------------------------
-------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------
 ARTIFACTS
-------------------------------------------------------------------------------------------------------------
-Verilog bram_dp_256x4096:   /media/imagingtechnerd/SSD_180GB/ultra96-unified/v2/tensil/bram_dp_256x4096.v
-Verilog bram_dp_256x20480:  /media/imagingtechnerd/SSD_180GB/ultra96-unified/v2/tensil/bram_dp_256x20480.v
-Verilog top_ultra96v2:      /media/imagingtechnerd/SSD_180GB/ultra96-unified/v2/tensil/top_ultra96v2.v
-Driver parameters C header: /media/imagingtechnerd/SSD_180GB/ultra96-unified/v2/tensil/architecture_params.h
+----------------------------------------------------------------------------------------------------------------
+Verilog bram_dp_256x4096:   /media/imagingtechnerd/SSD_180GB/ultra96-unified/v2/tensil/rtl/bram_dp_256x4096.v
+Verilog bram_dp_256x20480:  /media/imagingtechnerd/SSD_180GB/ultra96-unified/v2/tensil/rtl/bram_dp_256x20480.v
+Verilog top_ultra96v2:      /media/imagingtechnerd/SSD_180GB/ultra96-unified/v2/tensil/rtl/top_ultra96v2.v
+Driver parameters C header: /media/imagingtechnerd/SSD_180GB/ultra96-unified/v2/tensil/rtl/architecture_params.h
+----------------------------------------------------------------------------------------------------------------
 ```
 
 </details>
-
-```shell
-$ mkdir rtl
-$ mv bram_dp_* rtl/
-$ mv architecture_params.h rtl/
-$ mv top_* rtl/
-$ mv firrtl_black_box_resource_files.f rtl/
-```
 
 - Generate bitstream
 
@@ -106,7 +99,7 @@ $ tensil compile \
 -a tensil/arch/ultra96v2.tarch \
 -m models/yolov4_tiny_192.onnx \
 -o "model/conv2d_17/BiasAdd:0,model/conv2d_20/BiasAdd:0" \
--s true
+-s true -t model_yolo
 ```
 
 - result:
@@ -149,19 +142,19 @@ Execution energy (MUnits):                            864.097
 Aggregate energy (MUnits):                            864.424                        
 MAC efficiency (%):                                   51.841                         
 Total number of instructions:                         691,677                        
-Compilation time (seconds):                           173.278                        
+Compilation time (seconds):                           204.336                        
 True consts scalar size:                              6,054,190                      
 Consts utilization (%):                               98.706                         
 True MACs (MMAC):                                     670.349                        
 MAC efficiency (%):                                   51.841                         
 --------------------------------------------------------------------------------------------------
------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------
 ARTIFACTS
------------------------------------------------------------------------------------------------------------
-Manifest:  /media/imagingtechnerd/SSD_180GB/ultra96-unified/v2/tensil/yolov4_tiny_192_onnx_ultra96v2.tmodel
-Program:   /media/imagingtechnerd/SSD_180GB/ultra96-unified/v2/tensil/yolov4_tiny_192_onnx_ultra96v2.tprog
-Constants: /media/imagingtechnerd/SSD_180GB/ultra96-unified/v2/tensil/yolov4_tiny_192_onnx_ultra96v2.tdata
------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------
+Manifest:  /media/imagingtechnerd/SSD_180GB/ultra96-unified/v2/tensil/model_yolo/yolov4_tiny_192_onnx_ultra96v2.tmodel
+Program:   /media/imagingtechnerd/SSD_180GB/ultra96-unified/v2/tensil/model_yolo/yolov4_tiny_192_onnx_ultra96v2.tprog
+Constants: /media/imagingtechnerd/SSD_180GB/ultra96-unified/v2/tensil/model_yolo/yolov4_tiny_192_onnx_ultra96v2.tdata
+----------------------------------------------------------------------------------------------------------------------
 ```
 
 </details>
@@ -172,7 +165,7 @@ Constants: /media/imagingtechnerd/SSD_180GB/ultra96-unified/v2/tensil/yolov4_tin
 $ tensil compile \
 -a tensil/arch/ultra96v2.tarch \
 -m models/resnet20v2_cifar.onnx \
--o "Identity:0" -s true
+-o "Identity:0" -s true -t model_resnet20
 ```
 
 - result:
@@ -215,19 +208,19 @@ Execution energy (MUnits):                            85.204
 Aggregate energy (MUnits):                            85.205                          
 MAC efficiency (%):                                   37.116                          
 Total number of instructions:                         101,840                         
-Compilation time (seconds):                           65.335                          
+Compilation time (seconds):                           45.703                          
 True consts scalar size:                              568,474                         
 Consts utilization (%):                               97.210                          
 True MACs (MMAC):                                     61.476                          
 MAC efficiency (%):                                   37.116                          
 ---------------------------------------------------------------------------------------------------
--------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------
 ARTIFACTS
--------------------------------------------------------------------------------------------------
-Manifest:  /home/imagingtechnerd/ultra96-unified/v2/tensil/resnet20v2_cifar_onnx_ultra96v2.tmodel
-Program:   /home/imagingtechnerd/ultra96-unified/v2/tensil/resnet20v2_cifar_onnx_ultra96v2.tprog
-Constants: /home/imagingtechnerd/ultra96-unified/v2/tensil/resnet20v2_cifar_onnx_ultra96v2.tdata
--------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------
+Manifest:  /media/imagingtechnerd/SSD_180GB/ultra96-unified/v2/tensil/model_resnet20/resnet20v2_cifar_onnx_ultra96v2.tmodel
+Program:   /media/imagingtechnerd/SSD_180GB/ultra96-unified/v2/tensil/model_resnet20/resnet20v2_cifar_onnx_ultra96v2.tprog
+Constants: /media/imagingtechnerd/SSD_180GB/ultra96-unified/v2/tensil/model_resnet20/resnet20v2_cifar_onnx_ultra96v2.tdata
+---------------------------------------------------------------------------------------------------------------------------
 ```
 
 </details>
