@@ -49,8 +49,8 @@ if { [string first $scripts_vivado_version $current_vivado_version] == -1 } {
 
 set list_projs [get_projects -quiet]
 if { $list_projs eq "" } {
-   create_project project_1 myproj -part xczu3eg-sbva484-1-e
-   set_property BOARD_PART em.avnet.com:ultra96v2:part0:1.0 [current_project]
+   create_project project_1 myproj -part xczu3eg-sbva484-1-i
+   set_property BOARD_PART avnet.com:ultra96v2:part0:1.2 [current_project]
 }
 
 
@@ -728,18 +728,43 @@ Port;FD4A0000;FD4AFFFF;1|FPD;DPDMA;FD4C0000;FD4CFFFF;1|FPD;DDR_XMPU5_CFG;FD05000
   connect_bd_intf_net -intf_net zynq_us_axi_periph_M00_AXI [get_bd_intf_pins axi_intc_0/s_axi] [get_bd_intf_pins zynq_us_axi_periph/M00_AXI]
 
   # Create port connections
-  connect_bd_net -net axi_intc_0_irq [get_bd_pins axi_intc_0/irq] [get_bd_pins zynq_us/pl_ps_irq0]
-  connect_bd_net -net clk_wiz_clk_out0 [get_bd_pins clk_wiz/clk_out0] [get_bd_pins ps_rst_0/slowest_sync_clk]
-  connect_bd_net -net clk_wiz_clk_out1 [get_bd_pins clk_wiz/clk_out1] [get_bd_pins axi_intc_0/s_axi_aclk] [get_bd_pins ps_rst_1/slowest_sync_clk] [get_bd_pins zynq_us/maxihpm0_lpd_aclk] [get_bd_pins zynq_us_axi_periph/ACLK] [get_bd_pins zynq_us_axi_periph/M00_ACLK] [get_bd_pins zynq_us_axi_periph/S00_ACLK]
-  connect_bd_net -net clk_wiz_clk_out2 [get_bd_pins clk_wiz/clk_out2] [get_bd_pins ps_rst_2/slowest_sync_clk]
-  connect_bd_net -net clk_wiz_locked [get_bd_pins clk_wiz/locked] [get_bd_pins ps_rst_0/dcm_locked] [get_bd_pins ps_rst_1/dcm_locked] [get_bd_pins ps_rst_2/dcm_locked]
-  connect_bd_net -net emio_uart0_ctsn_0_1 [get_bd_ports BT_HCI_RTS] [get_bd_pins zynq_us/emio_uart0_ctsn]
-  connect_bd_net -net ps_rst_1_peripheral_aresetn [get_bd_pins ps_rst_1/peripheral_aresetn] [get_bd_pins axi_intc_0/s_axi_aresetn] [get_bd_pins zynq_us_axi_periph/ARESETN] [get_bd_pins zynq_us_axi_periph/M00_ARESETN] [get_bd_pins zynq_us_axi_periph/S00_ARESETN]
-  connect_bd_net -net xlslice_0_Dout [get_bd_pins xlslice_0/Dout] [get_bd_ports fan_en_b]
-  connect_bd_net -net zynq_ultra_ps_e_0_pl_clk0 [get_bd_pins zynq_us/pl_clk0] [get_bd_pins clk_wiz/clk_in1]
-  connect_bd_net -net zynq_ultra_ps_e_0_pl_resetn0 [get_bd_pins zynq_us/pl_resetn0] [get_bd_pins clk_wiz/resetn] [get_bd_pins ps_rst_0/ext_reset_in] [get_bd_pins ps_rst_1/ext_reset_in] [get_bd_pins ps_rst_2/ext_reset_in]
-  connect_bd_net -net zynq_us_emio_ttc0_wave_o [get_bd_pins zynq_us/emio_ttc0_wave_o] [get_bd_pins xlslice_0/Din]
-  connect_bd_net -net zynq_us_emio_uart0_rtsn [get_bd_pins zynq_us/emio_uart0_rtsn] [get_bd_ports BT_HCI_CTS]
+  connect_bd_net -net axi_intc_0_irq  [get_bd_pins axi_intc_0/irq] \
+  [get_bd_pins zynq_us/pl_ps_irq0]
+  connect_bd_net -net clk_wiz_clk_out0  [get_bd_pins clk_wiz/clk_out0] \
+  [get_bd_pins ps_rst_0/slowest_sync_clk]
+  connect_bd_net -net clk_wiz_clk_out1  [get_bd_pins clk_wiz/clk_out1] \
+  [get_bd_pins axi_intc_0/s_axi_aclk] \
+  [get_bd_pins ps_rst_1/slowest_sync_clk] \
+  [get_bd_pins zynq_us/maxihpm0_lpd_aclk] \
+  [get_bd_pins zynq_us_axi_periph/ACLK] \
+  [get_bd_pins zynq_us_axi_periph/M00_ACLK] \
+  [get_bd_pins zynq_us_axi_periph/S00_ACLK]
+  connect_bd_net -net clk_wiz_clk_out2  [get_bd_pins clk_wiz/clk_out2] \
+  [get_bd_pins ps_rst_2/slowest_sync_clk]
+  connect_bd_net -net clk_wiz_locked  [get_bd_pins clk_wiz/locked] \
+  [get_bd_pins ps_rst_0/dcm_locked] \
+  [get_bd_pins ps_rst_1/dcm_locked] \
+  [get_bd_pins ps_rst_2/dcm_locked]
+  connect_bd_net -net emio_uart0_ctsn_0_1  [get_bd_ports BT_HCI_RTS] \
+  [get_bd_pins zynq_us/emio_uart0_ctsn]
+  connect_bd_net -net ps_rst_1_peripheral_aresetn  [get_bd_pins ps_rst_1/peripheral_aresetn] \
+  [get_bd_pins axi_intc_0/s_axi_aresetn] \
+  [get_bd_pins zynq_us_axi_periph/ARESETN] \
+  [get_bd_pins zynq_us_axi_periph/M00_ARESETN] \
+  [get_bd_pins zynq_us_axi_periph/S00_ARESETN]
+  connect_bd_net -net xlslice_0_Dout  [get_bd_pins xlslice_0/Dout] \
+  [get_bd_ports fan_en_b]
+  connect_bd_net -net zynq_ultra_ps_e_0_pl_clk0  [get_bd_pins zynq_us/pl_clk0] \
+  [get_bd_pins clk_wiz/clk_in1]
+  connect_bd_net -net zynq_ultra_ps_e_0_pl_resetn0  [get_bd_pins zynq_us/pl_resetn0] \
+  [get_bd_pins clk_wiz/resetn] \
+  [get_bd_pins ps_rst_0/ext_reset_in] \
+  [get_bd_pins ps_rst_1/ext_reset_in] \
+  [get_bd_pins ps_rst_2/ext_reset_in]
+  connect_bd_net -net zynq_us_emio_ttc0_wave_o  [get_bd_pins zynq_us/emio_ttc0_wave_o] \
+  [get_bd_pins xlslice_0/Din]
+  connect_bd_net -net zynq_us_emio_uart0_rtsn  [get_bd_pins zynq_us/emio_uart0_rtsn] \
+  [get_bd_ports BT_HCI_CTS]
 
   # Create address segments
   assign_bd_address -offset 0x80020000 -range 0x00001000 -target_address_space [get_bd_addr_spaces zynq_us/Data] [get_bd_addr_segs axi_intc_0/S_AXI/Reg] -force

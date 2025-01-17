@@ -5,14 +5,14 @@ set BD_NAME     ${PRJ_NAME}
 set SRC_DIR     src
 
 # Add board repo path
-set_param board.repoPaths $::env(RDI_DATADIR)/xhub/boards/XilinxBoardStore/boards/bdf
+set_param board.repoPaths $::env(RDI_DATADIR)/xhub/boards/XilinxBoardStore/boards/Avnet
 
 # Remove existing directory
 file delete -force ${PRJ_DIR}
 
 # Create project
-create_project ${PRJ_NAME} ${PRJ_DIR} -part xczu3eg-sbva484-1-e
-set_property board_part em.avnet.com:ultra96v2:part0:1.0 [current_project]
+create_project ${PRJ_NAME} ${PRJ_DIR} -part xczu3eg-sbva484-1-i
+set_property board_part avnet.com:ultra96v2:part0:1.2 [current_project]
 set_property platform.extensible "true" [current_project]
 
 # Add constraint

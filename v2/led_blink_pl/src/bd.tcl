@@ -49,8 +49,8 @@ if { [string first $scripts_vivado_version $current_vivado_version] == -1 } {
 
 set list_projs [get_projects -quiet]
 if { $list_projs eq "" } {
-   create_project project_1 myproj -part xczu3eg-sbva484-1-e
-   set_property BOARD_PART em.avnet.com:ultra96v2:part0:1.0 [current_project]
+   create_project project_1 myproj -part xczu3eg-sbva484-1-i
+   set_property BOARD_PART avnet.com:ultra96v2:part0:1.2 [current_project]
 }
 
 
@@ -713,12 +713,23 @@ Port;FD4A0000;FD4AFFFF;1|FPD;DPDMA;FD4C0000;FD4CFFFF;1|FPD;DDR_XMPU5_CFG;FD05000
   connect_bd_intf_net -intf_net zu_ps_e_M_AXI_HPM0_LPD [get_bd_intf_pins smartconnect_0/S00_AXI] [get_bd_intf_pins zu_ps_e/M_AXI_HPM0_LPD]
 
   # Create port connections
-  connect_bd_net -net axi_gpio_0_gpio_io_o [get_bd_pins axi_gpio/gpio_io_o] [get_bd_pins xlslice_0/Din] [get_bd_pins xlslice_1/Din]
-  connect_bd_net -net rst_ps8_0_100M_peripheral_aresetn [get_bd_pins rst_100M/peripheral_aresetn] [get_bd_pins axi_gpio/s_axi_aresetn] [get_bd_pins smartconnect_0/aresetn]
-  connect_bd_net -net xlslice_0_Dout [get_bd_pins xlslice_0/Dout] [get_bd_ports RADIO_LED0]
-  connect_bd_net -net xlslice_1_Dout [get_bd_pins xlslice_1/Dout] [get_bd_ports RADIO_LED1]
-  connect_bd_net -net zynq_ultra_ps_e_0_pl_clk0 [get_bd_pins zu_ps_e/pl_clk0] [get_bd_pins axi_gpio/s_axi_aclk] [get_bd_pins rst_100M/slowest_sync_clk] [get_bd_pins smartconnect_0/aclk] [get_bd_pins zu_ps_e/maxihpm0_lpd_aclk]
-  connect_bd_net -net zynq_ultra_ps_e_0_pl_resetn0 [get_bd_pins zu_ps_e/pl_resetn0] [get_bd_pins rst_100M/ext_reset_in]
+  connect_bd_net -net axi_gpio_0_gpio_io_o  [get_bd_pins axi_gpio/gpio_io_o] \
+  [get_bd_pins xlslice_0/Din] \
+  [get_bd_pins xlslice_1/Din]
+  connect_bd_net -net rst_ps8_0_100M_peripheral_aresetn  [get_bd_pins rst_100M/peripheral_aresetn] \
+  [get_bd_pins axi_gpio/s_axi_aresetn] \
+  [get_bd_pins smartconnect_0/aresetn]
+  connect_bd_net -net xlslice_0_Dout  [get_bd_pins xlslice_0/Dout] \
+  [get_bd_ports RADIO_LED0]
+  connect_bd_net -net xlslice_1_Dout  [get_bd_pins xlslice_1/Dout] \
+  [get_bd_ports RADIO_LED1]
+  connect_bd_net -net zynq_ultra_ps_e_0_pl_clk0  [get_bd_pins zu_ps_e/pl_clk0] \
+  [get_bd_pins axi_gpio/s_axi_aclk] \
+  [get_bd_pins rst_100M/slowest_sync_clk] \
+  [get_bd_pins smartconnect_0/aclk] \
+  [get_bd_pins zu_ps_e/maxihpm0_lpd_aclk]
+  connect_bd_net -net zynq_ultra_ps_e_0_pl_resetn0  [get_bd_pins zu_ps_e/pl_resetn0] \
+  [get_bd_pins rst_100M/ext_reset_in]
 
   # Create address segments
   assign_bd_address -offset 0x80000000 -range 0x00001000 -target_address_space [get_bd_addr_spaces zu_ps_e/Data] [get_bd_addr_segs axi_gpio/S_AXI/Reg] -force

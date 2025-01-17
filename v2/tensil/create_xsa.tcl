@@ -5,14 +5,14 @@ set BD_NAME     ${PRJ_NAME}
 set SRC_DIR     src
 
 # Add board repo path
-set_param board.repoPaths $::env(RDI_DATADIR)/xhub/boards/XilinxBoardStore/boards/bdf
+set_param board.repoPaths $::env(RDI_DATADIR)/xhub/boards/XilinxBoardStore/boards/Avnet
 
 # Remove existing directory
 file delete -force ${PRJ_DIR}
 
 # Create project
-create_project ${PRJ_NAME} ${PRJ_DIR} -part xczu3eg-sbva484-1-e
-set_property board_part em.avnet.com:ultra96v2:part0:1.0 [current_project]
+create_project ${PRJ_NAME} ${PRJ_DIR} -part xczu3eg-sbva484-1-i
+set_property board_part avnet.com:ultra96v2:part0:1.2 [current_project]
 add_files -norecurse {rtl/top_ultra96v2.v rtl/bram_dp_256x20480.v rtl/bram_dp_256x4096.v}
 
 # Create block design
@@ -38,8 +38,8 @@ launch_runs impl_1 -to_step write_bitstream
 wait_on_run impl_1
 
 # Export .xsa file
-write_hw_platform -fixed -force -include_bit -file ${PRJ_NAME}.xsa
-validate_hw_platform ${PRJ_NAME}.xsa
+write_hw_platform -fixed -force -include_bit -file hw.xsa
+validate_hw_platform hw.xsa
 
 # Finish - close project
 close_project

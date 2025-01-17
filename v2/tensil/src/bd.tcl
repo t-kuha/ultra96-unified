@@ -52,12 +52,12 @@ if { [string first $scripts_vivado_version $current_vivado_version] == -1 } {
 
 # If there is no project opened, this script will create a
 # project, but make sure you do not have an existing project
-# <./myproj/u96v2_tensil.xpr> in the current working folder.
+# <./myproj/project_1.xpr> in the current working folder.
 
 set list_projs [get_projects -quiet]
 if { $list_projs eq "" } {
-   create_project u96v2_tensil myproj -part xczu3eg-sbva484-1-e
-   set_property BOARD_PART em.avnet.com:ultra96v2:part0:1.0 [current_project]
+   create_project project_1 myproj -part xczu3eg-sbva484-1-i
+   set_property BOARD_PART avnet.com:ultra96v2:part0:1.2 [current_project]
 }
 
 
