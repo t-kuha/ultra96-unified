@@ -1,0 +1,15 @@
+# Xilinx
+*.Xil
+*.log
+*.jou
+*.xsa
+sd_card
+BOOT.BIN
+
+# temp.
+_*
+
+# data
+*.zip
+*.tar.*
+.vscode
